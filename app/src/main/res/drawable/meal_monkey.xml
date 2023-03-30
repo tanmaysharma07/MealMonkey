@@ -1,0 +1,8 @@
+<svg xmlns:tools="http://schemas.android.com/tools"
+    xmlns="http://www.w3.org/2000/svg" width="220" height="46" viewBox="0 0 220 46">
+    <g id="Meal_Monkey_text"
+        transform="translate(-71 -442)">
+        <text id="Meal" transform="translate(113 479)" fill="#fc6011" font-size="34" font-family="SegoeUI-Bold, Segoe UI" font-weight="700" letter-spacing="0.034em"><tspan x="-41.179" y="0">Meal</tspan></text>
+        <text id="Monkey" transform="translate(223 479)" fill="#4a4b4d" font-size="34" font-family="SegoeUI-Bold, Segoe UI" font-weight="700" letter-spacing="0.034em"><tspan x="-67.445" y="0">Monkey</tspan></text>
+    </g>
+</svg>

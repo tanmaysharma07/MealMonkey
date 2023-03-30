@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Meal Monkey</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="please_enter_your_email_to_receive_a_link_to_create_a_new_password_via_email">Please enter your email to receive a link to create a new password via email</string>
+    <string name="we_have_sent_an_otp_to_your_mobile">We have sent an OTP to your Mobile</string>
+    <string name="please_check_your_mobile_number_071_12_continue_to_reset_your_password">Please check your mobile number 071*****12 continue to reset your password</string>
+    <string name="login">Login</string>
+    <string name="create_an_account">Create An Account</string>
+</resources>

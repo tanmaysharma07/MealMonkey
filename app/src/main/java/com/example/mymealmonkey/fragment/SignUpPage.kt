@@ -5,29 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.model.AppViewModel
+import com.google.android.material.textfield.TextInputLayout
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SignUpPage.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SignUpPage : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -38,23 +28,41 @@ class SignUpPage : Fragment() {
         return inflater.inflate(R.layout.fragment_sign_up_page, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignUpPage.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignUpPage().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val viewModel:AppViewModel by viewModels()
+
+        val name: TextInputLayout = view.findViewById(R.id.name_textField)
+        val email: TextInputLayout = view.findViewById(R.id.email_textField)
+        val mobileNumber: TextInputLayout = view.findViewById(R.id.mobile_no_textField)
+        val address: TextInputLayout = view.findViewById(R.id.address_textField)
+        val password: TextInputLayout = view.findViewById(R.id.password_sign_up)!!
+        val confirmPassword: TextInputLayout = view.findViewById(R.id.confirm_password_sign_up)
+        val login: TextView = view.findViewById(R.id.login_text_button)
+        val signUpButton: Button = view.findViewById(R.id.sign_up_button)
+
+        login.setOnClickListener {
+            it.findNavController().navigate(R.id.action_signUpPage_to_loginPage)
+        }
+        signUpButton.setOnClickListener {
+            if (viewModel.isFieldEmpty(name.editText?.text.toString())&&viewModel.isFieldEmpty(mobileNumber.editText?.text.toString())&&viewModel.isFieldEmpty(address.editText?.text.toString())){
+                Toast.makeText(requireContext(),"Enter all the fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+            if (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email.editText?.text.toString()).matches())){
+                Toast.makeText(requireContext(),"Enter a Valid Email",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (password.editText?.text.toString().length<7){
+                Toast.makeText(requireContext(),"Enter Valid password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (confirmPassword.editText?.text.toString()!=password.editText?.text.toString()){
+                Toast.makeText(requireContext(),"Passwords Do not Match", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+                it.findNavController().navigate(R.id.action_signUpPage_to_loginPage)
+
+        }
     }
 }

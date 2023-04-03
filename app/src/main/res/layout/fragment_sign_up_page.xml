@@ -11,7 +11,7 @@
         android:id="@+id/sign_up"
         style="@style/textStyle"
         android:layout_marginTop="70dp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/Add_sign_up"
         style="@style/textStyle"
         android:layout_marginTop="10dp"
-        android:text="Add your details to Sign Up"
+        android:text="@string/add_your_details_to_sign_up"
        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up" />
@@ -37,9 +37,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Name"
+            android:hint="@string/name"
+            android:maxLines="1"
+            android:singleLine="true"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,16 +56,19 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Email"
+            android:maxLines="1"
+            android:hint="@string/email"
+            android:singleLine="true"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/mobile_no_textField"
         style="@style/textfieldStyle"
+        app:prefixText="+91"
         android:layout_marginTop="25dp"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_textField">
@@ -72,9 +76,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Mobile Number"
+            android:maxLines="1"
+            android:hint="@string/mobile_number"
+            android:singleLine="true"
+            android:inputType="number"
+            android:maxLength="10"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,9 +97,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Address"
+            android:hint="@string/address"
+            android:maxLines="1"
+            android:singleLine="true"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,9 +115,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
+            android:hint="@string/password"
+            android:maxLines="1"
+            android:singleLine="true"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,9 +134,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
+            android:maxLines="1"
+            android:singleLine="true"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +145,7 @@
         android:id="@+id/sign_up_button"
         style="@style/buttonStyle"
         android:layout_marginTop="25dp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirm_password_sign_up" />
@@ -144,8 +154,8 @@
         android:id="@+id/have_account"
         style="@style/textStyle"
         android:layout_marginTop="20dp"
-        android:text="Already have an Account?"
-        android:layout_marginRight="40dp"
+        android:text="@string/already_have_an_account"
+        android:layout_marginEnd="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +167,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:clickable="true"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="#FC6011"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/have_account"

@@ -30,14 +30,21 @@
             android:id="@+id/action_loginPage_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment" />
         <action
-            android:id="@+id/action_loginPage_to_foodYouLoveFragment"
-            app:destination="@id/foodYouLoveFragment" />
+            android:id="@+id/action_loginPage_to_imageSliderFragment"
+            app:destination="@id/imageSliderFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
         android:name="com.example.mymealmonkey.fragment.SignUpPage"
         android:label="fragment_sign_up_page"
-        tools:layout="@layout/fragment_sign_up_page" />
+        tools:layout="@layout/fragment_sign_up_page" >
+        <action
+            android:id="@+id/action_signUpPage_to_loginPage"
+            app:destination="@id/loginPage" />
+        <action
+            android:id="@+id/action_signUpPage_to_loginPage2"
+            app:destination="@id/loginPage" />
+    </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.example.mymealmonkey.fragment.ResetPasswordFragment"
@@ -62,35 +69,17 @@
         android:label="fragment_new_password"
         tools:layout="@layout/fragment_new_password" />
     <fragment
-        android:id="@+id/foodYouLoveFragment"
-        android:name="com.example.mymealmonkey.fragment.FoodYouLoveFragment"
-        android:label="fragment_food_you_love"
-        tools:layout="@layout/fragment_food_you_love" >
-        <action
-            android:id="@+id/action_foodYouLoveFragment_to_fastDeliveryFragment"
-            app:destination="@id/fastDeliveryFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/fastDeliveryFragment"
-        android:name="com.example.mymealmonkey.fragment.FastDeliveryFragment"
-        android:label="fragment_fast_delivery"
-        tools:layout="@layout/fragment_fast_delivery" >
-        <action
-            android:id="@+id/action_fastDeliveryFragment_to_liveTrackingFragment"
-            app:destination="@id/liveTrackingFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/liveTrackingFragment"
-        android:name="com.example.mymealmonkey.fragment.LiveTrackingFragment"
-        android:label="fragment_live_tracking"
-        tools:layout="@layout/fragment_live_tracking" >
-        <action
-            android:id="@+id/action_liveTrackingFragment_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/homePageFragment"
         android:name="com.example.mymealmonkey.fragment.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" />
+    <fragment
+        android:id="@+id/imageSliderFragment"
+        android:name="com.example.mymealmonkey.fragment.ImageSliderFragment"
+        android:label="fragment_image_slider"
+        tools:layout="@layout/fragment_image_slider" >
+        <action
+            android:id="@+id/action_imageSliderFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
 </navigation>

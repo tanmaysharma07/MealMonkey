@@ -12,7 +12,7 @@
         android:id="@+id/login_text"
         style="@style/textStyle"
         android:layout_marginTop="70dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/Add_text"
         style="@style/textStyle"
         android:layout_marginTop="15dp"
-        android:text="Add your details to login"
+        android:text="@string/add_your_details_to_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_text" />
@@ -38,9 +38,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Your Email"
+            android:hint="@string/your_email"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColor="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,9 +55,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
+            android:hint="@string/password"
             android:textSize="14sp"
-            android:fontFamily="@font/metrophobic"
             android:textColorHint="#B6B7B7" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,33 +64,27 @@
         android:id="@+id/log_in_button"
         android:layout_marginTop="20dp"
         style="@style/buttonStyle"
-        android:text="Login"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_textField" />
 
     <TextView
         android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+       style="@style/textStyle"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/metrophobic"
-        android:text="Forgot your password?"
-        android:textSize="14sp"
+        android:text="@string/forgot_your_password"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/log_in_button" />
+        app:layout_constraintTop_toBottomOf="@+id/log_in_button"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/for_login_with"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/textStyle"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/metrophobic"
-        android:text="or Login With"
-        android:textFontWeight="@integer/material_motion_duration_medium_1"
-        android:textSize="14sp"
+        android:text="@string/or_login_with"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
@@ -102,7 +94,7 @@
         style="@style/buttonStyle"
         android:layout_marginTop="30dp"
         android:background="@drawable/rectangle"
-        android:text="Log in With Facebook"
+        android:text="@string/log_in_with_facebook"
         android:theme="@style/Button.fb"
         android:textSize="14sp"
         app:icon="@drawable/facebook"
@@ -118,7 +110,7 @@
         style="@style/buttonStyle"
         android:layout_marginTop="25dp"
         android:background="@drawable/rectangle"
-        android:text="Log in With Google"
+        android:text="@string/log_in_with_google"
         android:textSize="14sp"
         android:theme="@style/google.fb"
         app:icon="@drawable/google_plus_logo"
@@ -132,9 +124,9 @@
     <TextView
         android:id="@+id/no_account"
         style="@style/textStyle"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="75dp"
-        android:text="Don't have an Account?"
+        android:text="@string/don_t_have_an_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +138,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="75dp"
         android:clickable="true"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="#FC6011"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/no_account"

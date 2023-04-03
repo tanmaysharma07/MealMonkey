@@ -5,52 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragment.FastDeliveryFragment">
+    tools:context=".fragment.ImageSliderFragment">
 
-    <ImageView
-        android:id="@+id/fast_delivery_image"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="240dp"
-        android:layout_height="305dp"
+        android:layout_height="310dp"
         android:layout_marginTop="120dp"
-        android:src="@drawable/delivery_vector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/center_slider_indicators"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/center_slider_indicators"
+        android:layout_marginTop="10dp"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fast_delivery_image" />
+        app:layout_constraintTop_toBottomOf="@+id/viewpager" />
 
     <TextView
-        android:id="@+id/fast_delivery"
+        android:id="@+id/fast_deliveryt"
         style="@style/textStyle"
         android:layout_marginTop="30dp"
-        android:text="@string/fast_delivery"
+        android:text="@string/find_food_you_love"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/center_slider_indicators" />
+        app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
     <TextView
         android:id="@+id/fast_delivery_text"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/fast_food_delivery_to_your_home_office_wherever_you_are"
         android:textAlignment="center"
         android:textSize="14sp"
+        android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fast_delivery" />
+        app:layout_constraintTop_toBottomOf="@+id/fast_deliveryt"
+        android:text="@string/discover_the_best_foods_from_over_1_000_restaurants_and_fast_delivery_to_your_doorstep" />
 
     <Button
-        android:id="@+id/fast_delivery_button"
+        android:id="@+id/viewpager_button"
         style="@style/buttonStyle"
         android:layout_marginTop="45dp"
         android:text="@string/next"

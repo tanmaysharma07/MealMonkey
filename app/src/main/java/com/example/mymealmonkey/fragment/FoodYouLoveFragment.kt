@@ -28,9 +28,6 @@ class FoodYouLoveFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var findFoodButton: Button = view.findViewById(R.id.find_food_button)
-        findFoodButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_foodYouLoveFragment_to_fastDeliveryFragment)
-        }
+
     }
 }

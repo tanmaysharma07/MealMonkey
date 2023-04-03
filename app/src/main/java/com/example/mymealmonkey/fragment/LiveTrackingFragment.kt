@@ -25,9 +25,5 @@ class LiveTrackingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var liveTrackingButton: Button = view.findViewById(R.id.live_tracking_button)
-        liveTrackingButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_liveTrackingFragment_to_homePageFragment)
-        }
     }
 }

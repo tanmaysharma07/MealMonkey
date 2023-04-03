@@ -26,9 +26,5 @@ class FastDeliveryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var fastDeliverybutton: Button = view.findViewById(R.id.fast_delivery_button)
-        fastDeliverybutton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_fastDeliveryFragment_to_liveTrackingFragment)
-        }
+       }
     }
-}

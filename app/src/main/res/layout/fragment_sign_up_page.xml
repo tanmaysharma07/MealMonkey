@@ -1,179 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".fragment.SignUpPage">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/sign_up"
-        style="@style/textStyle"
-        android:layout_marginTop="70dp"
-        android:text="@string/sign_up"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="sigupPageViewModel"
+            type="com.example.mymealmonkey.view.fragment.signUpPage.SignUpPageViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/Add_sign_up"
-        style="@style/textStyle"
-        android:layout_marginTop="10dp"
-        android:text="@string/add_your_details_to_sign_up"
-       app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".view.fragment.signUpPage.SignUpPage">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_textField"
-        android:layout_marginTop="30dp"
-        style="@style/textfieldStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Add_sign_up">
+        <TextView
+            android:id="@+id/sign_up"
+            style="@style/textStyle"
+            android:layout_marginTop="70dp"
+            android:text="@string/sign_up"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/name"
-            android:maxLines="1"
+        <TextView
+            android:id="@+id/Add_sign_up"
+            style="@style/textStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/add_your_details_to_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_textField"
+            style="@style/textfieldStyle"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Add_sign_up">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/name"
+                android:maxLines="1"
+                android:text="@={sigupPageViewModel.nameInput}"
+                android:singleLine="true"
+                android:textColor="#B6B7B7"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_textField"
+            style="@style/textfieldStyle"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_textField">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/email"
+                android:text="@={sigupPageViewModel.emailInput}"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#B6B7B7"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mobile_no_textField"
+            style="@style/textfieldStyle"
+            android:layout_marginTop="25dp"
             android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#B6B7B7" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_textField"
+            app:prefixText="+91">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/mobile_number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:text="@={sigupPageViewModel.mobileNumberInput}"
+                android:singleLine="true"
+                android:textColor="#B6B7B7"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_textField"
-        style="@style/textfieldStyle"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_textField">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/address_textField"
+            style="@style/textfieldStyle"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mobile_no_textField">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:maxLines="1"
-            android:hint="@string/email"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#B6B7B7" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/address"
+                android:maxLines="1"
+                android:text="@={sigupPageViewModel.addressInput}"
+                android:singleLine="true"
+                android:textColor="#B6B7B7"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mobile_no_textField"
-        style="@style/textfieldStyle"
-        app:prefixText="+91"
-        android:layout_marginTop="25dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_textField">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_sign_up"
+            style="@style/textfieldStyle"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address_textField">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:maxLines="1"
-            android:hint="@string/mobile_number"
-            android:singleLine="true"
-            android:inputType="number"
-            android:maxLength="10"
-            android:textSize="14sp"
-            android:textColor="#B6B7B7" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/password"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={sigupPageViewModel.passwordInput}"
+                android:textColor="#B6B7B7"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/address_textField"
-        style="@style/textfieldStyle"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mobile_no_textField">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirm_password_sign_up"
+            style="@style/textfieldStyle"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_sign_up">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/address"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#B6B7B7" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/confirm_password"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={sigupPageViewModel.confirmPasswordInput}"
+                android:textColor="#B6B7B7"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_sign_up"
-        style="@style/textfieldStyle"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_textField">
+        <Button
+            android:id="@+id/sign_up_button"
+            style="@style/buttonStyle"
+            android:layout_marginTop="25dp"
+            android:text="@string/sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_sign_up" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/password"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#B6B7B7" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/have_account"
+            style="@style/textStyle"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/already_have_an_account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirm_password_sign_up"
-        style="@style/textfieldStyle"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_sign_up">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/confirm_password"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#B6B7B7" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/sign_up_button"
-        style="@style/buttonStyle"
-        android:layout_marginTop="25dp"
-        android:text="@string/sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password_sign_up" />
-
-    <TextView
-        android:id="@+id/have_account"
-        style="@style/textStyle"
-        android:layout_marginTop="20dp"
-        android:text="@string/already_have_an_account"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
-
-    <TextView
-        android:id="@+id/login_text_button"
-        style="@style/textStyle"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:text="@string/login"
-        android:textColor="#FC6011"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/have_account"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_button"
-        tools:ignore="TouchTargetSizeCheck"
-        android:focusable="true" />
+        <TextView
+            android:id="@+id/login_text_button"
+            style="@style/textStyle"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/login"
+            android:textColor="#FC6011"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/have_account"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_button"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

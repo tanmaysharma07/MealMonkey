@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyMealMonkey" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MyMealMonkey" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#FC6011</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -25,7 +25,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="buttonStyle" parent="ThemeOverlay.AppCompat">
+    <style name="buttonStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:layout_width">307dp</item>
         <item name="android:layout_height">56dp</item>
         <item name="background">@color/orange</item>
@@ -37,15 +37,15 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="Button.fb" parent="ThemeOverlay.AppCompat">
+    <style name="Button.fb" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">#367FC0</item>
     </style>
 
-    <style name="google.fb" parent="ThemeOverlay.AppCompat">
+    <style name="google.fb" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">#DD4B39</item>
     </style>
 
-    <style name="textfieldStyle" parent="ThemeOverlay.AppCompat">
+    <style name="textfieldStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:layout_width">307dp</item>
         <item name="android:layout_height">56dp</item>
         <item name="boxBackgroundColor">#F2F2F2</item>
@@ -61,16 +61,19 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="textfieldStyle.otp">
+    <style name="otpStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">56dp</item>
-        <item name="boxCornerRadiusBottomEnd">8dp</item>
-        <item name="boxCornerRadiusBottomStart">8dp</item>
-        <item name="boxCornerRadiusTopEnd">8dp</item>
-        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:background">@drawable/rounded_corners</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:hint">*</item>
+        <item name="android:textColor">#B6B7B7</item>
+
     </style>
 
-    <style name="textStyle" parent="ThemeOverlay.AppCompat">
+    <style name="textStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:insetTop">0dp</item>
@@ -78,6 +81,14 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="customFAB" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fabCustomSize">72dp</item>
+
+        <item name="tint">@android:color/white</item>
     </style>
 
 </resources>

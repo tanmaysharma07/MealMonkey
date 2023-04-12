@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragment.OtpFragment">
+    tools:context=".view.fragment.otpPage.OtpFragment">
 
     <TextView
         android:id="@+id/otp_text"
@@ -20,93 +20,53 @@
 
     <TextView
         android:id="@+id/enter_otp_text"
-        android:layout_width="290dp"
         style="@style/textStyle"
+        android:layout_width="290dp"
         android:layout_marginTop="10dp"
         android:text="@string/please_check_your_mobile_number_071_12_continue_to_reset_your_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otp_text" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/opt_digit1"
-       style="@style/textfieldStyle.otp"
+
+    <EditText
+        android:id="@+id/otp1"
+        style="@style/otpStyle"
+        android:singleLine="true"
+        android:maxLength="1"
         app:layout_constraintBottom_toTopOf="@+id/send_button"
         app:layout_constraintStart_toStartOf="@+id/enter_otp_text"
-        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text">
+        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:inputType="number"
-            android:digits="123456789"
-            android:maxLines="1"
-            android:maxLength="1"
-            android:textColor="#B6B7B7"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/opt_digit2"
-        android:layout_marginStart="20dp"
-        style="@style/textfieldStyle.otp"
+    <EditText
+        android:id="@+id/otp2"
+        style="@style/otpStyle"
+        android:singleLine="true"
+        android:maxLength="1"
         app:layout_constraintBottom_toTopOf="@+id/send_button"
-        app:layout_constraintStart_toEndOf="@+id/opt_digit1"
-        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:digits="123456789"
-            android:maxLines="1"
-            android:maxLength="1"
-            android:textColor="#B6B7B7"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/opt_digit3"
         android:layout_marginStart="20dp"
-        style="@style/textfieldStyle.otp"
+        app:layout_constraintStart_toEndOf="@+id/otp1"
+        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text" />
+
+    <EditText
+        android:id="@+id/otp3"
+        style="@style/otpStyle"
+        android:singleLine="true"
+        android:maxLength="1"
         app:layout_constraintBottom_toTopOf="@+id/send_button"
-        app:layout_constraintStart_toEndOf="@+id/opt_digit2"
-        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:digits="123456789"
-            android:maxLines="1"
-            android:maxLength="1"
-            android:textColor="#B6B7B7"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/opt_digit4"
         android:layout_marginStart="20dp"
-        style="@style/textfieldStyle.otp"
+        app:layout_constraintStart_toEndOf="@+id/otp2"
+        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text" />
+
+    <EditText
+        android:id="@+id/otp4"
+        style="@style/otpStyle"
+        android:singleLine="true"
+        android:maxLength="1"
         app:layout_constraintBottom_toTopOf="@+id/send_button"
         app:layout_constraintEnd_toEndOf="@+id/enter_otp_text"
-        app:layout_constraintStart_toEndOf="@+id/opt_digit3"
-        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:digits="123456789"
-            android:maxLines="1"
-            android:maxLength="1"
-            android:textColor="#B6B7B7"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintStart_toEndOf="@+id/otp3"
+        app:layout_constraintTop_toBottomOf="@+id/enter_otp_text" />
 
     <Button
         android:id="@+id/send_button"

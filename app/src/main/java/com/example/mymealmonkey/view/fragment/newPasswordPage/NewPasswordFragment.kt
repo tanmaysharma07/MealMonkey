@@ -23,6 +23,6 @@ class NewPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newPasswordPageViewModel.eventListener.showBottomNavigation.postValue(false)
+        newPasswordPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
     }
 }

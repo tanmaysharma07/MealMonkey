@@ -17,7 +17,7 @@
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_startPage_to_signUpPage"
             app:destination="@id/signUpPage"
@@ -32,74 +32,74 @@
         android:id="@+id/loginPage"
         android:name="com.example.mymealmonkey.view.fragment.login.LoginPage"
         android:label="fragment_login_page"
-        tools:layout="@layout/fragment_login_page" >
+        tools:layout="@layout/fragment_login_page">
         <action
             android:id="@+id/action_loginPage_to_signUpPage"
             app:destination="@id/signUpPage"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_loginPage_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_loginPage_to_imageSliderFragment"
             app:destination="@id/imageSliderFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
         android:name="com.example.mymealmonkey.view.fragment.signUpPage.SignUpPage"
         android:label="fragment_sign_up_page"
-        tools:layout="@layout/fragment_sign_up_page" >
+        tools:layout="@layout/fragment_sign_up_page">
         <action
             android:id="@+id/action_signUpPage_to_loginPage"
             app:destination="@id/loginPage"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_signUpPage_to_loginPage2"
             app:destination="@id/loginPage"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.example.mymealmonkey.view.fragment.resetPasswordPage.ResetPasswordFragment"
         android:label="fragment_reset_password"
-        tools:layout="@layout/fragment_reset_password" >
+        tools:layout="@layout/fragment_reset_password">
         <action
             android:id="@+id/action_resetPasswordFragment_to_otpFragment"
             app:destination="@id/otpFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.example.mymealmonkey.view.fragment.otpPage.OtpFragment"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" >
+        tools:layout="@layout/fragment_otp">
         <action
             android:id="@+id/action_otpFragment_to_newPasswordFragment"
             app:destination="@id/newPasswordFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/newPasswordFragment"
@@ -110,33 +110,62 @@
         android:id="@+id/homePageFragment"
         android:name="com.example.mymealmonkey.view.fragment.homepage.HomePageFragment"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" >
+        tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homePageFragment_to_latestActivityFragment"
             app:destination="@id/latestActivityFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageSliderFragment"
         android:name="com.example.mymealmonkey.view.fragment.imageSlider.ImageSliderPageFragment"
         android:label="fragment_image_slider"
-        tools:layout="@layout/fragment_image_slider" >
+        tools:layout="@layout/fragment_image_slider">
         <action
             android:id="@+id/action_imageSliderFragment_to_homePageFragment"
             app:destination="@id/homePageFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"/>
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/latestActivityFragment"
         android:name="com.example.mymealmonkey.view.fragment.latestOffers.LatestOffersPageFragment"
         android:label="fragment_latest_activity"
-        tools:layout="@layout/fragment_latest_activity" >
+        tools:layout="@layout/fragment_latest_activity">
+
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.mymealmonkey.view.fragment.menuFragment.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+
         <action
-            android:id="@+id/action_latestActivityFragment_to_homePageFragment"
-            app:destination="@id/homePageFragment"
-            app:popUpTo="@id/homePageFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_menuFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mymealmonkey.view.fragment.profileFragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profileFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.example.mymealmonkey.view.fragment.moreFragment.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" >
+
     </fragment>
 </navigation>

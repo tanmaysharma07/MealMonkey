@@ -6,10 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentHomePageBinding
 import com.example.mymealmonkey.view.fragment.homepage.adapter.CountryFoodHomeAdapter
 import com.example.mymealmonkey.view.fragment.homepage.adapter.MostPopularHomeAdapter
@@ -17,11 +13,8 @@ import com.example.mymealmonkey.view.fragment.homepage.adapter.PopularRestaurant
 import com.example.mymealmonkey.view.fragment.homepage.adapter.RecentItemsHomeAdapter
 import com.example.mymealmonkey.view.fragment.homepage.datasource.CountryFoodHomeDataSource
 import com.example.mymealmonkey.view.fragment.homepage.datasource.MostPopularHomeDatasource
-import com.example.mymealmonkey.view.fragment.homepage.datasource.PopularRestaurantHomedataSource
+import com.example.mymealmonkey.view.fragment.homepage.datasource.PopularRestaurantHomeDatasource
 import com.example.mymealmonkey.view.fragment.homepage.datasource.RecentItemsHomeDatasource
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -42,7 +35,8 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homePageViewModel.eventListener.showBottomNavigation.postValue(true)
+        homePageViewModel.eventListener.showBottomNavigation()
+        homePageViewModel.eventListener.fabColor.postValue("Orange")
 
 
         val myDatasetCountryFood = CountryFoodHomeDataSource().loadImages()
@@ -51,7 +45,7 @@ class HomePageFragment : Fragment() {
         recyclerViewCountryFood.setHasFixedSize(true)
 
 
-        val myDatasetPopularRestaurant = PopularRestaurantHomedataSource().loadPopularHome()
+        val myDatasetPopularRestaurant = PopularRestaurantHomeDatasource().loadPopularHome()
         val recyclerViewPopular = binding.recyclerViewPopular
         recyclerViewPopular.adapter = PopularRestaurantHomeAdapter(this, myDatasetPopularRestaurant)
         recyclerViewPopular.setHasFixedSize(true)
@@ -69,5 +63,8 @@ class HomePageFragment : Fragment() {
         recyclerViewRecentItems.setHasFixedSize(true)
 
     }
-
+    override fun onResume() {
+        super.onResume()
+        homePageViewModel.eventListener.fabColor.postValue("Orange")
+    }
 }

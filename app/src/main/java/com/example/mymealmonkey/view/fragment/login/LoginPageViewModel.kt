@@ -22,7 +22,7 @@ import javax.inject.Inject
 class LoginPageViewModel @Inject constructor(private val appPreferences: AppPreferences,val eventListener: EventListener) : ViewModel() {
 
     val emailInput = ObservableField("email@gmail.com")
-    val passwordInput = ObservableField("password")
+    val passwordInput = ObservableField("password ")
 
     private val _email = MutableLiveData<String>()
     val email:LiveData<String>
@@ -34,12 +34,13 @@ class LoginPageViewModel @Inject constructor(private val appPreferences: AppPref
     private val user:User? = getUserDetails()
 
     fun isEmail():Boolean{
-        _email.value = emailInput.toString()
+        _email.value = emailInput.get()
+        Log.d("Aloha",email.value.toString())
         return ((!(android.util.Patterns.EMAIL_ADDRESS.matcher(email.value)
             .matches())) || (email.value != user?.email.toString()))
     }
     fun isPassword():Boolean{
-        _password.value = passwordInput.toString()
+        _password.value = passwordInput.get()
         return (password.value!!.length < 7 || (password.value != user?.password.toString()))
     }
     private fun getUserDetails(): User? {

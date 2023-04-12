@@ -11,10 +11,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.databinding.FragmentOtpBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +30,7 @@ class OtpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        otpPageViewModel.eventListener.showBottomNavigation.postValue(false)
+        otpPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
         val sendButton: Button = view.findViewById(R.id.send_button)
 
         sendButton.setOnClickListener {

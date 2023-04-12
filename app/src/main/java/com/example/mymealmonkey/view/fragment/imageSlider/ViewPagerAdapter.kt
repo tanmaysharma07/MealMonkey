@@ -1,4 +1,4 @@
-package com.example.mymealmonkey.view.fragment.homepage.adapter
+package com.example.mymealmonkey.view.fragment.imageSlider
 
 import android.content.Context
 import android.view.LayoutInflater

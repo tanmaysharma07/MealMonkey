@@ -1,19 +1,16 @@
 package com.example.mymealmonkey.view.fragment.signUpPage
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.data.User
 import com.example.mymealmonkey.databinding.FragmentSignUpPageBinding
-import com.example.mymealmonkey.model.AppViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -32,7 +29,7 @@ class SignUpPage : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        signupViewModel.eventListener.showBottomNavigation.postValue(false)
+        signupViewModel.eventListener.showBottomNavigationLD.postValue(false)
         binding.sigupPageViewModel = signupViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

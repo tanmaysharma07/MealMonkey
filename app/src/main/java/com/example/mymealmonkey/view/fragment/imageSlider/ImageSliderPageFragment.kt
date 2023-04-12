@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentImageSliderBinding
-import com.example.mymealmonkey.view.fragment.homepage.adapter.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +29,7 @@ class ImageSliderPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageSliderPageViewModel.eventListener.showBottomNavigation.postValue(false)
+        imageSliderPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
 
         lateinit var imageList: List<Int>
         val viewPager = binding.viewpager

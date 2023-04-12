@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentResetPasswordBinding
-import com.example.mymealmonkey.view.fragment.otpPage.OtpPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +25,7 @@ class ResetPasswordFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        resetPasswordPageViewModel.eventListener.showBottomNavigation.postValue(false)
+        resetPasswordPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
 
         binding.sendButton.setOnClickListener {
             findNavController().navigate(R.id.action_resetPasswordFragment_to_otpFragment)

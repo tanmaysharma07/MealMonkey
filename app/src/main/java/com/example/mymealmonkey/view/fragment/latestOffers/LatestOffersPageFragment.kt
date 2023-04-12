@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.mymealmonkey.databinding.FragmentLatestActivityBinding
-import com.example.mymealmonkey.view.fragment.homepage.adapter.LatestOfferAdapter
-import com.example.mymealmonkey.view.fragment.homepage.datasource.PopularRestaurantHomedataSource
-import com.example.mymealmonkey.view.fragment.login.LoginPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,6 +16,10 @@ class LatestOffersPageFragment : Fragment() {
     private  val latestOffersViewModel: LatestOffersViewModel by viewModels()
     private lateinit var binding:FragmentLatestActivityBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        latestOffersViewModel.eventListener.checkable.postValue("Offers")
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,11 +30,22 @@ class LatestOffersPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        latestOffersViewModel.eventListener.showBottomNavigation.postValue(true)
+        latestOffersViewModel.eventListener.showBottomNavigation()
+        latestOffersViewModel.eventListener.fabColor.postValue("Grey")
 
-        val myDatasetPopularRestaurant = PopularRestaurantHomedataSource().loadPopularHome()
-        binding.recyclerViewLatestOffers.adapter = LatestOfferAdapter(this@LatestOffersPageFragment, myDatasetPopularRestaurant)
-        binding.recyclerViewLatestOffers.setHasFixedSize(true)
+        val myDatasetLatestOffers = LatestOffersDatasource().loadLatestOffers()
+        val recyclerViewLatestOffer = binding.recyclerViewLatestOffers
+        recyclerViewLatestOffer.adapter = LatestOfferAdapter(this, myDatasetLatestOffers)
+        recyclerViewLatestOffer.setHasFixedSize(true)
     }
 
+    override fun onResume() {
+        super.onResume()
+        latestOffersViewModel.eventListener.checkable.postValue("Offers")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        latestOffersViewModel.eventListener.checkable.postValue("")
+    }
 }

@@ -27,7 +27,7 @@ class StartPage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startPageViewModel.eventListener.showBottomNavigation.postValue(false)
+        startPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
 
         binding.loginButton.setOnClickListener {
             findNavController().navigate(R.id.action_startPage_to_loginPage)

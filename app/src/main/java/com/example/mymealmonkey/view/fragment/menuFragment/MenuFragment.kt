@@ -12,12 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MenuFragment : Fragment() {
 
-    private val menuFragmentViewModel: MenuFragmentViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        menuFragmentViewModel.eventListener.checkable.postValue("Menu")
-    }
+    private val viewModel: MenuFragmentViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,19 +20,26 @@ class MenuFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        menuFragmentViewModel.eventListener.showBottomNavigationLD.postValue(true)
-        menuFragmentViewModel.eventListener.fabColor.postValue("Grey")
+        initialize()
+
+        setListeners()
+
+        bindObservers()
     }
 
-    override fun onResume() {
-        super.onResume()
-        menuFragmentViewModel.eventListener.checkable.postValue("Menu")
+    private fun bindObservers() {
+
     }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        menuFragmentViewModel.eventListener.checkable.postValue("")
+
+    private fun setListeners() {
+
+
+    }
+
+    private fun initialize() {
+
+
     }
 }

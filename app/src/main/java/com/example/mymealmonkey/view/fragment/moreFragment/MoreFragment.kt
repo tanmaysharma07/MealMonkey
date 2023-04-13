@@ -12,12 +12,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MoreFragment : Fragment() {
 
-    private val moreFragmentViewModel: MoreFragmentViewModel by viewModels()
+    private val viewModel: MoreFragmentViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        moreFragmentViewModel.eventListener.checkable.postValue("More")
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,17 +24,5 @@ class MoreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        moreFragmentViewModel.eventListener.showBottomNavigationLD.postValue(true)
-        moreFragmentViewModel.eventListener.fabColor.postValue("Grey")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        moreFragmentViewModel.eventListener.checkable.postValue("More")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        moreFragmentViewModel.eventListener.checkable.postValue("")
     }
 }

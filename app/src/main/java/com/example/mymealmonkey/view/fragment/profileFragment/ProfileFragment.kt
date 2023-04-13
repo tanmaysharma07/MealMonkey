@@ -5,40 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    private val profileFragmentViewModel: ProfileFragmentViewModel by viewModels()
+    private val viewModel: ProfileFragmentViewModel by viewModels()
+    lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        profileFragmentViewModel.eventListener.showBottomNavigationLD.postValue(true)
-        profileFragmentViewModel.eventListener.fabColor.postValue("Grey")
+
+        initialize()
+
+        setListeners()
+
+        bindObservers()
+
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        profileFragmentViewModel.eventListener.checkable.postValue("Profile")
-    }
-    override fun onResume() {
-        super.onResume()
-        profileFragmentViewModel.eventListener.checkable.postValue("Profile")
+    private fun bindObservers() {
+
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        profileFragmentViewModel.eventListener.checkable.postValue("")
+    private fun setListeners() {
+
+    }
+
+    private fun initialize() {
     }
 }

@@ -13,34 +13,36 @@ import android.widget.EditText
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.databinding.FragmentOtpBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OtpFragment : Fragment() {
 
-    private val otpPageViewModel:OtpPageViewModel by viewModels()
+    private val viewModel: OtpPageViewModel by viewModels()
+    lateinit var binding: FragmentOtpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_otp, container, false)
+        binding = FragmentOtpBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        otpPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
-        val sendButton: Button = view.findViewById(R.id.send_button)
 
-        sendButton.setOnClickListener {
-            findNavController().navigate(R.id.action_otpFragment_to_newPasswordFragment)
+        initialize()
 
-        }
-        val editText1: EditText = view.findViewById(R.id.otp1)
-        val editText2: EditText = view.findViewById(R.id.otp2)
-        val editText3: EditText = view.findViewById(R.id.otp3)
-        val editText4: EditText = view.findViewById(R.id.otp4)
+        setListeners()
+
+        bindObservers()
+
+        val editText1 = binding.otp1
+        val editText2 = binding.otp2
+        val editText3 = binding.otp3
+        val editText4 = binding.otp4
 
         editText1.addTextChangedListener(GenericTextWatcher(editText1, editText2))
         editText2.addTextChangedListener(GenericTextWatcher(editText2, editText3))
@@ -51,6 +53,21 @@ class OtpFragment : Fragment() {
         editText2.setOnKeyListener(GenericKeyEvent(editText2, editText1))
         editText3.setOnKeyListener(GenericKeyEvent(editText3, editText2))
         editText4.setOnKeyListener(GenericKeyEvent(editText4, editText3))
+    }
+
+    private fun bindObservers() {
+
+    }
+
+    private fun initialize() {
+
+    }
+
+    private fun setListeners() {
+        binding.sendButton.setOnClickListener {
+            findNavController().navigate(R.id.action_otpFragment_to_newPasswordFragment)
+
+        }
     }
 
     class GenericKeyEvent internal constructor(

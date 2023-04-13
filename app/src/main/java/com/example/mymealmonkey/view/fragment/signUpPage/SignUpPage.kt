@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignUpPage : Fragment() {
 
-    private val signupViewModel:SignUpPageViewModel by viewModels()
+    private val viewModel: SignUpPageViewModel by viewModels()
     private lateinit var binding:FragmentSignUpPageBinding
 
     override fun onCreateView(
@@ -25,44 +25,59 @@ class SignUpPage : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentSignUpPageBinding.inflate(inflater,container,false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        signupViewModel.eventListener.showBottomNavigationLD.postValue(false)
-        binding.sigupPageViewModel = signupViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
 
+        initialize()
+
+        setListeners()
+
+        bindObservers()
+
+    }
+    private fun bindObservers() {
+
+    }
+
+    private fun setListeners() {
         val name = binding.nameTextField.editText?.text
         val email= binding.emailTextField.editText?.text
         val mobileNumber = binding.mobileNoTextField.editText?.text
         val address = binding.addressTextField.editText?.text
         val password = binding.passwordSignUp.editText?.text
-        val confirmPassword = binding.confirmPasswordSignUp.editText?.text
+//        val confirmPassword = binding.confirmPasswordSignUp.editText?.text
 
         binding.loginTextButton.setOnClickListener {
             findNavController().navigate(R.id.action_signUpPage_to_loginPage)
         }
         binding.signUpButton.setOnClickListener {
-            if (signupViewModel.isFilled()){
+            if (viewModel.isFilled()){
                 Toast.makeText(requireContext(),"Enter all the fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (signupViewModel.isEmail()){
+            if (viewModel.isEmail()){
                 Toast.makeText(requireContext(),"Enter a Valid Email",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (signupViewModel.isPassword()){
+            if (viewModel.isPassword()){
                 Toast.makeText(requireContext(),"Enter Valid password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (signupViewModel.isPassword()){
+            if (viewModel.isPassword()){
                 Toast.makeText(requireContext(),"Passwords Do not Match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val user = User(name.toString(),email.toString(),password.toString(),mobileNumber.toString(),address.toString())
-            signupViewModel.signupSession(user)
-                findNavController().navigate(R.id.action_signUpPage_to_loginPage)
+            val user = User(name.toString(),email.toString(),mobileNumber.toString(),address.toString(),password.toString())
+            viewModel.signupSession(user)
+            findNavController().navigate(R.id.action_signUpPage_to_loginPage)
         }
+    }
+
+    private fun initialize() {
+
     }
 }

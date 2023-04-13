@@ -44,17 +44,18 @@ class SignUpPageViewModel @Inject constructor(private val appPreferences: AppPre
     }
 
     fun isFilled():Boolean{
-        _name.value = nameInput.toString()
-        _mobileNumber.value = mobileNumberInput.toString()
-        _address.value = addressInput.toString()
+        _name.value = nameInput.get()
+        _mobileNumber.value = mobileNumberInput.get()
+        _address.value = addressInput.get()
         return ((name.value!!.trim()).isEmpty()&&(mobileNumber.value!!.trim()).isEmpty()&&(address.value!!.trim()).isEmpty())
     }
     fun isEmail():Boolean{
-        _email.value = emailInput.toString()
+        _email.value = emailInput.get()
         return (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!).matches()))
     }
     fun isPassword():Boolean{
-        _password.value = passwordInput.toString()
-        return (password.value!!.length < 7 || (password.value!! != confirmPassword.value!!) || confirmPassword.value!!.length < 7)
+        _password.value = passwordInput.get()
+        _confirmPassword.value = confirmPasswordInput.get()
+        return ((((passwordInput.get()!!.length) < 7 || (password.value != confirmPassword.value) || (confirmPassword.value!!.length) < 7)))
     }
 }

@@ -13,36 +13,40 @@ import com.example.mymealmonkey.data.User
 import com.example.mymealmonkey.databinding.FragmentLoginPageBinding
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
+import com.example.mymealmonkey.utils.Extensions
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-
-
-
 @HiltViewModel
-class LoginPageViewModel @Inject constructor(private val appPreferences: AppPreferences,val eventListener: EventListener) : ViewModel() {
+class LoginPageViewModel @Inject constructor(
+    private val appPreferences: AppPreferences,
+    val eventListener: EventListener,
+    val extensions: Extensions
+) : ViewModel() {
 
     val emailInput = ObservableField("email@gmail.com")
     val passwordInput = ObservableField("password ")
 
     private val _email = MutableLiveData<String>()
-    val email:LiveData<String>
-        get()=_email
+    val email: LiveData<String>
+        get() = _email
     private val _password = MutableLiveData<String>()
-    val password:LiveData<String>
-        get()=_password
+    val password: LiveData<String>
+        get() = _password
 
-    private val user:User? = getUserDetails()
+    private val user: User? = getUserDetails()
 
-    fun isEmail():Boolean{
+    fun isEmail(): Boolean {
         _email.value = emailInput.get()
-        Log.d("Aloha",email.value.toString())
+        Log.d("Aloha", email.value.toString())
         return ((!(android.util.Patterns.EMAIL_ADDRESS.matcher(email.value)
             .matches())) || (email.value != user?.email.toString()))
     }
-    fun isPassword():Boolean{
+
+    fun isPassword(): Boolean {
         _password.value = passwordInput.get()
         return (password.value!!.length < 7 || (password.value != user?.password.toString()))
     }
+
     private fun getUserDetails(): User? {
         return appPreferences.getUser()
     }

@@ -17,7 +17,7 @@ class AppPreferences(context: Context) {
     }
 
     // Shared Preference
-    private lateinit var preferences: SharedPreferences
+    private var preferences: SharedPreferences
 
     init {
 

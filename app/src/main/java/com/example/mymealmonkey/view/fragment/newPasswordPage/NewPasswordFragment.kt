@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NewPasswordFragment : Fragment() {
 
-    private val newPasswordPageViewModel:NewPasswordPageViewModel by viewModels()
+    private val viewModel:NewPasswordPageViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,6 +23,22 @@ class NewPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newPasswordPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
+        initialize()
+
+        setListeners()
+
+        bindObservers()
+
+    }
+
+    private fun setListeners() {
+
+    }
+
+    private fun bindObservers() {
+
+    }
+
+    private fun initialize() {
     }
 }

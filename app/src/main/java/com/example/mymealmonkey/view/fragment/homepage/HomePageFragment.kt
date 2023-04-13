@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomePageFragment : Fragment() {
 
-    private val homePageViewModel: HomePageViewModel by viewModels()
+    private val viewModel: HomePageViewModel by viewModels()
     private lateinit var binding: FragmentHomePageBinding
 
     override fun onCreateView(
@@ -35,27 +35,26 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homePageViewModel.eventListener.showBottomNavigation()
-        homePageViewModel.eventListener.fabColor.postValue("Orange")
+        initialize()
 
+        setListeners()
+
+        bindObservers()
 
         val myDatasetCountryFood = CountryFoodHomeDataSource().loadImages()
         val recyclerViewCountryFood = binding.recyclerViewCountryFood
         recyclerViewCountryFood.adapter = CountryFoodHomeAdapter(this, myDatasetCountryFood)
         recyclerViewCountryFood.setHasFixedSize(true)
 
-
         val myDatasetPopularRestaurant = PopularRestaurantHomeDatasource().loadPopularHome()
         val recyclerViewPopular = binding.recyclerViewPopular
         recyclerViewPopular.adapter = PopularRestaurantHomeAdapter(this, myDatasetPopularRestaurant)
         recyclerViewPopular.setHasFixedSize(true)
 
-
         val myDatasetMostPopular = MostPopularHomeDatasource().loadMostPopular()
         val recyclerViewMostPopular = binding.recyclerViewMostPopular
         recyclerViewMostPopular.adapter = MostPopularHomeAdapter(this, myDatasetMostPopular)
         recyclerViewMostPopular.setHasFixedSize(true)
-
 
         val myDatasetRecentItems = RecentItemsHomeDatasource().loadRecentItems()
         val recyclerViewRecentItems = binding.recyclerViewRecent
@@ -63,8 +62,17 @@ class HomePageFragment : Fragment() {
         recyclerViewRecentItems.setHasFixedSize(true)
 
     }
-    override fun onResume() {
-        super.onResume()
-        homePageViewModel.eventListener.fabColor.postValue("Orange")
+
+    private fun bindObservers() {
+
     }
+
+    private fun setListeners() {
+
+    }
+
+    private fun initialize() {
+
+    }
+
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymealmonkey.databinding.FragmentLatestActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,13 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LatestOffersPageFragment : Fragment() {
 
-    private  val latestOffersViewModel: LatestOffersViewModel by viewModels()
+    private  val viewModel: LatestOffersViewModel by viewModels()
     private lateinit var binding:FragmentLatestActivityBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        latestOffersViewModel.eventListener.checkable.postValue("Offers")
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,22 +26,28 @@ class LatestOffersPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        latestOffersViewModel.eventListener.showBottomNavigation()
-        latestOffersViewModel.eventListener.fabColor.postValue("Grey")
+        initialize()
+
+        setListeners()
+
+        bindObservers()
 
         val myDatasetLatestOffers = LatestOffersDatasource().loadLatestOffers()
         val recyclerViewLatestOffer = binding.recyclerViewLatestOffers
+        recyclerViewLatestOffer.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewLatestOffer.adapter = LatestOfferAdapter(this, myDatasetLatestOffers)
         recyclerViewLatestOffer.setHasFixedSize(true)
     }
 
-    override fun onResume() {
-        super.onResume()
-        latestOffersViewModel.eventListener.checkable.postValue("Offers")
+    private fun bindObservers() {
+
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        latestOffersViewModel.eventListener.checkable.postValue("")
+    private fun initialize() {
+
+    }
+
+    private fun setListeners() {
+
     }
 }

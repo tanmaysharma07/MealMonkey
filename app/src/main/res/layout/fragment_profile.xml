@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="profileViewModel"
+            name="viewModel"
             type="com.example.mymealmonkey.view.fragment.profileFragment.ProfileFragmentViewModel" />
     </data>
 
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:text="Profile"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,11 +39,11 @@
             android:id="@+id/cardView2"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="30dp"
             app:cardCornerRadius="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -109,8 +109,7 @@
                 android:hint="@string/name"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@={profileViewModel.nameProfleInput}"
-                android:textColor="#B6B7B7"
+                android:text="@={viewModel.nameProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,10 +126,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/email"
-                android:text="@={profileViewModel.emailProfleInput}"
+                android:text="@={viewModel.emailProfileInput}"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="#B6B7B7"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,9 +149,8 @@
                 android:inputType="number"
                 android:maxLength="10"
                 android:maxLines="1"
-                android:text="@={profileViewModel.mobileNumberProfleInput}"
+                android:text="@={viewModel.mobileNumberProfileInput}"
                 android:singleLine="true"
-                android:textColor="#B6B7B7"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -171,9 +168,8 @@
                 android:layout_height="match_parent"
                 android:hint="@string/address"
                 android:maxLines="1"
-                android:text="@={profileViewModel.addressProfleInput}"
+                android:text="@={viewModel.addressProfileInput}"
                 android:singleLine="true"
-                android:textColor="#B6B7B7"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,8 +187,7 @@
                 android:hint="@string/password"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@={sigupPageViewModel.passwordInput}"
-                android:textColor="#B6B7B7"
+                android:text="@={viewModel.passwordProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -211,16 +206,16 @@
                 android:hint="@string/confirm_password"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@={sigupPageViewModel.confirmPasswordInput}"
-                android:textColor="#B6B7B7"
+                android:text="@={viewModel.confirmPasswordProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/signupButtonProfile"
+            android:id="@+id/saveButtonProfile"
             style="@style/buttonStyle"
             android:layout_marginTop="15dp"
             android:text="@string/sign_up"
+            android:onClick="@{()-> viewModel.saveProfile()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordSignupProfile" />
@@ -230,7 +225,7 @@
             android:layout_height="130dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupButtonProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/saveButtonProfile" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

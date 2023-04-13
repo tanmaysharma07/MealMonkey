@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class StartPage : Fragment() {
 
     private lateinit var binding: FragmentStartPageBinding
-    private val startPageViewModel:StartPageViewModel by viewModels()
+    private val viewModel:StartPageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,11 +24,26 @@ class StartPage : Fragment() {
         binding = FragmentStartPageBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
 
+        initialize()
+
+        setListeners()
+
+        bindObservers()
+
+    }
+
+    private fun initialize() {
+    }
+
+    private fun bindObservers() {
+
+
+    }
+
+    private fun setListeners() {
         binding.loginButton.setOnClickListener {
             findNavController().navigate(R.id.action_startPage_to_loginPage)
         }

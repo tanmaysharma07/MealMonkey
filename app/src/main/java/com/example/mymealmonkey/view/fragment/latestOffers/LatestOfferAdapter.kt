@@ -33,5 +33,6 @@ class LatestOfferAdapter(
         holder.imageView.setImageResource(item.imageResourceId)
         holder.dish.text =  context.resources.getString(item.nameResourceId)
         holder.rating.text =  context.resources.getString(item.ratingResourceId)
+
     }
 }

@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ImageSliderPageFragment : Fragment() {
 
    private lateinit var binding:FragmentImageSliderBinding
-   private val imageSliderPageViewModel:ImageSliderPageViewModel by viewModels()
+   private val viewModel:ImageSliderPageViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -29,15 +29,20 @@ class ImageSliderPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageSliderPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
 
-        lateinit var imageList: List<Int>
+        initialize()
+
+        setListeners()
+
+        bindObservers()
+
         val viewPager = binding.viewpager
         val indicator = binding.indicator
-        val fastDelivery = binding.fastDelivery
-        val fastDeliveryText= binding.fastDeliveryText
+        val headText = binding.headText
+        val bodyText= binding.bodyText
 
-        imageList = ArrayList<Int>()
+        var imageList: List<Int>
+        imageList = ArrayList()
         imageList = imageList + R.drawable.find_food_you_love_vector
         imageList = imageList + R.drawable.delivery_vector
         imageList = imageList + R.drawable.live_tracking_vector
@@ -57,16 +62,16 @@ class ImageSliderPageFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> {
-                        fastDelivery.text = imageSliderData[position].head
-                        fastDeliveryText.text =imageSliderData[position].body
+                        headText.text =imageSliderData[position].head
+                        bodyText.text =imageSliderData[position].body
                     }
                     1 -> {
-                        fastDelivery.text = imageSliderData[position].head
-                        fastDeliveryText.text =imageSliderData[position].body
+                        headText.text = imageSliderData[position].head
+                        bodyText.text =imageSliderData[position].body
                     }
                     2 -> {
-                        fastDelivery.text = imageSliderData[position].head
-                        fastDeliveryText.text =imageSliderData[position].body
+                        headText.text = imageSliderData[position].head
+                        bodyText.text =imageSliderData[position].body
                     }
                     else -> {}
                 }
@@ -74,10 +79,21 @@ class ImageSliderPageFragment : Fragment() {
             override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
             override fun onPageScrollStateChanged(arg0: Int) {}
         })
+    }
+
+    private fun bindObservers() {
+
+    }
+
+    private fun setListeners() {
         binding.imageSliderButton.setOnClickListener {
             it.findNavController()
                 .navigate(R.id.action_imageSliderFragment_to_homePageFragment)
         }
+    }
+
+    private fun initialize() {
+
     }
 
 }

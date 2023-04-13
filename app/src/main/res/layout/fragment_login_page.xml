@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="loginViewModel"
+            name="viewModel"
             type="com.example.mymealmonkey.view.fragment.login.LoginPageViewModel" />
 
     </data>
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/your_email"
-                android:text="@={loginViewModel.emailInput}"
+                android:text="@={viewModel.emailInput}"
                 android:singleLine="true"
                 android:textSize="14sp"
                 android:textColor="#B6B7B7" />
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/password"
-                android:text="@={loginViewModel.passwordInput}"
+                android:text="@={viewModel.passwordInput}"
                 android:singleLine="true"
                 android:textSize="14sp"
                 android:textColorHint="#B6B7B7" />

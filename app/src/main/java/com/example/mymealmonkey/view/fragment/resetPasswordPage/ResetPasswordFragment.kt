@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ResetPasswordFragment : Fragment() {
 
     private lateinit var binding:FragmentResetPasswordBinding
-    private val resetPasswordPageViewModel: ResetPasswordPageViewModel by viewModels()
+    private val viewModel: ResetPasswordPageViewModel by viewModels()
 
        override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +25,24 @@ class ResetPasswordFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        resetPasswordPageViewModel.eventListener.showBottomNavigationLD.postValue(false)
 
+        initialize()
+
+        setListeners()
+
+        bindObservers()
+
+    }
+
+    private fun bindObservers() {
+
+    }
+
+    private fun initialize() {
+
+    }
+
+    private fun setListeners() {
         binding.sendButton.setOnClickListener {
             findNavController().navigate(R.id.action_resetPasswordFragment_to_otpFragment)
         }

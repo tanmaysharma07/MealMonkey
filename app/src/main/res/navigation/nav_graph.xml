@@ -114,6 +114,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageSliderFragment"
@@ -143,6 +146,9 @@
         <action
             android:id="@+id/action_menuFragment_to_latestActivityFragment"
             app:destination="@id/latestActivityFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_dessertFragment"
+            app:destination="@id/dessertFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -160,5 +166,34 @@
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" >
 
+        <action
+            android:id="@+id/action_moreFragment_to_dessertFragment"
+            app:destination="@id/dessertFragment" />
+        <action
+            android:id="@+id/action_moreFragment_to_paymentDetailsFragment"
+            app:destination="@id/paymentDetailsFragment" />
+        <action
+            android:id="@+id/action_moreFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dessertFragment"
+        android:name="com.example.mymealmonkey.view.fragment.dessertFragment.DessertFragment"
+        android:label="fragment_dessert"
+        tools:layout="@layout/fragment_dessert" />
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.example.mymealmonkey.view.fragment.orderFragment.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/paymentDetailsFragment"
+        android:name="com.example.mymealmonkey.view.fragment.paymentDetails.PaymentDetailsFragment"
+        android:label="fragment_payment_details"
+        tools:layout="@layout/fragment_payment_details" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.mymealmonkey.view.fragment.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>

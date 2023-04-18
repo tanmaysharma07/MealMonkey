@@ -66,6 +66,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.moreFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+                R.id.dessertFragment -> {
+                    viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MENU)
+                }
+                R.id.orderFragment -> {
+                    viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MENU)
+                }
                 else -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.OTHER)
                 }

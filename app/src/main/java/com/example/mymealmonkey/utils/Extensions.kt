@@ -3,8 +3,6 @@ package com.example.mymealmonkey.utils
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class Extensions @Inject constructor() {
     fun String.isValidEmail(): Boolean {
         return (!(android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()))
     }
@@ -16,4 +14,3 @@ class Extensions @Inject constructor() {
     fun isValidInput(string: String):Boolean{
         return (string.trim().isNotEmpty())
     }
-}

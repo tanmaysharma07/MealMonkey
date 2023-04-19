@@ -20,7 +20,7 @@ class PaymentDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPaymentDetailsBinding.inflate(inflater,container,false)
+        binding = FragmentPaymentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,7 +29,7 @@ class PaymentDetailsFragment : Fragment() {
         val addButton = view.findViewById<Button>(R.id.addButton)
         addButton.setOnClickListener {
             val dialog = BottomSheetDialog(requireContext())
-            val view = layoutInflater.inflate(R.layout.payment_detail_bottom_sheet,null)
+            val view = layoutInflater.inflate(R.layout.payment_detail_bottom_sheet, null)
             val closeButton = view.findViewById<ImageView>(R.id.notification_bottom_sheet_close)
             closeButton.setOnClickListener {
                 dialog.dismiss()
@@ -38,8 +38,5 @@ class PaymentDetailsFragment : Fragment() {
             dialog.setContentView(view)
             dialog.show()
         }
-
-
-
-        }
     }
+}

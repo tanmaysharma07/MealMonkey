@@ -13,14 +13,12 @@ import com.example.mymealmonkey.data.User
 import com.example.mymealmonkey.databinding.FragmentLoginPageBinding
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
-import com.example.mymealmonkey.utils.Extensions
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
 class LoginPageViewModel @Inject constructor(
     private val appPreferences: AppPreferences,
-    val eventListener: EventListener,
-    val extensions: Extensions
+    val eventListener: EventListener
 ) : ViewModel() {
 
     val emailInput = ObservableField("email@gmail.com")

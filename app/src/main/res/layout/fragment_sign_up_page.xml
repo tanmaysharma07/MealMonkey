@@ -37,7 +37,11 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name_textField"
             style="@style/textfieldStyle"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
+            app:errorEnabled="true"
+            app:helperText="@string/enter_email"
+            app:helperTextTextColor="@color/orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Add_sign_up">
@@ -58,16 +62,22 @@
             android:id="@+id/email_textField"
             style="@style/textfieldStyle"
             android:layout_marginTop="25dp"
+            app:helperTextEnabled="true"
+            app:errorEnabled="true"
+            android:layout_marginHorizontal="20dp"
+            app:helperText="@string/enter_email"
+            app:helperTextTextColor="@color/orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_textField">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEdittext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/email"
                 android:text="@={viewModel.emailInput}"
-                android:maxLines="1"
+                android:lines="1"
                 android:singleLine="true"
                 android:textColor="#B6B7B7"
                 android:textSize="14sp" />
@@ -77,11 +87,10 @@
             android:id="@+id/mobile_no_textField"
             style="@style/textfieldStyle"
             android:layout_marginTop="25dp"
-            android:singleLine="true"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_textField"
-            app:prefixText="+91">
+            app:layout_constraintTop_toBottomOf="@+id/email_textField">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -101,6 +110,7 @@
             android:id="@+id/address_textField"
             style="@style/textfieldStyle"
             android:layout_marginTop="25dp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mobile_no_textField">
@@ -120,6 +130,7 @@
             android:id="@+id/password_sign_up"
             style="@style/textfieldStyle"
             android:layout_marginTop="25dp"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/address_textField">
@@ -129,6 +140,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/password"
                 android:maxLines="1"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:text="@={viewModel.passwordInput}"
                 android:textColor="#B6B7B7"
@@ -140,6 +152,7 @@
             android:id="@+id/confirm_password_sign_up"
             style="@style/textfieldStyle"
             android:layout_marginTop="25dp"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password_sign_up">
@@ -149,6 +162,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/confirm_password"
                 android:maxLines="1"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:text="@={viewModel.confirmPasswordInput}"
                 android:textColor="#B6B7B7"

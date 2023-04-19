@@ -93,4 +93,5 @@
     <string name="notifications">Notifications</string>
     <string name="your_orders_has_been_picked_up">Your orders has been picked up</string>
     <string name="now">Now</string>
+    <string name="enter_email">Enter Email</string>
 </resources>

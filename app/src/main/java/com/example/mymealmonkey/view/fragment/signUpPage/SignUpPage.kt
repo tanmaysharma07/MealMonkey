@@ -1,6 +1,7 @@
 package com.example.mymealmonkey.view.fragment.signUpPage
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,15 @@ class SignUpPage : Fragment() {
         setListeners()
 
         bindObservers()
+
+        binding.emailEdittext.setOnFocusChangeListener { _, focused ->
+            if (!focused){
+                if (!viewModel.isEmail()){
+                    Log.d("HOOLA","HOOLA")
+                    binding.emailTextField.helperText = "Not a Valid Email"
+                }
+            }
+        }
 
     }
     private fun bindObservers() {

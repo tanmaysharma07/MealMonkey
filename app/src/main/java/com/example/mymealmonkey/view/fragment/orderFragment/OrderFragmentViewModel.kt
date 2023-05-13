@@ -9,35 +9,38 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-class OrderFragmentViewModel():ViewModel() {
+class OrderFragmentViewModel() : ViewModel() {
 
+    // Observable Field catch Live data
     val portionInput = ObservableField("1")
+
+    //Live Data
     private var _total = MutableLiveData<String>()
-    val total:LiveData<String>
-    get() = _total
+    val total: LiveData<String>
+        get() = _total
 
-
-     init {
-         _total.value = (750*(portionInput.get()?.toIntOrNull() ?: 0)).toString()
-         Log.d("HOOLA",portionInput.get().toString())
-         Log.d("HOOLA",total.value.toString())
-     }
-
-    fun increasePortion(){
-        if ((portionInput.get()?.toInt() ?: 0) >= 0){
-            portionInput.set(portionInput.get()?.toIntOrNull()?.plus(1).toString())
-        }
-        _total.value = (750*(portionInput.get()?.toIntOrNull() ?: 0)).toString()
-        Log.d("HOOLAI",portionInput.get().toString())
-        Log.d("HOOLA",total.value.toString())
+    init {
+        total()
     }
 
-    fun decreasePortion(){
-        if ((portionInput.get()?.toInt() ?: 0) > 0){
+    // Function to calculate Total
+    fun total() {
+        _total.value = (750 * (portionInput.get()?.toIntOrNull() ?: 0)).toString()
+    }
+
+    // Function for when user increase portion with Button
+    fun increasePortion() {
+        if ((portionInput.get()?.toIntOrNull() ?: 0) >= 0) {
+            portionInput.set(portionInput.get()?.toIntOrNull()?.plus(1).toString())
+        }
+        _total.value = (750 * (portionInput.get()?.toIntOrNull() ?: 0)).toString()
+    }
+
+    // Function for when user decrease portion with Button
+    fun decreasePortion() {
+        if ((portionInput.get()?.toIntOrNull() ?: 0) > 0) {
             portionInput.set(portionInput.get()?.toIntOrNull()?.minus(1).toString())
         }
-        _total.value = (750*(portionInput.get()?.toIntOrNull() ?: 0)).toString()
-        Log.d("HOOLAD",portionInput.get().toString())
-        Log.d("HOOLA",total.value.toString())
+        _total.value = (750 * (portionInput.get()?.toIntOrNull() ?: 0)).toString()
     }
 }

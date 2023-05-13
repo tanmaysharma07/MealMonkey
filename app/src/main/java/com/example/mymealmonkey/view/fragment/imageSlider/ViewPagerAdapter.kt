@@ -13,10 +13,10 @@ import com.example.mymealmonkey.R
 import java.util.*
 
 class ViewPagerAdapter(val context: Context, private val imageList: List<Int>) : PagerAdapter() {
-
     override fun getCount(): Int {
         return imageList.size
     }
+
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view === `object` as ConstraintLayout
     }

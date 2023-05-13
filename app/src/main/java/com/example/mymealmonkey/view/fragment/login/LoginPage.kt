@@ -16,54 +16,54 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginPage : Fragment() {
 
-    private  val viewModel: LoginPageViewModel by viewModels()
+    private val viewModel: LoginPageViewModel by viewModels()
     private lateinit var binding: FragmentLoginPageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login_page, container, false)
+        // Data Binding
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_page, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initialize()
-
-        setListeners()
-
-        bindObservers()
-
-
-        }
-    private fun bindObservers() {
-
+        // Set Click Listeners
+        clickListeners()
     }
 
-    private fun setListeners() {
+    private fun clickListeners() {
         binding.signUp.setOnClickListener {
+            // Navigate to Sign Up Page
             findNavController().navigate(R.id.action_loginPage_to_signUpPage)
         }
         binding.forgotPassword.setOnClickListener {
+            // Navigate to Reset Password Page
             findNavController().navigate(R.id.action_loginPage_to_resetPasswordFragment)
         }
         binding.logInButton.setOnClickListener {
-            if(viewModel.isEmail()){
-                Toast.makeText(requireContext(),"Not valid Email",Toast.LENGTH_SHORT).show()
+            //check if email is valid or not
+            if (viewModel.isEmail()) {
+                binding.yourEmailTextField.helperText = "Enter Valid Email"
                 return@setOnClickListener
             }
-            if(viewModel.isPassword()){
-                Toast.makeText(requireContext(),"Not valid Password",Toast.LENGTH_SHORT).show()
+            binding.yourEmailTextField.helperText = null
+
+            //check if email is valid or not
+            if (viewModel.isPassword()) {
+                binding.passwordTextField.helperText = "Enter Valid Password"
                 return@setOnClickListener
             }
+            binding.passwordTextField.helperText = null
+
+            // Navigate to Image Slider Page
             findNavController().navigate(R.id.action_loginPage_to_imageSliderFragment)
         }
-    }
-
-    private fun initialize() {
     }
 }
 

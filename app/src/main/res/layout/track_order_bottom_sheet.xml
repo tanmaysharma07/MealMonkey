@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/trackOrderBottomSheetClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:src="@drawable/baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/trackOrderBottomSheetImage"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_220sdp"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:src="@drawable/track_order_bottom_sheet_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/thankyouText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:gravity="center"
+        android:text="@string/thank_you_for_your_order"
+        android:textSize="@dimen/_26ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/trackOrderBottomSheetImage"
+        app:layout_constraintStart_toStartOf="@+id/trackOrderBottomSheetImage"
+        app:layout_constraintTop_toBottomOf="@+id/trackOrderBottomSheetImage" />
+
+    <TextView
+        android:id="@+id/trackOrderBottomSheetFirstPara"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:gravity="center"
+        android:text="@string/your_order_is_now_being_processed_we_will_let_you_know_once_the_order_is_picked_from_the_outlet_check_the_status_of_your_order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thankyouText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/trackMyOrderButton"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:text="@string/track_my_order"
+        app:layout_constraintEnd_toEndOf="@+id/trackOrderBottomSheetImage"
+        app:layout_constraintStart_toStartOf="@+id/trackOrderBottomSheetImage"
+        app:layout_constraintTop_toBottomOf="@+id/trackOrderBottomSheetFirstPara" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/back_to_home"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/trackMyOrderButton"
+        app:layout_constraintStart_toStartOf="@+id/trackMyOrderButton"
+        app:layout_constraintTop_toBottomOf="@+id/trackMyOrderButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

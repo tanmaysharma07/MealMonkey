@@ -8,7 +8,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ImageSliderPageViewModel @Inject constructor(val eventListener: EventListener): ViewModel() {
-
 }
 
 data class ImageSliderData(

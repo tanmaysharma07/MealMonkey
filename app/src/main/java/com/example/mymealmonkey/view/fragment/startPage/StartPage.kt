@@ -14,40 +14,36 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StartPage : Fragment() {
 
+    // Binding Components
     private lateinit var binding: FragmentStartPageBinding
-    private val viewModel:StartPageViewModel by viewModels()
+
+    //Initializing ViewModel
+    private val viewModel: StartPageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        //View Binding
         binding = FragmentStartPageBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initialize()
-
-        setListeners()
-
-        bindObservers()
-
+        // Set Click Listeners
+        clickListeners()
     }
 
-    private fun initialize() {
-    }
-
-    private fun bindObservers() {
-
-
-    }
-
-    private fun setListeners() {
+    //Set Click Listeners
+    private fun clickListeners() {
         binding.loginButton.setOnClickListener {
+            // Navigate to Login Page
             findNavController().navigate(R.id.action_startPage_to_loginPage)
         }
         binding.createAccountButton.setOnClickListener {
+            // Navigate to Sign up Page
             findNavController().navigate(R.id.action_startPage_to_signUpPage)
         }
     }

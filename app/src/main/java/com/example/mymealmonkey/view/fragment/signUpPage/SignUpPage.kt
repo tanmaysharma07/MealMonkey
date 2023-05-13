@@ -18,76 +18,90 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignUpPage : Fragment() {
 
+    // Initializing ViewModel
     private val viewModel: SignUpPageViewModel by viewModels()
-    private lateinit var binding:FragmentSignUpPageBinding
+
+    // Binding Component
+    private lateinit var binding: FragmentSignUpPageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentSignUpPageBinding.inflate(inflater,container,false)
+        //Data Binding
+        binding = FragmentSignUpPageBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initialize()
-
-        setListeners()
-
-        bindObservers()
-
-        binding.emailEdittext.setOnFocusChangeListener { _, focused ->
-            if (!focused){
-                if (!viewModel.isEmail()){
-                    Log.d("HOOLA","HOOLA")
-                    binding.emailTextField.helperText = "Not a Valid Email"
-                }
-            }
-        }
-
-    }
-    private fun bindObservers() {
-
+        // Set Click Listeners
+        clickListeners()
     }
 
-    private fun setListeners() {
-        val name = binding.nameTextField.editText?.text
-        val email= binding.emailTextField.editText?.text
-        val mobileNumber = binding.mobileNoTextField.editText?.text
-        val address = binding.addressTextField.editText?.text
-        val password = binding.passwordSignUp.editText?.text
-//        val confirmPassword = binding.confirmPasswordSignUp.editText?.text
+    // Set Click Listeners
+    private fun clickListeners() {
 
+        //take to login Page on clicking Login Button
         binding.loginTextButton.setOnClickListener {
             findNavController().navigate(R.id.action_signUpPage_to_loginPage)
         }
+
+        //Sign Up account on click and goes to login page
         binding.signUpButton.setOnClickListener {
-            if (viewModel.isFilled()){
-                Toast.makeText(requireContext(),"Enter all the fields", Toast.LENGTH_SHORT).show()
+
+            //Check if Name is Valid
+            if (viewModel.isName()) {
+                binding.nameTextField.helperText = "Enter Name"
                 return@setOnClickListener
             }
-            if (viewModel.isEmail()){
-                Toast.makeText(requireContext(),"Enter a Valid Email",Toast.LENGTH_SHORT).show()
+            binding.nameTextField.helperText = null
+
+            //check if email is valid or not
+            if (viewModel.isEmail()) {
+                binding.emailTextField.helperText = "Enter Valid Email"
                 return@setOnClickListener
             }
-            if (viewModel.isPassword()){
-                Toast.makeText(requireContext(),"Enter Valid password", Toast.LENGTH_SHORT).show()
+            binding.emailTextField.helperText = null
+
+            //Check if Mobile Number is Valid
+            if (viewModel.isMobileNumber()) {
+                binding.mobileNoTextField.helperText = "Enter Valid Mobile Number"
                 return@setOnClickListener
             }
-            if (viewModel.isPassword()){
-                Toast.makeText(requireContext(),"Passwords Do not Match", Toast.LENGTH_SHORT).show()
+            binding.mobileNoTextField.helperText = null
+
+            //Check if Address is Valid
+            if (viewModel.isAddress()) {
+                binding.addressTextField.helperText = "Enter Address"
                 return@setOnClickListener
             }
-            val user = User(name.toString(),email.toString(),mobileNumber.toString(),address.toString(),password.toString())
+            binding.addressTextField.helperText = null
+
+            //Check validity of Password
+            if (viewModel.isPassword()) {
+                binding.passwordSignUp.helperText = "Enter Valid Password"
+                binding.confirmPasswordSignUp.helperText = "Enter Valid Password"
+                return@setOnClickListener
+            }
+            binding.passwordSignUp.helperText = null
+            binding.confirmPasswordSignUp.helperText = null
+
+            // Save User Data
+            val user = User(
+                viewModel.nameInput.get(),
+                viewModel.emailInput.get(),
+                viewModel.mobileNumberInput.get(),
+                viewModel.addressInput.get(),
+                viewModel.passwordInput.get()
+            )
             viewModel.signupSession(user)
+
+            // Navigate to Login Page
             findNavController().navigate(R.id.action_signUpPage_to_loginPage)
         }
-    }
-
-    private fun initialize() {
-
     }
 }

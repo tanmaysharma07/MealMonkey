@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".view.fragment.myOrder.MyOrderFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/myOrderBackArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            app:layout_constraintBottom_toBottomOf="@+id/my_order"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/my_order" />
+
+        <TextView
+            android:id="@+id/my_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/my_order"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/myOrderBackArrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/my_order_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/shopping_cart"
+            app:layout_constraintBottom_toBottomOf="@+id/my_order"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/my_order" />
+
+        <include
+            android:id="@+id/my_order_card"
+            layout="@layout/my_order_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_order" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_order_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_order_card" />
+
+        <TextView
+            android:id="@+id/delivery_instrusctions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/delivery_instrusctions"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/myOrderBackArrow"
+            app:layout_constraintTop_toBottomOf="@id/my_order_recyclerView" />
+
+        <TextView
+            android:id="@+id/add_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:text="@string/add_notes"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/small_add_icon"
+            app:drawableTint="@color/orange"
+            app:layout_constraintEnd_toEndOf="@id/my_order_cart"
+            app:layout_constraintTop_toBottomOf="@id/my_order_recyclerView" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/line_86"
+            app:layout_constraintEnd_toEndOf="@+id/add_notes"
+            app:layout_constraintStart_toStartOf="@+id/delivery_instrusctions"
+            app:layout_constraintTop_toBottomOf="@+id/delivery_instrusctions" />
+
+        <TextView
+            android:id="@+id/sub_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/sub_total"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/delivery_instrusctions"
+            app:layout_constraintTop_toBottomOf="@id/delivery_instrusctions" />
+
+        <TextView
+            android:id="@+id/sub_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_68"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/add_notes"
+            app:layout_constraintTop_toBottomOf="@id/add_notes" />
+
+        <TextView
+            android:id="@+id/delivery_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/delivery_cost"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/sub_total"
+            app:layout_constraintTop_toBottomOf="@id/sub_total" />
+
+        <TextView
+            android:id="@+id/delivery_cost_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/_2"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/sub_total_price"
+            app:layout_constraintTop_toBottomOf="@id/sub_total_price" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/line_86"
+            app:layout_constraintEnd_toEndOf="@+id/add_notes"
+            app:layout_constraintStart_toStartOf="@+id/delivery_cost"
+            app:layout_constraintTop_toBottomOf="@+id/delivery_cost" />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/total"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/delivery_cost"
+            app:layout_constraintTop_toBottomOf="@id/delivery_cost" />
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_70"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/add_notes"
+            app:layout_constraintTop_toBottomOf="@id/delivery_cost_price" />
+
+        <Button
+            android:id="@+id/checkoutButtonMyOrder"
+            style="@style/buttonStyle"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="150dp"
+            android:text="@string/checkout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/total_price"
+            app:layout_constraintStart_toStartOf="@id/total"
+            app:layout_constraintTop_toBottomOf="@id/total" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

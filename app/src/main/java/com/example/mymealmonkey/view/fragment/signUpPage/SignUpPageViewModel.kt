@@ -1,5 +1,6 @@
 package com.example.mymealmonkey.view.fragment.signUpPage
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,8 +12,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpPageViewModel @Inject constructor(private val appPreferences: AppPreferences,val eventListener: EventListener) : ViewModel() {
+class SignUpPageViewModel @Inject constructor(
+    private val appPreferences: AppPreferences,
+    val eventListener: EventListener
+) : ViewModel() {
 
+    //Observable Field to catch Live Data
     val emailInput = ObservableField("")
     val nameInput = ObservableField("")
     val mobileNumberInput = ObservableField("")
@@ -20,42 +25,36 @@ class SignUpPageViewModel @Inject constructor(private val appPreferences: AppPre
     val passwordInput = ObservableField("")
     val confirmPasswordInput = ObservableField("")
 
-    private val _name = MutableLiveData<String>()
-    val name: LiveData<String>
-        get()=_name
-    private val _email = MutableLiveData<String>()
-    val email: LiveData<String>
-        get()=_email
-    private val _mobileNumber = MutableLiveData<String>()
-    val mobileNumber: LiveData<String>
-        get()=_mobileNumber
-    private val _address = MutableLiveData<String>()
-    val address: LiveData<String>
-        get()=_address
-    private val _password = MutableLiveData<String>()
-    val password: LiveData<String>
-        get()=_password
-    private val _confirmPassword = MutableLiveData<String>()
-    val confirmPassword: LiveData<String>
-        get()=_confirmPassword
-
+    // Function to Store User Data
     fun signupSession(user: User) {
         return appPreferences.signUp(user)
     }
 
-    fun isFilled():Boolean{
-        _name.value = nameInput.get()
-        _mobileNumber.value = mobileNumberInput.get()
-        _address.value = addressInput.get()
-        return ((name.value!!.trim()).isEmpty()&&(mobileNumber.value!!.trim()).isEmpty()&&(address.value!!.trim()).isEmpty())
+    //Check if Name is Valid
+    fun isName(): Boolean {
+        return ((nameInput.get()?.trim()?.isEmpty() ?: true))
     }
-    fun isEmail():Boolean{
-        _email.value = emailInput.get()
-        return (!(android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!).matches()))
+
+    //Check if Email is Valid
+    fun isEmail(): Boolean {
+        return (!(android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.get() ?: "").matches()))
     }
-    fun isPassword():Boolean{
-        _password.value = passwordInput.get()
-        _confirmPassword.value = confirmPasswordInput.get()
-        return ((((passwordInput.get()!!.length) < 7 || (password.value != confirmPassword.value) || (confirmPassword.value!!.length) < 7)))
+
+    //Check if Address is Valid
+    fun isAddress(): Boolean {
+        return (addressInput.get()?.trim()?.isEmpty() ?: true)
+    }
+
+    //Check if Mobile number is Valid
+    fun isMobileNumber(): Boolean {
+        return ((mobileNumberInput.get()?.trim()?.isEmpty()
+            ?: true) || ((mobileNumberInput.get()?.length ?: 0) > 10))
+    }
+
+    //Check if Password is valid
+    fun isPassword(): Boolean {
+        return ((((passwordInput.get()?.length
+            ?: 0) < 7 || (passwordInput.get() != confirmPasswordInput.get()) || (confirmPasswordInput.get()?.length
+            ?: 0) < 7)))
     }
 }

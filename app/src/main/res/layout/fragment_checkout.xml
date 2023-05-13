@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".view.fragment.checkoutFragment.CheckoutFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/checkoutBackArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            app:layout_constraintBottom_toBottomOf="@+id/checkout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkout" />
+
+        <TextView
+            android:id="@+id/checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/checkout"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/checkoutBackArrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/checkoutCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/shopping_cart"
+            app:layout_constraintBottom_toBottomOf="@+id/checkout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkout" />
+
+        <TextView
+            android:id="@+id/deliveryAddressCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:text="@string/delivery_address"
+            app:layout_constraintStart_toStartOf="@+id/checkoutBackArrow"
+            app:layout_constraintTop_toBottomOf="@+id/checkoutBackArrow" />
+
+        <TextView
+            android:id="@+id/checkoutAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/_653_nostrand_ave_brooklyn_ny_11216"
+            app:layout_constraintStart_toStartOf="@+id/checkoutBackArrow"
+            app:layout_constraintTop_toBottomOf="@+id/deliveryAddressCheckout" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change"
+            android:textColor="@color/orange"
+            app:layout_constraintBottom_toBottomOf="@+id/checkoutAddress"
+            app:layout_constraintEnd_toEndOf="@+id/checkoutCart"
+            app:layout_constraintTop_toTopOf="@+id/checkoutAddress" />
+
+        <ImageView
+            android:id="@+id/firstBroadLineCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/broad_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkoutAddress" />
+
+        <TextView
+            android:id="@+id/paymentMethodCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/payment_method"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/checkoutAddress"
+            app:layout_constraintTop_toBottomOf="@id/firstBroadLineCheckout" />
+
+        <TextView
+            android:id="@+id/addCardCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:text="@string/add_card"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/small_add_icon"
+            app:drawableTint="@color/orange"
+            app:layout_constraintEnd_toEndOf="@id/checkoutCart"
+            app:layout_constraintTop_toBottomOf="@id/firstBroadLineCheckout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/checkoutRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentMethodCheckout" />
+
+        <ImageView
+            android:id="@+id/seconddBroadLineCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/broad_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkoutRecyclerView" />
+
+        <TextView
+            android:id="@+id/subTotalCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/sub_total"
+            app:layout_constraintStart_toStartOf="@id/checkoutAddress"
+            app:layout_constraintTop_toBottomOf="@id/seconddBroadLineCheckout" />
+
+        <TextView
+            android:id="@+id/subTotalPriceCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_68"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/addCardCheckout"
+            app:layout_constraintTop_toBottomOf="@id/seconddBroadLineCheckout" />
+
+        <TextView
+            android:id="@+id/deliveryCostCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/delivery_cost"
+            app:layout_constraintStart_toStartOf="@id/subTotalCheckout"
+            app:layout_constraintTop_toBottomOf="@id/subTotalCheckout" />
+
+        <TextView
+            android:id="@+id/deliveryPriceCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/_2"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/addCardCheckout"
+            app:layout_constraintTop_toBottomOf="@id/subTotalCheckout" />
+
+        <TextView
+            android:id="@+id/discountCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/discount"
+            app:layout_constraintStart_toStartOf="@id/subTotalCheckout"
+            app:layout_constraintTop_toBottomOf="@id/deliveryCostCheckout" />
+
+        <TextView
+            android:id="@+id/discountPriceCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_4"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/addCardCheckout"
+            app:layout_constraintTop_toBottomOf="@id/deliveryPriceCheckout" />
+
+        <ImageView
+            android:id="@+id/firstThinLineCheckout"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/line_86"
+            app:layout_constraintEnd_toEndOf="@+id/discountPriceCheckout"
+            app:layout_constraintStart_toStartOf="@+id/discountCheckout"
+            app:layout_constraintTop_toBottomOf="@+id/discountCheckout" />
+
+        <TextView
+            android:id="@+id/totalCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/total"
+            app:layout_constraintStart_toStartOf="@id/discountCheckout"
+            app:layout_constraintTop_toBottomOf="@id/firstThinLineCheckout" />
+
+        <TextView
+            android:id="@+id/totalPriceCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_66"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/addCardCheckout"
+            app:layout_constraintTop_toBottomOf="@id/discountPriceCheckout" />
+
+        <Button
+            android:id="@+id/sendOrderButtonCheckout"
+            style="@style/buttonStyle"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="150dp"
+            android:text="@string/send_order"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/totalPriceCheckout"
+            app:layout_constraintStart_toStartOf="@id/totalCheckout"
+            app:layout_constraintTop_toBottomOf="@id/totalCheckout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

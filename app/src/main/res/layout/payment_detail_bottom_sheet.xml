@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/payment_details_bottom_sheet_background"
+    android:backgroundTint="@android:color/transparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,15 +21,23 @@
 
             <TextView
                 android:id="@+id/add_credit_debit_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/textStyle"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
                 android:text="@string/add_credit_debit_card"
-                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/firstThinLinePaymentDetailsBottomSheet"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/line_86"
+                app:layout_constraintEnd_toEndOf="@+id/notification_bottom_sheet_close"
+                app:layout_constraintStart_toStartOf="@+id/add_credit_debit_card"
+                app:layout_constraintTop_toBottomOf="@+id/add_credit_debit_card" />
 
             <ImageView
                 android:id="@+id/notification_bottom_sheet_close"
@@ -53,8 +62,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/add_credit_debit_card">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cardNumberEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:lines="1"
+                    android:maxLines="1"
                     android:hint="@string/card_number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,6 +92,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:lines="1"
+                    android:inputType="number"
+                    android:gravity="center"
                     android:hint="@string/mm" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +110,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:inputType="number"
                     android:hint="@string/yy" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,6 +130,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:lines="1"
                     android:hint="@string/security_code" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,6 +148,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:lines="1"
                     android:hint="@string/first_name" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,20 +166,21 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:lines="1"
                     android:hint="@string/last_name" />
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <com.google.android.material.switchmaterial.SwitchMaterial-->
-<!--                android:id="@+id/you_can_remove_this_card_at_anytime"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="30dp"-->
-<!--                android:layout_marginEnd="30dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:text="@string/you_can_remove_this_card_at_anytime"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/card_number"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/card_number"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/last_name" />-->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/you_can_remove_this_card_at_anytime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/you_can_remove_this_card_at_anytime"
+                app:layout_constraintEnd_toEndOf="@+id/card_number"
+                app:layout_constraintStart_toStartOf="@+id/card_number"
+                app:layout_constraintTop_toBottomOf="@+id/last_name" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/add_card"
@@ -172,9 +193,9 @@
                 android:text="@string/add_card"
                 app:icon="@drawable/baseline_add_24"
                 app:iconGravity="textStart"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/card_number"
                 app:layout_constraintStart_toStartOf="@+id/card_number"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/you_can_remove_this_card_at_anytime" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

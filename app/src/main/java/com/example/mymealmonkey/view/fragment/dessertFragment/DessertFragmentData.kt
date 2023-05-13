@@ -6,6 +6,7 @@ import androidx.annotation.StringRes
 data class DessertFragmentData(
     @DrawableRes val imageId:Int,
     @StringRes val dishId:Int,
-    @StringRes val ratingId:Int
+    @StringRes val typeId:Int,
+    @StringRes val madeId:Int
 ) {
 }

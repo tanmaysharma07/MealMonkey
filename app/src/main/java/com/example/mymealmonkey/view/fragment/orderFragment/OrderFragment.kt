@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.mymealmonkey.R
@@ -16,14 +17,18 @@ import com.google.android.material.textfield.TextInputLayout
 
 class OrderFragment : Fragment() {
 
+    // Binding Component
     lateinit var binding: FragmentOrderBinding
-    private val viewModel:OrderFragmentViewModel by viewModels()
+
+    // Initialized ViewModel
+    private val viewModel: OrderFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_order,container,false)
+        // Data Binding
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_order, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -32,13 +37,17 @@ class OrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val textField = binding.sizePotionTextfield
-        val textField2 = binding.selectIngredientsTextfield
-
+        // Items List in Scroll Down List
         val items = listOf("Size1", "Size2", "Size3", "Size4")
-        val adapter = ArrayAdapter(requireContext(), R.layout.size_portion_list_item, items)
-        (textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-        (textField2.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
+        // Initializing the Scroll Down Lists
+        val adapter = ArrayAdapter(requireContext(), R.layout.size_portion_list_item, items)
+        (binding.sizePotionTextfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        (binding.selectIngredientsTextfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+
+        // When User ChangeTextInput Directly
+        binding.portionCountTextInput.doAfterTextChanged {
+            viewModel.total()
+        }
     }
 }

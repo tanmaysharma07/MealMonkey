@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp"
+    android:background="@color/grey3">
+
+    <ImageView
+        android:id="@+id/imagePaymentDetailsRV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/titlePaymentDetailsRV"
+        app:layout_constraintTop_toTopOf="@+id/titlePaymentDetailsRV"
+        app:layout_constraintBottom_toBottomOf="@+id/titlePaymentDetailsRV"/>
+
+    <TextView
+        android:id="@+id/titlePaymentDetailsRV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text="@string/veg_burger"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imagePaymentDetailsRV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/paymentDetailsButtonRV"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginEnd="30dp"
+        android:textSize="@dimen/_8ssp"
+        android:text="@string/delete_card"
+        app:strokeColor="@color/orange"
+        android:textColor="@color/orange"
+        app:cornerRadius="@dimen/_40sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:src="@drawable/line_86"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/paymentDetailsButtonRV"
+        app:layout_constraintStart_toStartOf="@+id/titlePaymentDetailsRV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

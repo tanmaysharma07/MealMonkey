@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.mymealmonkey.view.fragment.orderFragment.OrderFragmentViewModel" />
@@ -20,7 +21,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/order_image"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:contentDescription="@string/image"
@@ -31,21 +32,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/cardView_order_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-100dp"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6">
+                app:layout_constraintTop_toBottomOf="@+id/order_image">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/tandoori_pizza"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -56,26 +57,26 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/four_star_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:src="@drawable/star_rating"
-                        app:layout_constraintStart_toStartOf="@+id/textView8"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                        app:layout_constraintStart_toStartOf="@+id/tandoori_pizza"
+                        app:layout_constraintTop_toBottomOf="@+id/tandoori_pizza" />
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/four_star_rating_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/_4_star_rating"
                         android:textColor="@color/orange"
-                        app:layout_constraintStart_toStartOf="@+id/imageView8"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+                        app:layout_constraintStart_toStartOf="@+id/four_star_rating"
+                        app:layout_constraintTop_toBottomOf="@+id/four_star_rating" />
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/rs_750"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
@@ -83,69 +84,65 @@
                         android:textSize="32sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/imageView8" />
+                        app:layout_constraintTop_toTopOf="@+id/four_star_rating" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/per_portion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/per_portion"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/textView9"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                        app:layout_constraintEnd_toEndOf="@+id/rs_750"
+                        app:layout_constraintTop_toBottomOf="@+id/rs_750" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:text="@string/description"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/textView11"
-                        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                        app:layout_constraintStart_toStartOf="@+id/four_star_rating_text"
+                        app:layout_constraintTop_toBottomOf="@+id/four_star_rating_text" />
 
                     <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="match_parent"
+                        android:id="@+id/description_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="20dp"
                         android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_ornare_leo_non_mollis_id_cursus_eu_euismod_faucibus_in_leo_malesuada"
-                        app:layout_constraintEnd_toEndOf="@+id/textView10"
-                        app:layout_constraintStart_toStartOf="@+id/textView12"
-                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                        app:layout_constraintEnd_toEndOf="@+id/rs_750"
+                        app:layout_constraintStart_toStartOf="@+id/description"
+                        app:layout_constraintTop_toBottomOf="@+id/description" />
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/customize_your_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="35dp"
                         android:text="@string/customize_your_order"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/textView12"
-                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                        app:layout_constraintStart_toStartOf="@+id/description"
+                        app:layout_constraintTop_toBottomOf="@+id/description_content" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/size_potion_textfield"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
                         android:hint="@string/select_size_of_portion"
-                        app:layout_constraintEnd_toEndOf="@+id/textView10"
-                        app:layout_constraintStart_toStartOf="@+id/textView14"
-                        app:layout_constraintTop_toBottomOf="@+id/textView14">
+                        app:layout_constraintEnd_toEndOf="@+id/rs_750"
+                        app:layout_constraintStart_toStartOf="@+id/description_content"
+                        app:layout_constraintTop_toBottomOf="@+id/customize_your_order">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#F2F2F2"
+                            android:background="@color/grey3"
                             android:inputType="none" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -159,8 +156,8 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="20dp"
                         android:hint="@string/select_the_ingredients"
-                        app:layout_constraintEnd_toEndOf="@+id/textView10"
-                        app:layout_constraintStart_toStartOf="@+id/textView14"
+                        app:layout_constraintEnd_toEndOf="@+id/description_content"
+                        app:layout_constraintStart_toStartOf="@+id/customize_your_order"
                         app:layout_constraintTop_toBottomOf="@+id/size_potion_textfield">
 
                         <AutoCompleteTextView
@@ -172,7 +169,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/number_of_portions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
@@ -183,56 +180,60 @@
                         app:layout_constraintTop_toBottomOf="@+id/select_ingredients_textfield" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButton2"
+                        android:id="@+id/add_portion_button"
                         android:layout_width="50dp"
                         android:layout_height="32dp"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/orange"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
+                        android:onClick="@{()-> viewModel.decreasePortion()}"
                         app:cornerRadius="15dp"
                         app:icon="@drawable/baseline_remove_24"
                         app:iconGravity="textTop"
-                        android:onClick="@{()-> viewModel.decreasePortion()}"
-                        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
-                        app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
-                        app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
+                        app:layout_constraintBottom_toBottomOf="@+id/portionCountTextField"
+                        app:layout_constraintEnd_toStartOf="@+id/portionCountTextField"
+                        app:layout_constraintTop_toTopOf="@+id/portionCountTextField" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButton3"
+                        android:id="@+id/subtract_portion_button"
                         android:layout_width="50dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="15dp"
                         android:backgroundTint="@color/orange"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
+                        android:onClick="@{()-> viewModel.increasePortion()}"
                         app:cornerRadius="20dp"
                         app:icon="@drawable/baseline_add_24"
                         app:iconGravity="textTop"
-                        android:onClick="@{()-> viewModel.increasePortion()}"
-                        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
-                        app:layout_constraintStart_toEndOf="@+id/textInputLayout2"
-                        app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
+                        app:layout_constraintBottom_toBottomOf="@+id/portionCountTextField"
+                        app:layout_constraintStart_toEndOf="@+id/portionCountTextField"
+                        app:layout_constraintTop_toTopOf="@+id/portionCountTextField" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputLayout2"
+                        android:id="@+id/portionCountTextField"
                         style="@style/textfieldStyle"
                         android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                        android:layout_height="32dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/number_of_portions"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView15"
-                        app:layout_constraintTop_toTopOf="@+id/textView15">
+                        app:layout_constraintStart_toEndOf="@+id/number_of_portions"
+                        app:layout_constraintTop_toTopOf="@+id/number_of_portions">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/portionCountTextInput"
                             android:layout_width="50dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:inputType="number"
                             android:maxLength="2"
+                            android:padding="0dp"
                             android:singleLine="true"
                             android:text="@={viewModel.portionInput}"
+                            android:textColor="@color/orange"
                             android:textSize="14sp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.card.MaterialCardView
@@ -242,7 +243,7 @@
                         android:layout_marginBottom="120dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView15">
+                        app:layout_constraintTop_toBottomOf="@+id/number_of_portions">
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -277,6 +278,7 @@
                                 app:layout_constraintTop_toBottomOf="@+id/total_price" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/add_to_cart_order"
                                 android:layout_width="160dp"
                                 android:layout_height="30dp"
                                 android:layout_marginTop="10dp"
@@ -296,7 +298,6 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -304,4 +305,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
 </layout>

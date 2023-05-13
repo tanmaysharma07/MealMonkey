@@ -14,14 +14,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
+    // Initializing ViewModel
     private val viewModel: ProfileFragmentViewModel by viewModels()
+
+    //Binding Component
     lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false)
+        // Data binding the Fragment
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -30,22 +34,37 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initialize()
-
+        // ClickListener to catch Click action
         setListeners()
 
-        bindObservers()
-
     }
 
-    private fun bindObservers() {
-
-    }
-
+    /**
+     *  ClickListener to catch Click action
+     */
     private fun setListeners() {
 
-    }
+        // On Click Allow user to change profile data
+        binding.editProfile.setOnClickListener {
+            binding.nameProfileTextInput.isEnabled = true
+            binding.emailTextInputProfile.isEnabled = true
+            binding.addressTextInputProfile.isEnabled = true
+            binding.mobileNumberTextInputProfile.isEnabled = true
+            binding.passwordSignupTextInputProfile.isEnabled = true
+            binding.confirmPasswordSignupTextInputProfile.isEnabled = true
+        }
 
-    private fun initialize() {
+        // On Click lock and saves user profile data
+        binding.saveButtonProfile.setOnClickListener {
+            binding.nameProfileTextInput.isEnabled = false
+            binding.emailTextInputProfile.isEnabled = false
+            binding.addressTextInputProfile.isEnabled = false
+            binding.mobileNumberTextInputProfile.isEnabled = false
+            binding.passwordSignupTextInputProfile.isEnabled = false
+            binding.confirmPasswordSignupTextInputProfile.isEnabled = false
+
+            //Save Profile data to Shared Preferences
+            viewModel.saveProfile()
+        }
     }
 }

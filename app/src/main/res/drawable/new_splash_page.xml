@@ -3,6 +3,7 @@
 
     <item android:drawable="@color/white"/>
     <item android:drawable="@drawable/background_icons"/>
-    <item android:drawable="@drawable/logo" android:gravity="center"/>
+    <item android:drawable="@drawable/logo" android:gravity="center"
+        android:top="@dimen/_20sdp"/>
 
 </layer-list>

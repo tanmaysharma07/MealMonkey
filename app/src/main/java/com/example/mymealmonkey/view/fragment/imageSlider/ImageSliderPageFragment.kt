@@ -15,63 +15,67 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ImageSliderPageFragment : Fragment() {
 
-   private lateinit var binding:FragmentImageSliderBinding
-   private val viewModel:ImageSliderPageViewModel by viewModels()
-
+    private lateinit var binding: FragmentImageSliderBinding
+    private val viewModel: ImageSliderPageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentImageSliderBinding.inflate(inflater,container,false)
+        binding = FragmentImageSliderBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initialize()
+        /**
+         * Set Click Listeners
+         */
+        clickListeners()
 
-        setListeners()
-
-        bindObservers()
-
-        val viewPager = binding.viewpager
-        val indicator = binding.indicator
-        val headText = binding.headText
-        val bodyText= binding.bodyText
-
+        //Putting Images in a ArrayList
         var imageList: List<Int>
         imageList = ArrayList()
         imageList = imageList + R.drawable.find_food_you_love_vector
         imageList = imageList + R.drawable.delivery_vector
         imageList = imageList + R.drawable.live_tracking_vector
 
+        // Initializing Adapter and Indiicator
         val viewPagerAdapter = ViewPagerAdapter(requireContext(), imageList)
+        binding.viewpager.adapter = viewPagerAdapter
+        binding.indicator.setupWithViewPager(binding.viewpager, true)
 
-        viewPager.adapter = viewPagerAdapter
-        indicator.setupWithViewPager(viewPager, true)
-
-        val imageSliderData  = listOf(
-            ImageSliderData("Find Food You Love","Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"),
-            ImageSliderData("Fast Delivery","Fast food delivery to your home, office wherever you are"),
-            ImageSliderData("Live Tracking","Real time tracking of your food on the app once you placed the order")
+        // Text data Shown below the Image as it changes
+        val imageSliderData = listOf(
+            ImageSliderData(
+                "Find Food You Love",
+                "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"
+            ),
+            ImageSliderData(
+                "Fast Delivery",
+                "Fast food delivery to your home, office wherever you are"
+            ),
+            ImageSliderData(
+                "Live Tracking",
+                "Real time tracking of your food on the app once you placed the order"
+            )
         )
 
-        viewPager.addOnPageChangeListener(object : OnPageChangeListener {
+        // Allow to change Text as Page changes
+        binding.viewpager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> {
-                        headText.text =imageSliderData[position].head
-                        bodyText.text =imageSliderData[position].body
+                        binding.headText.text = imageSliderData[position].head
+                        binding.bodyText.text = imageSliderData[position].body
                     }
                     1 -> {
-                        headText.text = imageSliderData[position].head
-                        bodyText.text =imageSliderData[position].body
+                        binding.headText.text = imageSliderData[position].head
+                        binding.bodyText.text = imageSliderData[position].body
                     }
                     2 -> {
-                        headText.text = imageSliderData[position].head
-                        bodyText.text =imageSliderData[position].body
+                        binding.headText.text = imageSliderData[position].head
+                        binding.bodyText.text = imageSliderData[position].body
                     }
                     else -> {}
                 }
@@ -81,19 +85,13 @@ class ImageSliderPageFragment : Fragment() {
         })
     }
 
-    private fun bindObservers() {
-
-    }
-
-    private fun setListeners() {
+    /**
+     * Set Click Listeners
+     */
+    private fun clickListeners() {
         binding.imageSliderButton.setOnClickListener {
             it.findNavController()
                 .navigate(R.id.action_imageSliderFragment_to_homePageFragment)
         }
     }
-
-    private fun initialize() {
-
-    }
-
 }

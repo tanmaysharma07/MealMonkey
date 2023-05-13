@@ -19,13 +19,17 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class OtpFragment : Fragment() {
 
+    //Initializing ViewModel
     private val viewModel: OtpPageViewModel by viewModels()
+
+    //Binding Components
     lateinit var binding: FragmentOtpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //View Binding
         binding = FragmentOtpBinding.inflate(inflater, container, false)
         return binding.root
     }

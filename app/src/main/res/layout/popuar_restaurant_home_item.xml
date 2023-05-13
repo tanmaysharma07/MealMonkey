@@ -4,64 +4,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="@dimen/_200sdp"
     android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp">
-
+        android:layout_marginTop="@dimen/_10sdp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/popular_restaurant_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="195dp"
-                    android:scaleType="centerCrop"
-                    tools:srcCompat="@tools:sample/avatars"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+            <ImageView
+                android:id="@+id/popular_restaurant_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_130sdp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/popular_restaurant_dish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:text="@string/minute_by_tuk_tuk"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="10dp"
+                android:text="@string/minute_by_tuk_tuk"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/popular_restaurant_image" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/popular_restaurant_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/star_1"
-                android:text="@string/minute_by_tuk_tuk"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="@string/_4_9"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/orange"
+                app:drawableStartCompat="@drawable/star_1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/popular_restaurant_dish"
                 app:layout_constraintTop_toBottomOf="@+id/popular_restaurant_dish" />
 
             <TextView
                 android:id="@+id/popular_restaurant_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/_4_9_124_ratings_caf_western_food"
-                android:textSize="12sp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/_124_ratings_caf"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/popular_restaurant_star"
                 app:layout_constraintTop_toBottomOf="@+id/popular_restaurant_dish" />
+
+            <ImageView
+                android:id="@+id/orange_dot"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:src="@drawable/orange_dot"
+                app:layout_constraintBottom_toBottomOf="@+id/western_food"
+                app:layout_constraintStart_toEndOf="@+id/popular_restaurant_rating"
+                app:layout_constraintTop_toTopOf="@+id/western_food" />
+
+            <TextView
+                android:id="@+id/western_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/western_food"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/popular_restaurant_rating"
+                app:layout_constraintStart_toEndOf="@+id/orange_dot"
+                app:layout_constraintTop_toTopOf="@+id/popular_restaurant_rating" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

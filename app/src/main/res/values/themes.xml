@@ -26,9 +26,11 @@
     </style>
 
     <style name="buttonStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="android:layout_width">307dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
         <item name="background">@color/orange</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
         <item name="cornerRadius">28dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -92,7 +94,8 @@
     </style>
 
     <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut
+        </item>
     </style>
 
 
@@ -103,6 +106,5 @@
         <item name="cornerSizeBottomRight">50dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
-
 
 </resources>

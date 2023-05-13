@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.view.fragment.homepage.data.PopularRestaurantHomeData
 
 class LatestOfferAdapter(
     val context: LatestOffersPageFragment,
@@ -31,8 +30,7 @@ class LatestOfferAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.imageView.setImageResource(item.imageResourceId)
-        holder.dish.text =  context.resources.getString(item.nameResourceId)
-        holder.rating.text =  context.resources.getString(item.ratingResourceId)
-
+        holder.dish.text = context.resources.getString(item.nameResourceId)
+        holder.rating.text = context.resources.getString(item.ratingResourceId)
     }
 }

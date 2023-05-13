@@ -1,66 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp">
 
-    <androidx.cardview.widget.CardView
+    <ImageView
+        android:id="@+id/dessert_fragment_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp">
+        android:layout_height="190dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/burger2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp">
+
+        <TextView
+            android:id="@+id/dessert_fragment_dish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/minute_by_tuk_tuk"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/dessert_fragment_rating"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/dessert_fragment_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:text="@string/_4_9"
+            android:textColor="@color/orange"
+            app:drawableStartCompat="@drawable/star_1"
+            app:layout_constraintBottom_toBottomOf="@+id/dessert_fragment_made"
+            app:layout_constraintStart_toStartOf="@+id/dessert_fragment_dish"
+            app:layout_constraintTop_toTopOf="@+id/dessert_fragment_made" />
+
+        <TextView
+            android:id="@+id/dessert_fragment_made"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="@string/minute_by_tuk_tuk"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dessert_fragment_rating" />
 
         <ImageView
-            android:id="@+id/dessert_fragment_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/burger2"
-            android:scaleType="centerCrop"/>
+            android:id="@+id/orange_dot"
+            android:layout_width="8dp"
+            android:layout_height="7dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="3dp"
+            android:src="@drawable/orange_dot"
+            app:layout_constraintBottom_toBottomOf="@+id/dessert_fragment_type"
+            app:layout_constraintEnd_toStartOf="@+id/dessert_fragment_type"
+            app:layout_constraintStart_toEndOf="@+id/dessert_fragment_made"
+            app:layout_constraintTop_toTopOf="@+id/dessert_fragment_type" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/dessert_fragment_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minute_by_tuk_tuk"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/dessert_fragment_made"
+            app:layout_constraintStart_toEndOf="@+id/orange_dot"
+            app:layout_constraintTop_toTopOf="@+id/dessert_fragment_made" />
 
-            <TextView
-                android:id="@+id/dessert_fragment_dish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/minute_by_tuk_tuk"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/dessert_fragment_rating"
-                app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/dessert_fragment_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/star_1"
-                android:text="@string/minute_by_tuk_tuk"
-                app:layout_constraintBottom_toBottomOf="@+id/dessert_fragment_rating"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/dessert_fragment_rating" />
-
-            <TextView
-                android:id="@+id/dessert_fragment_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/_4_9_124_ratings_caf_western_food"
-                android:textSize="12sp"
-                android:layout_marginStart="10dp"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/dessert_fragment_star" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-</FrameLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -54,7 +54,9 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/signUpPage"
         android:name="com.example.mymealmonkey.view.fragment.signUpPage.SignUpPage"
@@ -74,7 +76,9 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.example.mymealmonkey.view.fragment.resetPasswordPage.ResetPasswordFragment"
@@ -87,7 +91,9 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.example.mymealmonkey.view.fragment.otpPage.OtpFragment"
@@ -100,12 +106,17 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/newPasswordFragment"
         android:name="com.example.mymealmonkey.view.fragment.newPasswordPage.NewPasswordFragment"
         android:label="fragment_new_password"
-        tools:layout="@layout/fragment_new_password" />
+        tools:layout="@layout/fragment_new_password">
+
+    </fragment>
+
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.example.mymealmonkey.view.fragment.homepage.HomePageFragment"
@@ -113,20 +124,33 @@
         tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homePageFragment_to_menuFragment"
-            app:destination="@id/menuFragment" />
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_homePageFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/imageSliderFragment"
         android:name="com.example.mymealmonkey.view.fragment.imageSlider.ImageSliderPageFragment"
         android:label="fragment_image_slider"
         tools:layout="@layout/fragment_image_slider">
+
         <action
             android:id="@+id/action_imageSliderFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/latestActivityFragment"
         android:name="com.example.mymealmonkey.view.fragment.latestOffers.LatestOffersPageFragment"
@@ -136,64 +160,156 @@
         <action
             android:id="@+id/action_latestActivityFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_latestActivityFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.mymealmonkey.view.fragment.menuFragment.MenuFragment"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
+        tools:layout="@layout/fragment_menu">
 
         <action
             android:id="@+id/action_menuFragment_to_latestActivityFragment"
             app:destination="@id/latestActivityFragment" />
         <action
             android:id="@+id/action_menuFragment_to_dessertFragment"
-            app:destination="@id/dessertFragment" />
+            app:destination="@id/dessertFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+
+
     </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.mymealmonkey.view.fragment.profileFragment.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
 
         <action
             android:id="@+id/action_profileFragment_to_moreFragment"
             app:destination="@id/moreFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.example.mymealmonkey.view.fragment.moreFragment.MoreFragment"
         android:label="fragment_more"
-        tools:layout="@layout/fragment_more" >
+        tools:layout="@layout/fragment_more">
 
         <action
-            android:id="@+id/action_moreFragment_to_dessertFragment"
-            app:destination="@id/dessertFragment" />
-        <action
             android:id="@+id/action_moreFragment_to_paymentDetailsFragment"
-            app:destination="@id/paymentDetailsFragment" />
+            app:destination="@id/paymentDetailsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_moreFragment_to_notificationsFragment"
-            app:destination="@id/notificationsFragment" />
+            app:destination="@id/notificationsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_moreFragment_to_inboxFragment"
+            app:destination="@id/inboxFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_moreFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_moreFragment_to_myOrderFragment"
+            app:destination="@id/myOrderFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+
     </fragment>
+
     <fragment
         android:id="@+id/dessertFragment"
         android:name="com.example.mymealmonkey.view.fragment.dessertFragment.DessertFragment"
         android:label="fragment_dessert"
-        tools:layout="@layout/fragment_dessert" />
+        tools:layout="@layout/fragment_dessert">
+        <action
+            android:id="@+id/action_dessertFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/orderFragment"
         android:name="com.example.mymealmonkey.view.fragment.orderFragment.OrderFragment"
         android:label="fragment_order"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order">
+
+    </fragment>
+
     <fragment
         android:id="@+id/paymentDetailsFragment"
         android:name="com.example.mymealmonkey.view.fragment.paymentDetails.PaymentDetailsFragment"
         android:label="fragment_payment_details"
         tools:layout="@layout/fragment_payment_details" />
+
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.example.mymealmonkey.view.fragment.notifications.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.mymealmonkey.view.fragment.aboutUs.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.example.mymealmonkey.view.fragment.inbox.InboxFragment"
+        android:label="InboxFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/myOrderFragment"
+        android:name="com.example.mymealmonkey.view.fragment.myOrder.MyOrderFragment"
+        android:label="fragment_my_order"
+        tools:layout="@layout/fragment_my_order">
+
+        <action
+            android:id="@+id/action_myOrderFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.example.mymealmonkey.view.fragment.checkoutFragment.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" />
+
 </navigation>

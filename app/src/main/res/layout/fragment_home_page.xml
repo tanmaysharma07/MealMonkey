@@ -1,139 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:fillViewport="true"
     tools:context=".view.fragment.homepage.HomePageFragment">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/good_morning_akila"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:paddingEnd="@dimen/_10sdp"
             android:text="@string/good_morning_akila"
-            android:textSize="20sp"
+            android:textSize="@dimen/_15ssp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/shopping_cart_home_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/shopping_cart"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/shopping_cart"
+            app:layout_constraintBottom_toBottomOf="@+id/good_morning_akila"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:focusable="true" />
+            app:layout_constraintTop_toTopOf="@+id/good_morning_akila" />
+
+        <TextView
+            android:id="@+id/delivering_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/delivering_to"
+            app:layout_constraintStart_toStartOf="@+id/good_morning_akila"
+            app:layout_constraintTop_toBottomOf="@+id/good_morning_akila" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/current_location_textfield"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/current_location"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="@+id/good_morning_akila"
+            app:layout_constraintStart_toStartOf="@+id/good_morning_akila"
+            app:layout_constraintTop_toBottomOf="@+id/delivering_to"
+            tools:ignore="RtlSymmetry">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchFoodTextFieldHome"
             style="@style/textfieldStyle"
-            android:layout_width="match_parent"
-            android:layout_margin="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
             android:hint="@string/search_food"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/good_morning_akila"
+            app:layout_constraintEnd_toEndOf="@+id/shopping_cart_home_page"
+            app:layout_constraintStart_toStartOf="@+id/current_location_textfield"
+            app:layout_constraintTop_toBottomOf="@+id/current_location_textfield"
             app:startIconDrawable="@drawable/baseline_search_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:singleLine="true"
-                android:textSize="14sp" />
+                android:textSize="@dimen/_14sdp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_country_food"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:orientation="horizontal"
             android:scrollbars="horizontal"
             app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/country_food_home_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_popular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:scrollbars="vertical"
-            android:nestedScrollingEnabled="false"
-            app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/country_food_home_item"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView_country_food">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_most_popular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:scrollbars="horizontal"
-            app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/country_food_home_item"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView_popular">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_recent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:scrollbars="vertical"
-            app:layoutManager="LinearLayoutManager"
-            android:layout_marginBottom="120dp"
-            tools:listitem="@layout/country_food_home_item"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView_most_popular">
+            app:layout_constraintTop_toBottomOf="@+id/searchFoodTextFieldHome">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:id="@+id/popularRestaurants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/popular_restaurants"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/searchFoodTextFieldHome"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView_country_food" />
+
+        <TextView
+            android:id="@+id/viewAllPopular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all"
+            android:textColor="@color/orange"
+            app:layout_constraintBottom_toBottomOf="@+id/popularRestaurants"
+            app:layout_constraintEnd_toEndOf="@+id/searchFoodTextFieldHome"
+            app:layout_constraintTop_toTopOf="@+id/popularRestaurants" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView_recent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/popularRestaurants">
 
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/mostPopular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/most_popular"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/searchFoodTextFieldHome"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView_popular" />
+
+        <TextView
+            android:id="@+id/viewAllMostPopular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all"
+            android:textColor="@color/orange"
+            app:layout_constraintBottom_toBottomOf="@+id/mostPopular"
+            app:layout_constraintEnd_toEndOf="@+id/searchFoodTextFieldHome"
+            app:layout_constraintTop_toTopOf="@+id/mostPopular" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_most_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal"
+            android:scrollbars="horizontal"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mostPopular">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/recentItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/recent_items"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/searchFoodTextFieldHome"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView_most_popular" />
+
+        <TextView
+            android:id="@+id/viewAllRecent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all"
+            android:textColor="@color/orange"
+            app:layout_constraintBottom_toBottomOf="@+id/recentItems"
+            app:layout_constraintEnd_toEndOf="@+id/searchFoodTextFieldHome"
+            app:layout_constraintTop_toTopOf="@+id/recentItems" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_recent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="130dp"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/viewAllRecent"
+            app:layout_constraintStart_toStartOf="@+id/recentItems"
+            app:layout_constraintTop_toBottomOf="@+id/recentItems">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+
+</androidx.core.widget.NestedScrollView>
 
 
 

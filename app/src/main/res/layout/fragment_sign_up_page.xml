@@ -4,205 +4,212 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.mymealmonkey.view.fragment.signUpPage.SignUpPageViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".view.fragment.signUpPage.SignUpPage">
 
-        <TextView
-            android:id="@+id/sign_up"
-            style="@style/textStyle"
-            android:layout_marginTop="70dp"
-            android:text="@string/sign_up"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/Add_sign_up"
-            style="@style/textStyle"
-            android:layout_marginTop="10dp"
-            android:text="@string/add_your_details_to_sign_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_up" />
+            <TextView
+                android:id="@+id/sign_up"
+                style="@style/textStyle"
+                android:layout_marginTop="70dp"
+                android:text="@string/sign_up"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_textField"
-            style="@style/textfieldStyle"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            app:errorEnabled="true"
-            app:helperText="@string/enter_email"
-            app:helperTextTextColor="@color/orange"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Add_sign_up">
+            <TextView
+                android:id="@+id/Add_sign_up"
+                style="@style/textStyle"
+                android:layout_marginTop="10dp"
+                android:text="@string/add_your_details_to_sign_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/name"
-                android:maxLines="1"
-                android:text="@={viewModel.nameInput}"
-                android:singleLine="true"
-                android:textColor="#B6B7B7"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_textField"
+                style="@style/textfieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Add_sign_up">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/name"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.nameInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_textField"
-            style="@style/textfieldStyle"
-            android:layout_marginTop="25dp"
-            app:helperTextEnabled="true"
-            app:errorEnabled="true"
-            android:layout_marginHorizontal="20dp"
-            app:helperText="@string/enter_email"
-            app:helperTextTextColor="@color/orange"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_textField">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_textField"
+                style="@style/textfieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name_textField">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/email"
-                android:text="@={viewModel.emailInput}"
-                android:lines="1"
-                android:singleLine="true"
-                android:textColor="#B6B7B7"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEdittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.emailInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/mobile_no_textField"
-            style="@style/textfieldStyle"
-            android:layout_marginTop="25dp"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_textField">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobile_no_textField"
+                style="@style/textfieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_textField">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/mobile_number"
-                android:inputType="number"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:text="@={viewModel.mobileNumberInput}"
-                android:singleLine="true"
-                android:textColor="#B6B7B7"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/mobile_number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.mobileNumberInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/address_textField"
+                style="@style/textfieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mobile_no_textField">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/address_textField"
-            style="@style/textfieldStyle"
-            android:layout_marginTop="25dp"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mobile_no_textField">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/address"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.addressInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/address"
-                android:maxLines="1"
-                android:text="@={viewModel.addressInput}"
-                android:singleLine="true"
-                android:textColor="#B6B7B7"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_sign_up"
+                style="@style/textfieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:endIconMode="password_toggle"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address_textField">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_sign_up"
-            style="@style/textfieldStyle"
-            android:layout_marginTop="25dp"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address_textField">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.passwordInput}"
+                    android:textColorHint="#B6B7B7"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/password"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:text="@={viewModel.passwordInput}"
-                android:textColor="#B6B7B7"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirm_password_sign_up"
+                style="@style/textfieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:endIconMode="password_toggle"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_sign_up">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.confirmPasswordInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/confirm_password_sign_up"
-            style="@style/textfieldStyle"
-            android:layout_marginTop="25dp"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_sign_up">
+            <Button
+                android:id="@+id/sign_up_button"
+                style="@style/buttonStyle"
+                android:layout_marginTop="25dp"
+                android:text="@string/sign_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_password_sign_up" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/confirm_password"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:text="@={viewModel.confirmPasswordInput}"
-                android:textColor="#B6B7B7"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/have_account"
+                style="@style/textStyle"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:text="@string/already_have_an_account"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
 
-        <Button
-            android:id="@+id/sign_up_button"
-            style="@style/buttonStyle"
-            android:layout_marginTop="25dp"
-            android:text="@string/sign_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confirm_password_sign_up" />
+            <TextView
+                android:id="@+id/login_text_button"
+                style="@style/textStyle"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/login"
+                android:textColor="#FC6011"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/have_account"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_button"
+                tools:ignore="TouchTargetSizeCheck" />
 
-        <TextView
-            android:id="@+id/have_account"
-            style="@style/textStyle"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:text="@string/already_have_an_account"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/login_text_button"
-            style="@style/textStyle"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/login"
-            android:textColor="#FC6011"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/have_account"
-            app:layout_constraintTop_toBottomOf="@+id/sign_up_button"
-            tools:ignore="TouchTargetSizeCheck" />
+    </androidx.core.widget.NestedScrollView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

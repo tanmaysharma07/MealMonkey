@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.mymealmonkey.view.fragment.profileFragment.ProfileFragmentViewModel" />
@@ -50,24 +51,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/delivery_vector" />
+
         </androidx.cardview.widget.CardView>
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/group_1894"
-            app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintEnd_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="@+id/textView4" />
-
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Edit Profile"
+            android:drawableStart="@drawable/group_1894"
+            android:drawablePadding="10dp"
+            android:text="@string/edit_profile"
             android:textColor="@color/orange"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,25 +69,25 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/hi_there_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Hi There User"
+            android:text="@string/hi_there_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_profile" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/sign_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Sign Out"
+            android:text="@string/sign_out"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/hi_there_user" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameProfile"
@@ -101,18 +95,19 @@
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6">
+            app:layout_constraintTop_toBottomOf="@+id/sign_out">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameProfileTextInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:enabled="false"
                 android:hint="@string/name"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text="@={viewModel.nameProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailProfile"
@@ -123,12 +118,14 @@
             app:layout_constraintTop_toBottomOf="@+id/nameProfile">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailTextInputProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:enabled="false"
                 android:hint="@string/email"
-                android:text="@={viewModel.emailProfileInput}"
                 android:maxLines="1"
                 android:singleLine="true"
+                android:text="@={viewModel.emailProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,17 +140,18 @@
             app:prefixText="+91">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mobileNumberTextInputProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:enabled="false"
                 android:hint="@string/mobile_number"
                 android:inputType="number"
                 android:maxLength="10"
                 android:maxLines="1"
-                android:text="@={viewModel.mobileNumberProfileInput}"
                 android:singleLine="true"
+                android:text="@={viewModel.mobileNumberProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addressProfile"
@@ -164,12 +162,14 @@
             app:layout_constraintTop_toBottomOf="@+id/mobileNumberProfile">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addressTextInputProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:enabled="false"
                 android:hint="@string/address"
                 android:maxLines="1"
-                android:text="@={viewModel.addressProfileInput}"
                 android:singleLine="true"
+                android:text="@={viewModel.addressProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -177,33 +177,40 @@
             android:id="@+id/passwordSignupProfile"
             style="@style/textfieldStyle"
             android:layout_marginTop="15dp"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressProfile">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordSignupTextInputProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:enabled="false"
                 android:hint="@string/password"
+                android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text="@={viewModel.passwordProfileInput}"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confirmPasswordSignupProfile"
             style="@style/textfieldStyle"
             android:layout_marginTop="15dp"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordSignupProfile">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPasswordSignupTextInputProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:enabled="false"
                 android:hint="@string/confirm_password"
+                android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:text="@={viewModel.confirmPasswordProfileInput}"
@@ -214,8 +221,7 @@
             android:id="@+id/saveButtonProfile"
             style="@style/buttonStyle"
             android:layout_marginTop="15dp"
-            android:text="@string/sign_up"
-            android:onClick="@{()-> viewModel.saveProfile()}"
+            android:text="@string/save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordSignupProfile" />
@@ -227,6 +233,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saveButtonProfile" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

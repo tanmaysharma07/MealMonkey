@@ -8,14 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.view.fragment.myOrder.MyOrderFragmentData
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Singleton
 
 @Singleton
 class PaymentDetailsFragmentAdapter(
     val context: PaymentDetailsFragment,
-    private val dataset: List<PaymentDetailsFragmentData>
+    private val userList: ArrayList<PaymentDetailsFragmentData>
 ) : RecyclerView.Adapter<PaymentDetailsFragmentAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -34,10 +32,11 @@ class PaymentDetailsFragmentAdapter(
     }
 
     override fun onBindViewHolder(holder: PaymentDetailsFragmentAdapter.ItemViewHolder, position: Int) {
-        val item = dataset[position]
+        val item = userList[position]
         holder.title.text =(item.titleID)
         holder.image.setImageResource(item.imageId)
+
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount() = userList.size
 }

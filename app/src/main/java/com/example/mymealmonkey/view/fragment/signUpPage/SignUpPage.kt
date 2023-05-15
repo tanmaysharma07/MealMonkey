@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
@@ -29,7 +30,7 @@ class SignUpPage : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //Data Binding
-        binding = FragmentSignUpPageBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up_page, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root

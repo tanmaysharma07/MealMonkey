@@ -17,7 +17,7 @@ class SignUpPageViewModel @Inject constructor(
     val eventListener: EventListener
 ) : ViewModel() {
 
-    //Observable Field to catch Live Data
+    //Observable Field to catch Data
     val emailInput = ObservableField("")
     val nameInput = ObservableField("")
     val mobileNumberInput = ObservableField("")

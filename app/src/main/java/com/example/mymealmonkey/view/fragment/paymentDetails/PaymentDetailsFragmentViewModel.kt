@@ -1,16 +1,18 @@
 package com.example.mymealmonkey.view.fragment.paymentDetails
 
-import android.database.Observable
-import android.util.Log
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mymealmonkey.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
 class PaymentDetailsFragmentViewModel @Inject constructor(
-): ViewModel() {
+    val eventListener: com.example.mymealmonkey.utils.EventListener
+) : ViewModel() {
     val cardNumber = ObservableField("")
     val cardMonth = ObservableField("")
     val cardYear = ObservableField("")
@@ -18,21 +20,30 @@ class PaymentDetailsFragmentViewModel @Inject constructor(
     val cardFirstName = ObservableField("")
     val cardLastName = ObservableField("")
 
+    private val _paymentDetails = MutableLiveData<ArrayList<PaymentDetailsFragmentData>>()
+    val paymentDetails: LiveData<ArrayList<PaymentDetailsFragmentData>> = _paymentDetails
+
     private val calendar: Calendar = Calendar.getInstance()
 
-    fun isCardNumber():Boolean{
-        return(cardNumber.get().toString().length != 16)
+    var adapter: PaymentDetailsFragmentAdapter? = null
+
+    init {
+        if (eventListener.list.size <= 0) {
+            eventListener.list.add(
+                PaymentDetailsFragmentData(
+                    "**** **** **** 2187", R.drawable.baseline_credit_card_svg
+                )
+            )
+        }
+        saveData(eventListener.list)
     }
 
-    fun isCardMonth():Boolean{
-        return((cardMonth.get()?.toInt()?:0) > 12 || (cardMonth.get()?.toInt()?:0)<1)
+    fun addPaymentDetailsUserList(string: String, drawable: Int) {
+        eventListener.list.add(PaymentDetailsFragmentData(string, drawable))
+        saveData(eventListener.list)
     }
 
-    fun isCardYear():Boolean{
-        return ((cardMonth.get()?.toInt()?:0)<calendar.get(Calendar.YEAR))
-    }
-
-    fun isEmpty():Boolean{
-        return (cardSecurityCode.get().toString().isEmpty() || cardFirstName.get().toString().isEmpty() || cardLastName.get().toString().isEmpty())
+    private fun saveData(data: ArrayList<PaymentDetailsFragmentData>) {
+        _paymentDetails.value = data
     }
 }

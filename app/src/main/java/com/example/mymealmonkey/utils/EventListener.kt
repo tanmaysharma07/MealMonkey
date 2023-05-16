@@ -2,6 +2,7 @@ package com.example.mymealmonkey.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mymealmonkey.view.fragment.paymentDetails.PaymentDetailsFragmentData
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -27,15 +28,17 @@ class EventListener @Inject constructor() {
         _selectBottomNavigationItem.postValue(item)
     }
 
-    fun showBottomNavigation(){
+    fun showBottomNavigation() {
         _showBottomNavigationLD.postValue(true)
     }
-    fun hideBottomNavigation(){
+
+    fun hideBottomNavigation() {
         _showBottomNavigationLD.postValue(false)
     }
 
     var checkable = MutableLiveData(true)
     var fabColor = MutableLiveData("")
 
+    var list = ArrayList<PaymentDetailsFragmentData>()
 
 }

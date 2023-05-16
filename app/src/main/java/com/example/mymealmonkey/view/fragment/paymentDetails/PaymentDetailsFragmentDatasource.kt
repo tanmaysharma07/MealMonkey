@@ -1,7 +1,5 @@
 package com.example.mymealmonkey.view.fragment.paymentDetails
 
-import android.util.Log
-import androidx.annotation.DrawableRes
 import com.example.mymealmonkey.R
 
 class PaymentDetailsFragmentDatasource {
@@ -14,7 +12,6 @@ class PaymentDetailsFragmentDatasource {
 
     fun addList(string: String,drawable: Int){
         paymentDetailsList.add(PaymentDetailsFragmentData(string, drawable))
-
     }
 
     fun loadPaymentDetails(): List<PaymentDetailsFragmentData> {

@@ -155,7 +155,7 @@
         android:id="@+id/latestActivityFragment"
         android:name="com.example.mymealmonkey.view.fragment.latestOffers.LatestOffersPageFragment"
         android:label="fragment_latest_activity"
-        tools:layout="@layout/fragment_latest_activity">
+        tools:layout="@layout/fragment_latest_offers">
 
         <action
             android:id="@+id/action_latestActivityFragment_to_profileFragment"

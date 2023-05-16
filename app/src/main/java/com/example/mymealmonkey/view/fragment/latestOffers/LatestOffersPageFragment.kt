@@ -5,12 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mymealmonkey.R
-import com.example.mymealmonkey.databinding.FragmentLatestActivityBinding
+import com.example.mymealmonkey.databinding.FragmentLatestOffersBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -18,12 +14,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class LatestOffersPageFragment : Fragment() {
 
     private val viewModel: LatestOffersViewModel by viewModels()
-    private lateinit var binding: FragmentLatestActivityBinding
+    private lateinit var binding: FragmentLatestOffersBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLatestActivityBinding.inflate(inflater, container, false)
+        binding = FragmentLatestOffersBinding.inflate(inflater, container, false)
         return binding.root
     }
 

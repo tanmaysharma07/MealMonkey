@@ -39,29 +39,50 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/latest_offers_image" />
 
-            <ImageView
-                android:id="@+id/latest_offers_star"
+            <TextView
+                android:id="@+id/latest_offer_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/star_1"
-                android:text="@string/minute_by_tuk_tuk"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="@string/_4_9"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_10ssp"
+                app:drawableStartCompat="@drawable/star_1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/latest_offers_dish"
                 app:layout_constraintTop_toBottomOf="@+id/latest_offers_dish" />
 
             <TextView
                 android:id="@+id/latest_offers_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:text="@string/_124_ratings_caf"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/latest_offers_star"
-                app:layout_constraintTop_toBottomOf="@+id/latest_offers_dish" />
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@+id/latest_offer_star"
+                app:layout_constraintTop_toTopOf="@+id/latest_offer_star" />
+
+            <ImageView
+                android:id="@+id/orange_dot_latest_offer"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:src="@drawable/orange_dot"
+                app:layout_constraintBottom_toBottomOf="@+id/latest_offer_star"
+                app:layout_constraintStart_toEndOf="@+id/latest_offers_rating"
+                app:layout_constraintTop_toTopOf="@+id/latest_offer_star" />
+
+            <TextView
+                android:id="@+id/western_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/western_food"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/latest_offer_star"
+                app:layout_constraintStart_toEndOf="@+id/orange_dot_latest_offer"
+                app:layout_constraintTop_toTopOf="@+id/latest_offer_star" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

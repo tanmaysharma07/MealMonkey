@@ -1,22 +1,18 @@
 package com.example.mymealmonkey.view.fragment.paymentDetails
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.L
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.databinding.FragmentMoreBinding
 import com.example.mymealmonkey.databinding.FragmentPaymentDetailsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
@@ -34,7 +30,8 @@ class PaymentDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //View Binding
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_payment_details, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_payment_details, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -43,20 +40,16 @@ class PaymentDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val userList = ArrayList<PaymentDetailsFragmentData>()
+        var userList = ArrayList<PaymentDetailsFragmentData>()
         val calendar: Calendar = Calendar.getInstance()
-        userList.add(
-            PaymentDetailsFragmentData(
-                "**** **** **** 2187",
-                R.drawable.baseline_credit_card_svg
-            )
-        )
 
-        fun recycler() {
-            binding.paymentdetailsRecyclerView.adapter =
-                PaymentDetailsFragmentAdapter(this, userList)
-            binding.paymentdetailsRecyclerView.hasFixedSize()
+        if (viewModel.adapter == null) {
+            viewModel.adapter =
+                PaymentDetailsFragmentAdapter(paymentDetailUserList = viewModel.paymentDetails.value ?: userList, Context =  this)
         }
+        binding.paymentdetailsRecyclerView.adapter = viewModel.adapter
+        binding.paymentdetailsRecyclerView.hasFixedSize()
+
 
         //Inflate Bottom Sheet on Click of Button
         binding.addCardButtonPaymentDetails.setOnClickListener {
@@ -74,6 +67,7 @@ class PaymentDetailsFragment : Fragment() {
             closeButton.setOnClickListener {
                 dialog.dismiss()
             }
+
             dialog.setCancelable(false)
             dialog.setContentView(view)
             dialog.show()
@@ -86,21 +80,29 @@ class PaymentDetailsFragment : Fragment() {
                 }
                 cardNumber.helperText = null
 
-                if (((cardMonth.editText?.text?.toString()?.toIntOrNull() ?:0) >12 ) || (cardMonth.editText?.text?.toString()?.toIntOrNull()?:0) < 1) {
+                if (((cardMonth.editText?.text?.toString()?.toIntOrNull()
+                        ?: 0) > 12) || (cardMonth.editText?.text?.toString()?.toIntOrNull()
+                        ?: 0) < 1
+                ) {
                     cardMonth.helperText = "Invalid Month"
                     return@setOnClickListener
                 }
 
                 cardMonth.helperText = null
 
-                if ((cardMonth.editText?.text.toString().toIntOrNull()?:0)>calendar.get(Calendar.YEAR)) {
+                if ((cardYear.editText?.text.toString().toIntOrNull()
+                        ?: 0) < calendar.get(Calendar.YEAR)
+                ) {
                     cardYear.helperText = "Invalid Year"
                     return@setOnClickListener
                 }
 
                 cardYear.helperText = null
 
-                if (cardSecurityCode.editText?.text.toString().isEmpty() || cardFirstName.editText?.text.toString().isEmpty() || cardLastName.editText?.text.toString().isEmpty()) {
+                if (cardSecurityCode.editText?.text.toString()
+                        .isEmpty() || cardFirstName.editText?.text.toString()
+                        .isEmpty() || cardLastName.editText?.text.toString().isEmpty()
+                ) {
                     cardSecurityCode.helperText = "Invalid Code"
                     cardFirstName.helperText = "Enter First Name"
                     cardLastName.helperText = "Enter Last Name"
@@ -114,16 +116,19 @@ class PaymentDetailsFragment : Fragment() {
                     cardNumber.editText?.text.toString()
                         .substring((cardNumber.editText?.text?.length ?: 0) - 4)
 
-                userList.add(
-                    PaymentDetailsFragmentData(
-                        resources.getString(R.string.card_star) + " $last4Char",
-                        R.drawable.baseline_credit_card_svg
-                    )
+                viewModel.addPaymentDetailsUserList(
+                    resources.getString(R.string.card_star) + " $last4Char",
+                    R.drawable.baseline_credit_card_svg
                 )
-                recycler()
+                binding.paymentdetailsRecyclerView.adapter?.notifyItemInserted(
+                    viewModel.paymentDetails.value?.size ?: 0
+                )
                 dialog.dismiss()
             }
         }
-        recycler()
+
+        binding.paymentDetailsBackArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }

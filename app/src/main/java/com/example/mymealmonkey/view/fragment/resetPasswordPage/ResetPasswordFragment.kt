@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
@@ -24,7 +25,9 @@ class ResetPasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_reset_password,container,false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -36,6 +39,12 @@ class ResetPasswordFragment : Fragment() {
 
     private fun clickListeners() {
         binding.sendButton.setOnClickListener {
+            //check if email is valid or not
+            if (viewModel.isEmail()) {
+                binding.sendEmail.helperText = "Enter Valid Email"
+                return@setOnClickListener
+            }
+            binding.sendEmail.helperText = null
             // Navigate to OTP Page
             findNavController().navigate(R.id.action_resetPasswordFragment_to_otpFragment)
         }

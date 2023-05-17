@@ -5,24 +5,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.databinding.FragmentNewPasswordBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewPasswordFragment : Fragment() {
 
     private val viewModel: NewPasswordPageViewModel by viewModels()
+    lateinit var binding:FragmentNewPasswordBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_password, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_new_password,container,false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.signUpButton.setOnClickListener {
+
+            if (viewModel.newPasswordInput.get() != viewModel.confirmPasswordInput.get()){
+                binding.newPasswordTextField.helperText = "Enter Valid Password"
+                binding.confirmPasswordTextField.helperText = "Enter Valid Password"
+                return@setOnClickListener
+            }
+            binding.newPasswordTextField.helperText =null
+            binding.confirmPasswordTextField.helperText = null
+            viewModel.saveNewPassword()
+            findNavController().navigate(R.id.homePageFragment)
+        }
     }
 }

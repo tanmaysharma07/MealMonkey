@@ -78,4 +78,7 @@ dependencies {
     //Scalable DP and SP
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    // OTP PinView
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 }

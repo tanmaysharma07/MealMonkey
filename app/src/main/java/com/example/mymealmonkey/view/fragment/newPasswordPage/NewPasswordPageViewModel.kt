@@ -12,8 +12,8 @@ import javax.inject.Inject
 @HiltViewModel
 class NewPasswordPageViewModel @Inject constructor(val eventListener: EventListener,val appPreferences: AppPreferences): ViewModel() {
 
-    private val newPasswordInput = ObservableField("")
-    private val confirmPasswordInput = ObservableField("")
+    val newPasswordInput = ObservableField("")
+    val confirmPasswordInput = ObservableField("")
 
     fun saveNewPassword(){
 

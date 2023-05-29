@@ -1,8 +1,10 @@
 package com.example.mymealmonkey.view.activity
 
+
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -14,6 +16,8 @@ import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.ActivityMainBinding
 import com.example.mymealmonkey.model.AppViewModel
 import com.example.mymealmonkey.utils.EventListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,6 +58,17 @@ class MainActivity : AppCompatActivity() {
         // Setting Navigation Controller for Navigation through Navigation Graph
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task: Task<String?> ->
+            if (!task.isSuccessful) {
+                Log.d("TOKEN", "Token not received")
+                return@addOnCompleteListener
+            }
+            val token: String? = task.result
+            if (token != null) {
+                Log.d("TOKEN", token)
+            }
+        }
+
         // ClickListeners
         clickListner()
 
@@ -92,39 +107,51 @@ class MainActivity : AppCompatActivity() {
                 R.id.homePageFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.HOME)
                 }
+
                 R.id.latestActivityFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.OFFERS)
                 }
+
                 R.id.menuFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MENU)
                 }
+
                 R.id.profileFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.PROFILE)
                 }
+
                 R.id.moreFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+
                 R.id.dessertFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MENU)
                 }
+
                 R.id.orderFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MENU)
                 }
+
                 R.id.myOrderFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+
                 R.id.paymentDetailsFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+
                 R.id.notificationsFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+
                 R.id.inboxFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+
                 R.id.aboutUsFragment -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.MORE)
                 }
+
                 else -> {
                     viewModel.eventListener.selectBottomNavigationItem(EventListener.BottomNavigation.OTHER)
                 }
@@ -154,19 +181,24 @@ class MainActivity : AppCompatActivity() {
                     // Update Checked to 2nd item which is disabled to have fb as checked
                     binding.bottomNavigationView.menu.getItem(2).isChecked = true
                 }
+
                 EventListener.BottomNavigation.MENU -> {
                     // Make Bottom Navigation Visible
                     binding.coordinatorLayout.visibility = View.VISIBLE
                 }
+
                 EventListener.BottomNavigation.PROFILE -> {
                     binding.coordinatorLayout.visibility = View.VISIBLE
                 }
+
                 EventListener.BottomNavigation.MORE -> {
                     binding.coordinatorLayout.visibility = View.VISIBLE
                 }
+
                 EventListener.BottomNavigation.OFFERS -> {
                     binding.coordinatorLayout.visibility = View.VISIBLE
                 }
+
                 EventListener.BottomNavigation.OTHER -> {
                     binding.coordinatorLayout.visibility = View.GONE
                 }

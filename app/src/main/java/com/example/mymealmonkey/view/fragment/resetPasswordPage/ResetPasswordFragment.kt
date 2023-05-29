@@ -25,7 +25,8 @@ class ResetPasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_reset_password,container,false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_reset_password, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -45,6 +46,10 @@ class ResetPasswordFragment : Fragment() {
                 return@setOnClickListener
             }
             binding.sendEmail.helperText = null
+
+            //Update Reset Email
+            viewModel.eventListener.resetEmail = viewModel.emailInput.get().toString()
+
             // Navigate to OTP Page
             findNavController().navigate(R.id.action_resetPasswordFragment_to_otpFragment)
         }

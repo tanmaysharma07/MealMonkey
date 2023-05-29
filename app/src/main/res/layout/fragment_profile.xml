@@ -92,7 +92,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameProfile"
             style="@style/textfieldStyle"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sign_out">
@@ -112,7 +114,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailProfile"
             style="@style/textfieldStyle"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameProfile">
@@ -132,8 +136,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mobileNumberProfile"
             style="@style/textfieldStyle"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:singleLine="true"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailProfile"
@@ -156,7 +162,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addressProfile"
             style="@style/textfieldStyle"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mobileNumberProfile">
@@ -176,8 +184,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordSignupProfile"
             style="@style/textfieldStyle"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:endIconMode="password_toggle"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressProfile">
@@ -198,8 +208,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confirmPasswordSignupProfile"
             style="@style/textfieldStyle"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:endIconMode="password_toggle"
+            app:helperTextEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordSignupProfile">
@@ -221,17 +233,12 @@
             android:id="@+id/saveButtonProfile"
             style="@style/buttonStyle"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/_100sdp"
             android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordSignupProfile" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/saveButtonProfile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

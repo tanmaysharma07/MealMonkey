@@ -19,7 +19,7 @@ class CheckoutAdapter(
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.titleCheckoutRV)
         val image: ImageView = view.findViewById(R.id.imageCheckoutRV)
-        val button: Button = view.findViewById(R.id.checkoutRadioButtonRV)
+        val button: ImageView = view.findViewById(R.id.checkoutRadioButtonRV)
     }
 
     override fun onCreateViewHolder(
@@ -27,7 +27,8 @@ class CheckoutAdapter(
         viewType: Int
     ): ItemViewHolder {
         val adapterLayout =
-            LayoutInflater.from(parent.context).inflate(R.layout.checkout_fragment_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.checkout_fragment_item, parent, false)
         return ItemViewHolder(adapterLayout)
     }
 
@@ -36,18 +37,17 @@ class CheckoutAdapter(
         holder.title.text = context.resources.getString(item.titleId)
         holder.image.setImageResource(item.imageId)
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             holder.button.isPressed
         }
     }
 
     override fun getItemCount() = dataset.size
 
-     fun onItemClick(holder: RecyclerView.ViewHolder, position: Int) {
+    fun onItemClick(holder: RecyclerView.ViewHolder, position: Int) {
         // Set the current item as the selected item.
         selectedPosition = position
         notifyDataSetChanged()
     }
-
 }
 

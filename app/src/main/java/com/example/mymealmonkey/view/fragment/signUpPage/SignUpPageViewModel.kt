@@ -1,10 +1,8 @@
 package com.example.mymealmonkey.view.fragment.signUpPage
 
-import android.util.Log
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
@@ -28,6 +26,11 @@ class SignUpPageViewModel @Inject constructor(
     // Function to Store User Data
     fun signupSession(user: User) {
         return appPreferences.signUp(user)
+    }
+
+    // Function to Store User Data
+    suspend fun setProfileData(profileData: ProfileData) {
+        return appPreferences.setProfileData(profileData)
     }
 
     //Check if Name is Valid

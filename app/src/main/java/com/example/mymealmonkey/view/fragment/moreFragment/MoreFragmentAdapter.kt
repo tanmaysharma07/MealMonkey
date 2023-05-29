@@ -5,18 +5,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
 
 class MoreFragmentAdapter(
     val context: MoreFragment,
-    private val dataset: List<MoreFragmentData>
+    private val dataset: ArrayList<MoreFragmentData>
 ) : RecyclerView.Adapter<MoreFragmentAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    private lateinit var adapterClickListener: ItemClickListener
+
+    interface ItemClickListener {
+        fun itemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: ItemClickListener) {
+        adapterClickListener = clickListener
+    }
+
+    class ItemViewHolder(val view: View, clickListener: ItemClickListener) :
+        RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.more_item_image)
         val title: TextView = view.findViewById(R.id.more_item_title)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.itemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(
@@ -25,16 +41,13 @@ class MoreFragmentAdapter(
     ): MoreFragmentAdapter.ItemViewHolder {
         val adapterLayout =
             LayoutInflater.from(parent.context).inflate(R.layout.more_fragment_item, parent, false)
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(adapterLayout, adapterClickListener)
     }
 
     override fun onBindViewHolder(holder: MoreFragmentAdapter.ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.title.text = context.resources.getString(item.titleID)
+        holder.title.text = (item.titleID)
         holder.image.setImageResource(item.ImageID)
-        holder.view.setOnClickListener {
-            it.findNavController().navigate(item.navigateID)
-        }
     }
 
     override fun getItemCount() = dataset.size

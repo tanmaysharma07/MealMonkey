@@ -5,13 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.data.CardDetailsData
+import com.example.mymealmonkey.utils.AppPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
 class PaymentDetailsFragmentViewModel @Inject constructor(
-    val eventListener: com.example.mymealmonkey.utils.EventListener
+    val eventListener: com.example.mymealmonkey.utils.EventListener,
+    val appPreferences: AppPreferences
 ) : ViewModel() {
     val cardNumber = ObservableField("")
     val cardMonth = ObservableField("")
@@ -23,9 +26,7 @@ class PaymentDetailsFragmentViewModel @Inject constructor(
     private val _paymentDetails = MutableLiveData<ArrayList<PaymentDetailsFragmentData>>()
     val paymentDetails: LiveData<ArrayList<PaymentDetailsFragmentData>> = _paymentDetails
 
-    private val calendar: Calendar = Calendar.getInstance()
-
-    var adapter: PaymentDetailsFragmentAdapter? = null
+    var paymentDetailsFragmentAdapter: PaymentDetailsFragmentAdapter? = null
 
     init {
         if (eventListener.list.size <= 0) {
@@ -36,6 +37,14 @@ class PaymentDetailsFragmentViewModel @Inject constructor(
             )
         }
         saveData(eventListener.list)
+    }
+
+    suspend fun setCardDetails(cardDetailsData: CardDetailsData) {
+        return appPreferences.setCardDetailsData(cardDetailsData)
+    }
+
+    suspend fun getCardNumber(): List<String>? {
+        return appPreferences.getCardNumber()
     }
 
     fun addPaymentDetailsUserList(string: String, drawable: Int) {

@@ -1,5 +1,6 @@
 package com.example.mymealmonkey.view.fragment.orderFragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,13 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.databinding.FragmentDessertBinding
 import com.example.mymealmonkey.databinding.FragmentOrderBinding
-import com.google.android.material.textfield.TextInputLayout
+import com.example.mymealmonkey.view.fragment.homepage.data.CountryFoodHomeData
+import com.google.gson.Gson
 
 class OrderFragment : Fragment() {
 
@@ -34,8 +34,12 @@ class OrderFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Set the data when started
+        setInitialData()
 
         // Items List in Scroll Down List
         val items = listOf("Size1", "Size2", "Size3", "Size4")
@@ -44,10 +48,20 @@ class OrderFragment : Fragment() {
         val adapter = ArrayAdapter(requireContext(), R.layout.size_portion_list_item, items)
         (binding.sizePotionTextfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
         (binding.selectIngredientsTextfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+    }
 
-        // When User ChangeTextInput Directly
-        binding.portionCountTextInput.doAfterTextChanged {
-            viewModel.total()
+    // Set Initial Data if required
+    private fun setInitialData() {
+        val jsonCountryFoodHome = arguments?.getString("countryFood")
+        if (jsonCountryFoodHome != null) {
+            val countryFoodHome = Gson().fromJson(
+                jsonCountryFoodHome,
+                CountryFoodHomeData::class.java
+            )
+            countryFoodHome.let {
+                binding.tandooriPizza.text = it?.titleResourceId
+                binding.orderImage.setImageResource(it?.imageResourcesId ?: 0)
+            }
         }
     }
 }

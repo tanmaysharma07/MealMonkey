@@ -1,19 +1,20 @@
 package com.example.mymealmonkey.view.fragment.signUpPage
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
 import com.example.mymealmonkey.databinding.FragmentSignUpPageBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -30,7 +31,8 @@ class SignUpPage : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //Data Binding
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up_page, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up_page, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -101,8 +103,22 @@ class SignUpPage : Fragment() {
             )
             viewModel.signupSession(user)
 
+            // Save User Profile Data
+            val profileData = ProfileData(
+                null,
+                viewModel.nameInput.get(),
+                viewModel.emailInput.get(),
+                viewModel.mobileNumberInput.get(),
+                viewModel.addressInput.get(),
+                viewModel.passwordInput.get()
+            )
+            lifecycleScope.launch {
+                viewModel.setProfileData(profileData)
+            }
+
             // Navigate to Login Page
             findNavController().navigate(R.id.action_signUpPage_to_loginPage)
         }
     }
+
 }

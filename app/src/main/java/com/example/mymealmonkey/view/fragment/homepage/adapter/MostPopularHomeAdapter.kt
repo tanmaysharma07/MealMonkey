@@ -12,19 +12,36 @@ import com.example.mymealmonkey.view.fragment.homepage.data.MostPopularHomeData
 class MostPopularHomeAdapter(
     val context: com.example.mymealmonkey.view.fragment.homepage.HomePageFragment,
     private val dataset: List<MostPopularHomeData>
-) :
-    RecyclerView.Adapter<MostPopularHomeAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<MostPopularHomeAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    private lateinit var adapterClickListener: ItemClickListener
+
+    interface ItemClickListener {
+        fun itemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: ItemClickListener) {
+        adapterClickListener = clickListener
+    }
+
+    class ItemViewHolder(val view: View, clickListener: ItemClickListener) :
+        RecyclerView.ViewHolder(view) {
         val dish: TextView = view.findViewById(R.id.most_popular_home_dish)
         val type: TextView = view.findViewById(R.id.most_popular_home_type)
         val imageView: ImageView = view.findViewById(R.id.most_popular_home_image)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.itemClick(adapterPosition)
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.most_popular_home_item, parent, false)
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(adapterLayout, adapterClickListener)
     }
 
     override fun getItemCount(): Int = dataset.size

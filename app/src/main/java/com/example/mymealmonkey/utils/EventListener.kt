@@ -41,4 +41,5 @@ class EventListener @Inject constructor() {
 
     var list = ArrayList<PaymentDetailsFragmentData>()
 
+    lateinit var resetEmail: String
 }

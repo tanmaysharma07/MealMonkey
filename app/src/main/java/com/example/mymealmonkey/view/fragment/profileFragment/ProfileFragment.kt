@@ -56,6 +56,45 @@ class ProfileFragment : Fragment() {
 
         // On Click lock and saves user profile data
         binding.saveButtonProfile.setOnClickListener {
+
+            //Check if Name is Valid
+            if (viewModel.isName()) {
+                binding.nameProfile.helperText = "Enter Name"
+                return@setOnClickListener
+            }
+            binding.nameProfile.helperText = null
+
+            //check if email is valid or not
+            if (viewModel.isEmail()) {
+                binding.emailProfile.helperText = "Enter Valid Email"
+                return@setOnClickListener
+            }
+            binding.emailProfile.helperText = null
+
+            //Check if Mobile Number is Valid
+            if (viewModel.isMobileNumber()) {
+                binding.mobileNumberProfile.helperText = "Enter Valid Mobile Number"
+                return@setOnClickListener
+            }
+            binding.mobileNumberProfile.helperText = null
+
+            //Check if Address is Valid
+            if (viewModel.isAddress()) {
+                binding.addressProfile.helperText = "Enter Address"
+                return@setOnClickListener
+            }
+            binding.addressProfile.helperText = null
+
+            //Check validity of Password
+            if (viewModel.isPassword()) {
+                binding.passwordSignupProfile.helperText = "Enter Valid Password"
+                binding.confirmPasswordSignupProfile.helperText = "Enter Valid Password"
+                return@setOnClickListener
+            }
+            binding.passwordSignupProfile.helperText = null
+            binding.confirmPasswordSignupProfile.helperText = null
+
+
             binding.nameProfileTextInput.isEnabled = false
             binding.emailTextInputProfile.isEnabled = false
             binding.addressTextInputProfile.isEnabled = false

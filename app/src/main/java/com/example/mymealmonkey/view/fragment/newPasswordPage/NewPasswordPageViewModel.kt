@@ -1,29 +1,40 @@
 package com.example.mymealmonkey.view.fragment.newPasswordPage
 
-import android.database.Observable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
-import com.example.mymealmonkey.data.User
+import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
-class NewPasswordPageViewModel @Inject constructor(val eventListener: EventListener,val appPreferences: AppPreferences): ViewModel() {
+class NewPasswordPageViewModel @Inject constructor(
+    val eventListener: EventListener,
+    val appPreferences: AppPreferences
+) : ViewModel() {
 
     val newPasswordInput = ObservableField("")
     val confirmPasswordInput = ObservableField("")
 
-    fun saveNewPassword(){
+    private suspend fun getProfileData(email: String): ProfileData? {
+        return appPreferences.getProfileData(email)
+    }
 
-        val user = appPreferences.getUser()
-        if ((newPasswordInput.get()?.length ?: 0) > 7 && newPasswordInput.get().equals(confirmPasswordInput.get()) ){
-            val users = User(user?.username,user?.email,user?.mobileNo,user?.address,newPasswordInput.get())
-            appPreferences.signUp(users)
+    suspend fun saveNewPassword() {
+
+        val profileData = runBlocking { getProfileData(eventListener.resetEmail) }
+        if ((newPasswordInput.get()?.length ?: 0) > 7 && newPasswordInput.get()
+                .equals(confirmPasswordInput.get())
+        ) {
+            appPreferences.updateProfileData(
+                profileData?.name ?: "",
+                profileData?.email ?: "",
+                profileData?.mobileNo ?: "",
+                profileData?.address ?: "",
+                newPasswordInput.get() ?: ""
+            )
         }
-
-
-
     }
 }

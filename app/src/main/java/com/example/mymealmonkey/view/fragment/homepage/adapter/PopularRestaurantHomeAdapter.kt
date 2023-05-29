@@ -12,20 +12,37 @@ import com.example.mymealmonkey.view.fragment.homepage.data.PopularRestaurantHom
 
 class PopularRestaurantHomeAdapter(
     private val context: HomePageFragment,
-    private val dataset: List<PopularRestaurantHomeData>
+    private val dataset: ArrayList<PopularRestaurantHomeData>
 ) : RecyclerView.Adapter<PopularRestaurantHomeAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    private lateinit var adapterClickListener: ItemClickListener
+
+    interface ItemClickListener {
+        fun itemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: ItemClickListener) {
+        adapterClickListener = clickListener
+    }
+
+    class ItemViewHolder(private val view: View, clickListener: ItemClickListener) :
+        RecyclerView.ViewHolder(view) {
         val dish: TextView = view.findViewById(R.id.popular_restaurant_dish)
         val rating: TextView = view.findViewById(R.id.popular_restaurant_rating)
         val imageView: ImageView = view.findViewById(R.id.popular_restaurant_image)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.itemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.popuar_restaurant_home_item, parent, false)
 
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(adapterLayout, adapterClickListener)
     }
 
     override fun getItemCount(): Int = dataset.size
@@ -33,7 +50,8 @@ class PopularRestaurantHomeAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.imageView.setImageResource(item.imageResourceId)
-        holder.dish.text =  context.resources.getString(item.nameResourceId)
-        holder.rating.text =  context.resources.getString(item.ratingResourceId)
+        holder.dish.text = context.resources.getString(item.nameResourceId)
+        holder.rating.text = context.resources.getString(item.ratingResourceId)
+
     }
 }

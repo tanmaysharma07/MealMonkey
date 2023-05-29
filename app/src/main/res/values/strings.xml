@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Meal Monkey</string>
+    <string name="app_name">Meal Monkey</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="please_enter_your_email_to_receive_a_link_to_create_a_new_password_via_email">Please enter your email to receive a link to create a new password via email</string>
@@ -104,8 +104,16 @@
     <string name="western_food">Western Food</string>
     <string name="no_03_4th_lane_new_york">No 03, 4th Lane, New York</string>
     <string name="veg_burger">Veg Burger</string>
+    <string name="veg_pizza">Veg Pizza</string>
+    <string name="cheese_burger">Cheese Burger</string>
+    <string name="fries">Veg Fries</string>
+    <string name="coffee">Coffee</string>
     <string name="x">x</string>
     <string name="_16">$16</string>
+    <string name="_14">$14</string>
+    <string name="_17">$17</string>
+    <string name="_15">$15</string>
+    <string name="_6">$6</string>
     <string name="delivery_instrusctions">Delivery Instrusctions</string>
     <string name="add_notes">Add Notes</string>
     <string name="sub_total">Sub Total</string>
@@ -145,5 +153,10 @@
     <string name="customize_your_payment_method">Customize your payment method</string>
     <string name="delete_card">Delete Card</string>
     <string name="__">****</string>
+    <string name="mulberry_pizza_by_josh">Mulberry Pizza by Josh</string>
+    <string name="pizza_rush_hour">Pizza Rush Hour</string>
+    <string name="barita">Barita</string>
+    <string name="caf_de_noires">Café de Noires</string>
+    <string name="cafe_beans">Cafe Beans</string>
 
 </resources>

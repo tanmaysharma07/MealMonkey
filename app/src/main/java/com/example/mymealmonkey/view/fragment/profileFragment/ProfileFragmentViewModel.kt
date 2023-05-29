@@ -1,6 +1,5 @@
 package com.example.mymealmonkey.view.fragment.profileFragment
 
-import android.database.Observable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.example.mymealmonkey.data.User
@@ -41,4 +40,34 @@ class ProfileFragmentViewModel @Inject constructor(
         )
         appPreferences.signUp(users)
     }
+
+    //Check if Name is Valid
+    fun isName(): Boolean {
+        return ((nameProfileInput.get()?.trim()?.isEmpty() ?: true))
+    }
+
+    //Check if Email is Valid
+    fun isEmail(): Boolean {
+        return (!(android.util.Patterns.EMAIL_ADDRESS.matcher(emailProfileInput.get() ?: "")
+            .matches()))
+    }
+
+    //Check if Address is Valid
+    fun isAddress(): Boolean {
+        return (addressProfileInput.get()?.trim()?.isEmpty() ?: true)
+    }
+
+    //Check if Mobile number is Valid
+    fun isMobileNumber(): Boolean {
+        return ((mobileNumberProfileInput.get()?.trim()?.isEmpty()
+            ?: true) || ((mobileNumberProfileInput.get()?.length ?: 0) > 10))
+    }
+
+    //Check if Password is valid
+    fun isPassword(): Boolean {
+        return ((((passwordProfileInput.get()?.length
+            ?: 0) < 7 || (passwordProfileInput.get() != confirmPasswordProfileInput.get()) || (confirmPasswordProfileInput.get()?.length
+            ?: 0) < 7)))
+    }
+
 }

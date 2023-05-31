@@ -59,36 +59,36 @@ class ProfileFragment : Fragment() {
 
             //Check if Name is Valid
             if (viewModel.isName()) {
-                binding.nameProfile.helperText = "Enter Name"
+                binding.nameProfile.helperText = getString(R.string.enter_name)
                 return@setOnClickListener
             }
             binding.nameProfile.helperText = null
 
             //check if email is valid or not
             if (viewModel.isEmail()) {
-                binding.emailProfile.helperText = "Enter Valid Email"
+                binding.emailProfile.helperText = getString(R.string.enter_valid_email)
                 return@setOnClickListener
             }
             binding.emailProfile.helperText = null
 
             //Check if Mobile Number is Valid
             if (viewModel.isMobileNumber()) {
-                binding.mobileNumberProfile.helperText = "Enter Valid Mobile Number"
+                binding.mobileNumberProfile.helperText = getString(R.string.enter_valid_mobile_number)
                 return@setOnClickListener
             }
             binding.mobileNumberProfile.helperText = null
 
             //Check if Address is Valid
             if (viewModel.isAddress()) {
-                binding.addressProfile.helperText = "Enter Address"
+                binding.addressProfile.helperText = getString(R.string.enter_address)
                 return@setOnClickListener
             }
             binding.addressProfile.helperText = null
 
             //Check validity of Password
             if (viewModel.isPassword()) {
-                binding.passwordSignupProfile.helperText = "Enter Valid Password"
-                binding.confirmPasswordSignupProfile.helperText = "Enter Valid Password"
+                binding.passwordSignupProfile.helperText = getString(R.string.enter_valid_password)
+                binding.confirmPasswordSignupProfile.helperText = getString(R.string.enter_valid_password)
                 return@setOnClickListener
             }
             binding.passwordSignupProfile.helperText = null

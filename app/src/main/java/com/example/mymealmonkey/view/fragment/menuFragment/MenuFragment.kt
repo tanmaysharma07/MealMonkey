@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -45,20 +44,28 @@ class MenuFragment : Fragment() {
      */
     private fun clickListeners() {
         binding.foodMenu.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(getString(R.string.pagetitle), "Food")
             //Navigate to Dessert Page in Menu
-            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
         binding.beveragesMenu.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(getString(R.string.pagetitle), "Beverages")
             //Navigate to Dessert Page in Menu
-            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
         binding.dessertsMenu.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(getString(R.string.pagetitle), "Desserts")
             //Navigate to Dessert Page in Menu
-            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
         binding.promotionsMenu.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(getString(R.string.pagetitle), "Promotions")
             //Navigate to Dessert Page in Menu
-            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
     }
 }

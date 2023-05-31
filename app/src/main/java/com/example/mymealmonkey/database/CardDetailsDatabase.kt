@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.mymealmonkey.R
 import com.example.mymealmonkey.data.CardDetailsData
 
 
@@ -34,7 +35,7 @@ abstract class CardDetailsDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CardDetailsDatabase::class.java,
-                    "card_details_database"
+                    context.getString(R.string.card_details_database)
                 ).build()
                 INSTANCE = instance
                 return instance

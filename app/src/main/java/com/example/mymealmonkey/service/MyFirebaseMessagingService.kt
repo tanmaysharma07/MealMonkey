@@ -17,9 +17,13 @@ import com.google.firebase.messaging.RemoteMessage
 
 open class MyFirebaseMessagingService : FirebaseMessagingService() {
 
+    companion object{
+        const val TOKEN = "TOKEN"
+    }
+
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.d("HelloHi", "Refreshed token: $token")
+        Log.d(TOKEN, "Refreshed token: $token")
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {

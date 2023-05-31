@@ -158,5 +158,29 @@
     <string name="barita">Barita</string>
     <string name="caf_de_noires">Café de Noires</string>
     <string name="cafe_beans">Cafe Beans</string>
+    <string name="countryfood">countryFood</string>
+    <string name="addcarddetailsdata">AddCardDetailsData</string>
+    <string name="enter_valid_email">Enter Valid Email</string>
+    <string name="enter_valid_password">Enter Valid Password</string>
+    <string name="error_occurred_during_google_signin">Error Occurred During Google SignIn</string>
+    <string name="card_details_database">card_details_database</string>
+    <string name="profile_database">profile_database</string>
+    <string name="token_not_received">Token not received</string>
+    <string name="invalid_card_number">Invalid Card Number</string>
+    <string name="invalid_month">Invalid Month</string>
+    <string name="invalid_year">Invalid Year</string>
+    <string name="invalid_code">Invalid Code</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="addcardbottomsheetfragment">AddCardBottomSheetFragment</string>
+    <string name="size1">Size1</string>
+    <string name="size2">Size2</string>
+    <string name="size3">Size3</string>
+    <string name="size4">Size4</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_valid_mobile_number">Enter Valid Mobile Number</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="orderdetails">OrderDetails</string>
+    <string name="pagetitle">PageTitle</string>
 
 </resources>

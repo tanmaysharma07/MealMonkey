@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
@@ -24,9 +25,22 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val notificationArray = ArrayList<NotificationsData>()
+        notificationArray.addAll(
+            arrayOf(
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now),
+                NotificationsData(R.string.your_orders_has_been_picked_up, R.string.now)
+            )
+        )
+
         //Initialized RecyclerView
-        val notificationsDataset = NotificationsDatasource().loadNotifications()
-        binding.notificationsRecyclerView.adapter = NotificationsAdapter(this, notificationsDataset)
+        binding.notificationsRecyclerView.adapter = NotificationsAdapter(notificationArray)
         binding.notificationsRecyclerView.hasFixedSize()
     }
 }

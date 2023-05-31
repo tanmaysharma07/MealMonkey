@@ -9,27 +9,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.utils.AppPreferences
+import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.example.mymealmonkey.utils.BaseSetOnItemClickListener
 import com.example.mymealmonkey.utils.EventListener
 import javax.inject.Inject
 
 class PaymentDetailsFragmentAdapter @Inject constructor(
     val eventListener: EventListener? = null,
     val appPreferences: AppPreferences? = null,
-    private var paymentDetailUserList: ArrayList<PaymentDetailsFragmentData>,
-    var Context: PaymentDetailsFragment
-) : RecyclerView.Adapter<PaymentDetailsFragmentAdapter.ItemViewHolder>() {
+    private var paymentDetailUserList: ArrayList<PaymentDetailsFragmentData>
+) : RecyclerView.Adapter<PaymentDetailsFragmentAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
 
-    private lateinit var adapterClickListener: ItemClickListener
+    override lateinit var adapterClickListener: BaseItemClickListener
 
-    interface ItemClickListener {
-        fun itemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(clickListener: ItemClickListener) {
+    override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener
     }
 
-    class ItemViewHolder(val view: View, clickListener: ItemClickListener) :
+    class ItemViewHolder(val view: View, clickListener: BaseItemClickListener) :
         RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.titlePaymentDetailsRV)
         val image: ImageView = view.findViewById(R.id.imagePaymentDetailsRV)
@@ -57,7 +54,7 @@ class PaymentDetailsFragmentAdapter @Inject constructor(
         position: Int
     ) {
         val item = paymentDetailUserList[position]
-        holder.title.text = (item.titleID)
+        holder.title.setText(item.titleID)
         holder.image.setImageResource(item.imageId)
     }
 

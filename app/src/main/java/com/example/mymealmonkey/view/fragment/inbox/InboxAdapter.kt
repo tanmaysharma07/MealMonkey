@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
 
 class InboxAdapter(
-    val context: InboxFragment,
     val dataset: List<InboxData>
 ) : RecyclerView.Adapter<InboxAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -28,9 +27,9 @@ class InboxAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.title.text = context.resources.getString(item.titleId)
-        holder.titleInfo.text = context.resources.getString(item.titleInfoId)
-        holder.date.text = context.resources.getString(item.dateId)
+        holder.title.setText(item.titleId)
+        holder.titleInfo.setText(item.titleInfoId)
+        holder.date.setText(item.dateId)
     }
 
     override fun getItemCount() = dataset.size

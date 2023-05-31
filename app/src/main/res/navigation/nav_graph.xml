@@ -39,7 +39,9 @@
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit" />
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpTo="@id/loginPage"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_loginPage_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment"
@@ -68,14 +70,9 @@
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit" />
-        <action
-            android:id="@+id/action_signUpPage_to_loginPage2"
-            app:destination="@id/loginPage"
-            app:enterAnim="@anim/enter"
-            app:exitAnim="@anim/exit"
-            app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit" />
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpTo="@id/signUpPage"
+            app:popUpToInclusive="true" />
 
     </fragment>
 

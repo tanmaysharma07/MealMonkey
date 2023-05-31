@@ -32,6 +32,11 @@ class MainActivity : AppCompatActivity() {
     // Navigation Controller
     private lateinit var navController: NavController
 
+    companion object{
+        const val TOKEN = "TOKEN"
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // Setting Theme After Splash Screen
@@ -60,12 +65,12 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task: Task<String?> ->
             if (!task.isSuccessful) {
-                Log.d("TOKEN", "Token not received")
+                Log.d(TOKEN, getString(R.string.token_not_received))
                 return@addOnCompleteListener
             }
             val token: String? = task.result
             if (token != null) {
-                Log.d("TOKEN", token)
+                Log.d(TOKEN, token)
             }
         }
 
@@ -89,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Listens to Users Clicks
      */
-    fun clickListner() {
+    private fun clickListner() {
         binding.fabButton.setOnClickListener {
 
             navController.navigate(R.id.homePageFragment)
@@ -99,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Listens the Actions
      */
-    fun observers() {
+    private fun observers() {
         // Observe the Destination and Apply Settings Accordingly to the Fragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
 

@@ -58,36 +58,36 @@ class SignUpPage : Fragment() {
 
             //Check if Name is Valid
             if (viewModel.isName()) {
-                binding.nameTextField.helperText = "Enter Name"
+                binding.nameTextField.helperText = getString(R.string.enter_name)
                 return@setOnClickListener
             }
             binding.nameTextField.helperText = null
 
             //check if email is valid or not
             if (viewModel.isEmail()) {
-                binding.emailTextField.helperText = "Enter Valid Email"
+                binding.emailTextField.helperText = getString(R.string.enter_valid_email)
                 return@setOnClickListener
             }
             binding.emailTextField.helperText = null
 
             //Check if Mobile Number is Valid
             if (viewModel.isMobileNumber()) {
-                binding.mobileNoTextField.helperText = "Enter Valid Mobile Number"
+                binding.mobileNoTextField.helperText = getString(R.string.enter_valid_mobile_number)
                 return@setOnClickListener
             }
             binding.mobileNoTextField.helperText = null
 
             //Check if Address is Valid
             if (viewModel.isAddress()) {
-                binding.addressTextField.helperText = "Enter Address"
+                binding.addressTextField.helperText = getString(R.string.enter_address)
                 return@setOnClickListener
             }
             binding.addressTextField.helperText = null
 
             //Check validity of Password
             if (viewModel.isPassword()) {
-                binding.passwordSignUp.helperText = "Enter Valid Password"
-                binding.confirmPasswordSignUp.helperText = "Enter Valid Password"
+                binding.passwordSignUp.helperText = getString(R.string.enter_valid_password)
+                binding.confirmPasswordSignUp.helperText = getString(R.string.enter_valid_password)
                 return@setOnClickListener
             }
             binding.passwordSignUp.helperText = null
@@ -112,6 +112,7 @@ class SignUpPage : Fragment() {
                 viewModel.addressInput.get(),
                 viewModel.passwordInput.get()
             )
+
             lifecycleScope.launch {
                 viewModel.setProfileData(profileData)
             }

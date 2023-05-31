@@ -7,25 +7,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.view.fragment.homepage.HomePageFragment
+import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.example.mymealmonkey.utils.BaseSetOnItemClickListener
 import com.example.mymealmonkey.view.fragment.homepage.data.RecentItemsHomeData
 
 class RecentItemsHomeAdapter(
-    val context: HomePageFragment,
     val dataset: ArrayList<RecentItemsHomeData>
-) : RecyclerView.Adapter<RecentItemsHomeAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<RecentItemsHomeAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
 
-    private lateinit var adapterClickListener: ItemClickListener
+    override lateinit var adapterClickListener: BaseItemClickListener
 
-    interface ItemClickListener {
-        fun itemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(clickListener: ItemClickListener) {
+    override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener
     }
 
-    class ItemViewHolder(val view: View, clickListener: ItemClickListener) :
+    class ItemViewHolder(val view: View, clickListener: BaseItemClickListener) :
         RecyclerView.ViewHolder(view) {
         val dish: TextView = view.findViewById(R.id.recent_item_home_dish)
         val type: TextView = view.findViewById(R.id.recent_item_home_type)
@@ -48,8 +44,8 @@ class RecentItemsHomeAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.dish.text = context.resources.getString(item.nameResourceId)
-        holder.type.text = context.resources.getString(item.typeResourceId)
+        holder.dish.setText(item.nameResourceId)
+        holder.type.setText(item.typeResourceId)
         holder.imageView.setImageResource(item.imageResourceId)
     }
 }

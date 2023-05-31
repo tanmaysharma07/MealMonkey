@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
 
 class NotificationsAdapter(
-    val context: NotificationsFragment,
     val dataset: List<NotificationsData>
 ) : RecyclerView.Adapter<NotificationsAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -27,8 +26,8 @@ class NotificationsAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.title.text = context.resources.getString(item.titleId)
-        holder.timeAgo.text = context.resources.getString(item.timeId)
+        holder.title.setText(item.titleId)
+        holder.timeAgo.setText(item.timeId)
     }
 
     override fun getItemCount() = dataset.size

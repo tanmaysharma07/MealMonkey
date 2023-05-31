@@ -7,23 +7,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.example.mymealmonkey.utils.BaseSetOnItemClickListener
 
 class MoreFragmentAdapter(
-    val context: MoreFragment,
     private val dataset: ArrayList<MoreFragmentData>
-) : RecyclerView.Adapter<MoreFragmentAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<MoreFragmentAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
 
-    private lateinit var adapterClickListener: ItemClickListener
+     override lateinit var adapterClickListener: BaseItemClickListener
 
-    interface ItemClickListener {
-        fun itemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(clickListener: ItemClickListener) {
+    override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener
     }
 
-    class ItemViewHolder(val view: View, clickListener: ItemClickListener) :
+    class ItemViewHolder(val view: View, clickListener: BaseItemClickListener) :
         RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.more_item_image)
         val title: TextView = view.findViewById(R.id.more_item_title)
@@ -46,7 +43,7 @@ class MoreFragmentAdapter(
 
     override fun onBindViewHolder(holder: MoreFragmentAdapter.ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.title.text = (item.titleID)
+        holder.title.setText(item.titleID)
         holder.image.setImageResource(item.ImageID)
     }
 

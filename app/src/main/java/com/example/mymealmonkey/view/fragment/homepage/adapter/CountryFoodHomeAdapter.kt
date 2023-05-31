@@ -7,23 +7,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.example.mymealmonkey.utils.BaseSetOnItemClickListener
 import com.example.mymealmonkey.view.fragment.homepage.data.CountryFoodHomeData
 
 class CountryFoodHomeAdapter(
     private val dataset: ArrayList<CountryFoodHomeData>
-) : RecyclerView.Adapter<CountryFoodHomeAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<CountryFoodHomeAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
 
-    private lateinit var adapterClickListener: ItemClickListener
+    override lateinit var adapterClickListener: BaseItemClickListener
 
-    interface ItemClickListener {
-        fun itemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(clickListener: ItemClickListener) {
+    override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener
     }
 
-    class ItemViewHolder(private val view: View, clickListener: ItemClickListener) :
+    class ItemViewHolder(private val view: View, clickListener: BaseItemClickListener) :
         RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.country_food_home_text)
         val imageView: ImageView = view.findViewById(R.id.country_food_home_image)
@@ -48,7 +46,7 @@ class CountryFoodHomeAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.textView.text = (item.titleResourceId)
+        holder.textView.setText(item.nameResourceId)
         holder.imageView.setImageResource(item.imageResourcesId)
     }
 }

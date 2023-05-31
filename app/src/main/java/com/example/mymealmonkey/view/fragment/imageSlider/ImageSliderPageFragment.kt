@@ -25,6 +25,7 @@ class ImageSliderPageFragment : Fragment() {
         binding = FragmentImageSliderBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,49 +41,55 @@ class ImageSliderPageFragment : Fragment() {
         imageList = imageList + R.drawable.delivery_vector
         imageList = imageList + R.drawable.live_tracking_vector
 
-        // Initializing Adapter and Indiicator
+        // Initializing Adapter and Indicator
         val viewPagerAdapter = ViewPagerAdapter(requireContext(), imageList)
         binding.viewpager.adapter = viewPagerAdapter
         binding.indicator.setupWithViewPager(binding.viewpager, true)
 
         // Text data Shown below the Image as it changes
-        val imageSliderData = listOf(
-            ImageSliderData(
-                "Find Food You Love",
-                "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"
-            ),
-            ImageSliderData(
-                "Fast Delivery",
-                "Fast food delivery to your home, office wherever you are"
-            ),
-            ImageSliderData(
-                "Live Tracking",
-                "Real time tracking of your food on the app once you placed the order"
+        val imageSliderArray = ArrayList<ImageSliderData>()
+        imageSliderArray.addAll(
+            arrayOf(
+                ImageSliderData(
+                    getString(R.string.find_food_you_love),
+                    getString(R.string.discover_the_best_foods_from_over_1_000_restaurants_and_fast_delivery_to_your_doorstep)
+                ),
+                ImageSliderData(
+                    getString(R.string.fast_delivery),
+                    getString(R.string.fast_food_delivery_to_your_home_office_wherever_you_are)
+                ),
+                ImageSliderData(
+                    getString(R.string.live_tracking),
+                    getString(R.string.real_time_tracking_of_your_food_on_the_app_once_you_placed_the_order)
+                )
             )
         )
 
-        // Allow to change Text as Page changes
-        binding.viewpager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    0 -> {
-                        binding.headText.text = imageSliderData[position].head
-                        binding.bodyText.text = imageSliderData[position].body
+                    // Allow to change Text as Page changes
+                    binding.viewpager.addOnPageChangeListener (object : OnPageChangeListener {
+                override fun onPageSelected(position: Int) {
+                    when (position) {
+                        0 -> {
+                            binding.headText.text = imageSliderArray[position].head
+                            binding.bodyText.text = imageSliderArray[position].body
+                        }
+
+                        1 -> {
+                            binding.headText.text = imageSliderArray[position].head
+                            binding.bodyText.text = imageSliderArray[position].body
+                        }
+
+                        2 -> {
+                            binding.headText.text = imageSliderArray[position].head
+                            binding.bodyText.text = imageSliderArray[position].body
+                        }
+
+                        else -> {}
                     }
-                    1 -> {
-                        binding.headText.text = imageSliderData[position].head
-                        binding.bodyText.text = imageSliderData[position].body
-                    }
-                    2 -> {
-                        binding.headText.text = imageSliderData[position].head
-                        binding.bodyText.text = imageSliderData[position].body
-                    }
-                    else -> {}
                 }
-            }
-            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
-            override fun onPageScrollStateChanged(arg0: Int) {}
-        })
+                override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
+                override fun onPageScrollStateChanged(arg0: Int) {}
+            })
     }
 
     /**

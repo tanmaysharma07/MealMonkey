@@ -1,8 +1,9 @@
 package com.example.mymealmonkey.view.fragment.homepage.data
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 
 data class CountryFoodHomeData(
-    val titleResourceId: String,
+    @StringRes val nameResourceId: Int,
     @DrawableRes val imageResourcesId: Int
 )

@@ -1,11 +1,12 @@
 package com.example.mymealmonkey.view.fragment.dessertFragment
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 
 data class DessertFragmentData(
     @DrawableRes val imageId: Int,
-    val dishId: String,
-    val typeId: String,
-    val madeId: String
+    @StringRes val dishId: Int,
+    @StringRes val typeId: Int,
+    @StringRes val madeId: Int
 ) {
 }

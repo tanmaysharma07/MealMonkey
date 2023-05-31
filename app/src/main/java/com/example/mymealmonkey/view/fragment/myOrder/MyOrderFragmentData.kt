@@ -5,6 +5,6 @@ import androidx.annotation.StringRes
 
 data class MyOrderFragmentData(
     @StringRes val titleID: Int,
-    val countID: String,
+    @StringRes val countID: Int,
     @StringRes val priceID: Int
 )

@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
+import com.example.mymealmonkey.database.ProfileDatabase
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginPageViewModel @Inject constructor(
     private val appPreferences: AppPreferences,
-    val eventListener: EventListener
+    val eventListener: EventListener,
+    val profileDatabase: ProfileDatabase
 ) : ViewModel() {
 
     //Observable Fields in UI
@@ -24,7 +26,7 @@ class LoginPageViewModel @Inject constructor(
     private val user: User? = getUserDetails()
 
     private suspend fun getProfileData(): ProfileData? {
-        return appPreferences.getProfileData(emailInput.get().toString())
+        return profileDatabase.profileDao().findByEmail(emailInput.get().toString())
     }
 
     //Check If the Email entered is Valid or not

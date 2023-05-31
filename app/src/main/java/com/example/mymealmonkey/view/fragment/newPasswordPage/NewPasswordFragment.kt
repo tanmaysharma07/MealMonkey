@@ -35,9 +35,9 @@ class NewPasswordFragment : Fragment() {
 
         binding.signUpButton.setOnClickListener {
 
-            if (viewModel.newPasswordInput.get() != viewModel.confirmPasswordInput.get()) {
-                binding.newPasswordTextField.helperText = "Enter Valid Password"
-                binding.confirmPasswordTextField.helperText = "Enter Valid Password"
+            if (viewModel.newPasswordInput.get() != viewModel.confirmPasswordInput.get() || viewModel.newPasswordInput.get().toString().length < 7) {
+                binding.newPasswordTextField.helperText = getString(R.string.enter_valid_password)
+                binding.confirmPasswordTextField.helperText = getString(R.string.enter_valid_password)
                 return@setOnClickListener
             }
             binding.newPasswordTextField.helperText = null

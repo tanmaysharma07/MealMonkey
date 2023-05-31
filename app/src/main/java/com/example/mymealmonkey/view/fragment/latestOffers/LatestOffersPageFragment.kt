@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.data.OrderDetailData
 import com.example.mymealmonkey.databinding.FragmentLatestOffersBinding
+import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -34,28 +37,31 @@ class LatestOffersPageFragment : Fragment() {
             listOf<LatestOffersData>(
                 LatestOffersData(
                     R.drawable.dessert1,
-                    getString(R.string.caf_de_noir),
-                    getString(R.string._124_ratings_caf)
+                    (R.string.caf_de_noir),
+                    (R.string._124_ratings_caf)
                 ),
                 LatestOffersData(
                     R.drawable.pizza2,
-                    getString(R.string.caf_western_food),
-                    getString(R.string._124_ratings_caf)
+                    (R.string.caf_western_food),
+                    (R.string._124_ratings_caf)
                 ),
                 LatestOffersData(
                     R.drawable.coffee2,
-                    getString(R.string.cafe_beans),
-                    getString(R.string._124_ratings_caf)
+                    (R.string.cafe_beans),
+                    (R.string._124_ratings_caf)
                 )
             )
         )
 
         //Initialized RecyclerView
-        val latestOfferAdapter = LatestOfferAdapter(this, latestOffersArray)
+        val latestOfferAdapter = LatestOfferAdapter(latestOffersArray)
         binding.recyclerViewLatestOffers.adapter = latestOfferAdapter.apply {
-            setOnItemClickListener(object : LatestOfferAdapter.ItemClickListener {
+            setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
-                    findNavController().navigate(R.id.orderFragment)
+                    val bundle = Bundle()
+                    val orderDetailData = OrderDetailData( latestOffersArray[position].imageResourceId,latestOffersArray[position].nameResourceId )
+                    bundle.putString(getString(R.string.orderdetails), Gson().toJson(orderDetailData))
+                    findNavController().navigate(R.id.orderFragment, bundle)
                 }
             })
         }

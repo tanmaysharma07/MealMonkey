@@ -30,9 +30,19 @@ class MyOrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val myOrderArray = ArrayList<MyOrderFragmentData>()
+        myOrderArray.addAll(
+            arrayOf(
+                MyOrderFragmentData(R.string.veg_burger, R.string._1, R.string._16),
+                MyOrderFragmentData(R.string.veg_pizza, R.string._1, R.string._14),
+                MyOrderFragmentData(R.string.cheese_burger, R.string._1, R.string._17),
+                MyOrderFragmentData(R.string.fries, R.string._1, R.string._15),
+                MyOrderFragmentData(R.string.coffee, R.string._1, R.string._6)
+            )
+        )
+
         // Initialized RecyclerView
-        val myOrderDataset = MyOrderFragmentDatasource().loadMyOrder()
-        binding.myOrderRecyclerView.adapter = MyOrderFragmentAdapter(this, myOrderDataset)
+        binding.myOrderRecyclerView.adapter = MyOrderFragmentAdapter(myOrderArray)
         binding.myOrderRecyclerView.hasFixedSize()
 
         // Set Click Listeners

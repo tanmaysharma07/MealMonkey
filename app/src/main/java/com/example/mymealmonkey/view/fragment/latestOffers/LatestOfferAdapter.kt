@@ -7,23 +7,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.example.mymealmonkey.utils.BaseSetOnItemClickListener
 
 class LatestOfferAdapter(
-    val context: LatestOffersPageFragment,
     private val dataset: ArrayList<LatestOffersData>
-) : RecyclerView.Adapter<LatestOfferAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<LatestOfferAdapter.ItemViewHolder>(), BaseSetOnItemClickListener {
 
-    private lateinit var adapterClickListener: ItemClickListener
+    override lateinit var adapterClickListener: BaseItemClickListener
 
-    interface ItemClickListener {
-        fun itemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(clickListener: ItemClickListener) {
+    override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener
     }
 
-    class ItemViewHolder(private val view: View, clickListener: ItemClickListener) :
+    class ItemViewHolder(private val view: View, clickListener: BaseItemClickListener) :
         RecyclerView.ViewHolder(view) {
         val dish: TextView = view.findViewById(R.id.latest_offers_dish)
         val rating: TextView = view.findViewById(R.id.latest_offers_rating)
@@ -47,8 +44,8 @@ class LatestOfferAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.imageView.setImageResource(item.imageResourceId)
-        holder.dish.text = item.nameResourceId
-        holder.rating.text = item.ratingResourceId
+        holder.dish.setText(item.nameResourceId)
+        holder.rating.setText(item.ratingResourceId)
 
     }
 }

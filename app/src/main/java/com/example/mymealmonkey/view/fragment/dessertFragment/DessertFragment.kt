@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentDessertBinding
+import com.example.mymealmonkey.utils.BaseItemClickListener
 
 class DessertFragment : Fragment() {
 
@@ -31,27 +32,27 @@ class DessertFragment : Fragment() {
             arrayOf(
                 DessertFragmentData(
                     R.drawable.dessert1,
-                    getString(R.string.caf_western_food),
-                    getString(R.string.caf_de_noir),
-                    getString(R.string.desserts)
+                    (R.string.caf_western_food),
+                    (R.string.caf_de_noir),
+                    (R.string.desserts)
                 ),
                 DessertFragmentData(
                     R.drawable.dessert2,
-                    getString(R.string.caf_western_food),
-                    getString(R.string.bakes_by_tella),
-                    getString(R.string.desserts)
+                    (R.string.caf_western_food),
+                    (R.string.bakes_by_tella),
+                    (R.string.desserts)
                 ),
                 DessertFragmentData(
                     R.drawable.dessert3,
-                    getString(R.string.caf_western_food),
-                    getString(R.string.caf_de_bambaa),
-                    getString(R.string.desserts)
+                    (R.string.caf_western_food),
+                    (R.string.caf_de_bambaa),
+                    (R.string.desserts)
                 ),
                 DessertFragmentData(
                     R.drawable.dessert4,
-                    getString(R.string.caf_western_food),
-                    getString(R.string.minute_by_tuk_tuk),
-                    getString(R.string.desserts)
+                    (R.string.caf_western_food),
+                    (R.string.minute_by_tuk_tuk),
+                    (R.string.desserts)
                 )
             )
         )
@@ -59,12 +60,18 @@ class DessertFragment : Fragment() {
         // Initialized RecyclerView
         val dessertFragmentAdapter = DessertFragmentAdapter(dessertFragmentArray)
         binding.recyclerViewDessertFragment.adapter = dessertFragmentAdapter.apply {
-            setOnItemClickListener(object : DessertFragmentAdapter.ItemClickListener {
+            setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
                     findNavController().navigate(R.id.orderFragment)
                 }
             })
         }
         binding.recyclerViewDessertFragment.hasFixedSize()
+
+        val jsonDessertFragment = arguments?.getString(getString(R.string.pagetitle))
+        if(jsonDessertFragment!=null){
+            binding.desserts.text = jsonDessertFragment
+        }
+
     }
 }

@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
+import com.example.mymealmonkey.database.ProfileDatabase
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SignUpPageViewModel @Inject constructor(
     private val appPreferences: AppPreferences,
-    val eventListener: EventListener
+    val eventListener: EventListener,
+    private val profileDatabase: ProfileDatabase
 ) : ViewModel() {
 
     //Observable Field to catch Data
@@ -30,7 +32,7 @@ class SignUpPageViewModel @Inject constructor(
 
     // Function to Store User Data
     suspend fun setProfileData(profileData: ProfileData) {
-        return appPreferences.setProfileData(profileData)
+        return profileDatabase.profileDao().insert(profileData)
     }
 
     //Check if Name is Valid

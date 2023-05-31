@@ -42,7 +42,7 @@ class ResetPasswordFragment : Fragment() {
         binding.sendButton.setOnClickListener {
             //check if email is valid or not
             if (viewModel.isEmail()) {
-                binding.sendEmail.helperText = "Enter Valid Email"
+                binding.sendEmail.helperText = getString(R.string.enter_valid_email)
                 return@setOnClickListener
             }
             binding.sendEmail.helperText = null

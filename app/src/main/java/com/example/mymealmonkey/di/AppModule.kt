@@ -3,8 +3,8 @@ package com.example.mymealmonkey.di
 import android.content.Context
 import androidx.room.Room
 import com.example.mymealmonkey.R
-import com.example.mymealmonkey.database.CardDetailsDatabase
-import com.example.mymealmonkey.database.ProfileDatabase
+import com.example.mymealmonkey.database.db.CardDetailsDatabase
+import com.example.mymealmonkey.database.db.ProfileDatabase
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
 import dagger.Module

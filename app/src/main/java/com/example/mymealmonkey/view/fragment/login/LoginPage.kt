@@ -1,22 +1,20 @@
 package com.example.mymealmonkey.view.fragment.login
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.databinding.FragmentLoginPageBinding
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginPage : Fragment() {
@@ -54,7 +52,9 @@ class LoginPage : Fragment() {
         clickListeners()
     }
 
+    // Set Click Listener
     private fun clickListeners() {
+
         binding.signUp.setOnClickListener {
             // Navigate to Sign Up Page
             findNavController().navigate(R.id.action_loginPage_to_signUpPage)
@@ -81,48 +81,55 @@ class LoginPage : Fragment() {
 
         binding.logInButton.setOnClickListener {
 
-            //check if email is valid or not
-            if (viewModel.isEmail()) {
-                binding.yourEmailTextField.helperText = getString(R.string.enter_valid_email)
-                return@setOnClickListener
+            lifecycleScope.launch {
+
+                val profile: ProfileData? = viewModel.getProfileData()
+                Log.d("HOHOp", profile.toString())
+                viewModel.setProfileData(profile)
+
+                //check if email is valid or not
+                if (viewModel.isEmail(profile)) {
+
+                    binding.yourEmailTextField.helperText = getString(R.string.enter_valid_email)
+                    return@launch
+                }
+                binding.yourEmailTextField.helperText = null
+
+                //check if email is valid or not
+                if (viewModel.isPassword(profile)) {
+                    binding.passwordTextField.helperText = getString(R.string.enter_valid_password)
+                    return@launch
+                }
+                binding.passwordTextField.helperText = null
+
+                // Navigate to Image Slider Page
+                findNavController().navigate(R.id.action_loginPage_to_imageSliderFragment)
             }
-            binding.yourEmailTextField.helperText = null
-
-            //check if email is valid or not
-            if (viewModel.isPassword()) {
-                binding.passwordTextField.helperText = getString(R.string.enter_valid_password)
-                return@setOnClickListener
-            }
-            binding.passwordTextField.helperText = null
-
-            // Navigate to Image Slider Page
-            findNavController().navigate(R.id.action_loginPage_to_imageSliderFragment)
         }
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == 100) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
-        }
-    }
-
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            //val account = completedTask.getResult(ApiException::class.java)
-
-        } catch (e: ApiException) {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.error_occurred_during_google_signin),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+//        if (requestCode == 100) {
+//            // The Task returned from this call is always completed, no need to attach
+//            // a listener.
+//            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+//            handleSignInResult(task)
+//        }
+//    }
+//
+//    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+//        try {
+//            //val account = completedTask.getResult(ApiException::class.java)
+//
+//        } catch (e: ApiException) {
+//            Toast.makeText(
+//                requireContext(),
+//                getString(R.string.error_occurred_during_google_signin),
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+//    }
 }

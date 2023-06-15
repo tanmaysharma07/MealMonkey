@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mymealmonkey.R
-import java.util.*
+import java.util.Objects
 
 class ViewPagerAdapter(val context: Context, private val imageList: List<Int>) : PagerAdapter() {
     override fun getCount(): Int {

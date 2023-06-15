@@ -63,7 +63,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardNumber"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -98,7 +98,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardMonth"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -120,7 +120,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardYear"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/grey3"
@@ -142,7 +142,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardSecurityCode"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -164,7 +164,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardFirstName"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -186,7 +186,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardLastName"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"

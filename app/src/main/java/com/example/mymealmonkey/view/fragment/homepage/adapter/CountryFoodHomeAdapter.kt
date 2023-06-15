@@ -13,7 +13,7 @@ import com.example.mymealmonkey.view.fragment.homepage.data.CountryFoodHomeData
 
 class CountryFoodHomeAdapter(
     private val dataset: ArrayList<CountryFoodHomeData>
-) : RecyclerView.Adapter<CountryFoodHomeAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
+) : RecyclerView.Adapter<CountryFoodHomeAdapter.ItemViewHolder>(), BaseSetOnItemClickListener {
 
     override lateinit var adapterClickListener: BaseItemClickListener
 

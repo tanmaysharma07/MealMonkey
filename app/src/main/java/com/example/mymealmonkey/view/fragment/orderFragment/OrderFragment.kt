@@ -1,7 +1,6 @@
 package com.example.mymealmonkey.view.fragment.orderFragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.data.OrderDetailData
@@ -51,6 +51,7 @@ class OrderFragment : Fragment() {
         // Initializing the Scroll Down Lists
         val adapter = ArrayAdapter(requireContext(), R.layout.drop_down_list_item, items)
 
+        // Select Size Portion
         binding.sizePortionAutoComplete.setAdapter(adapter)
         binding.sizePortionAutoComplete.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, itemPosition, _ ->
@@ -60,6 +61,7 @@ class OrderFragment : Fragment() {
                     .show()
             }
 
+        //Select Ingredient
         binding.selectIngredientAutoComplete.setAdapter(adapter)
         binding.selectIngredientAutoComplete.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, itemPosition, _ ->

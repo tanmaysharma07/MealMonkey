@@ -43,7 +43,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/your_email_textField"
-                style="@style/textfieldStyle"
+                style="@style/textFieldStyle"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 app:helperTextEnabled="true"
@@ -63,7 +63,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_textField"
-                style="@style/textfieldStyle"
+                style="@style/textFieldStyle"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:helperTextEnabled="true"

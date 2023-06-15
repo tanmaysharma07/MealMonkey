@@ -13,9 +13,10 @@ import com.example.mymealmonkey.view.fragment.homepage.data.PopularRestaurantHom
 
 class PopularRestaurantHomeAdapter(
     private val dataset: ArrayList<PopularRestaurantHomeData>
-) : RecyclerView.Adapter<PopularRestaurantHomeAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
+) : RecyclerView.Adapter<PopularRestaurantHomeAdapter.ItemViewHolder>(),
+    BaseSetOnItemClickListener {
 
-     override lateinit var adapterClickListener: BaseItemClickListener
+    override lateinit var adapterClickListener: BaseItemClickListener
 
     override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener

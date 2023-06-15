@@ -182,5 +182,6 @@
     <string name="enter_address">Enter Address</string>
     <string name="orderdetails">OrderDetails</string>
     <string name="pagetitle">PageTitle</string>
+    <string name="try_again">Try Again</string>
 
 </resources>

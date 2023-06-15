@@ -10,236 +10,243 @@
             type="com.example.mymealmonkey.view.fragment.profileFragment.ProfileFragmentViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context=".view.fragment.profileFragment.ProfileFragment">
+        android:fillViewport="true"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
-            android:text="Profile"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".view.fragment.profileFragment.ProfileFragment">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/shopping_cart"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView3" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-            <ImageView
-                android:id="@+id/imageView3"
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/delivery_vector" />
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/profile"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.cardview.widget.CardView>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/shopping_cart"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/edit_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/group_1894"
-            android:drawablePadding="10dp"
-            android:text="@string/edit_profile"
-            android:textColor="@color/orange"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <TextView
-            android:id="@+id/hi_there_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/hi_there_user"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_profile" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/delivery_vector" />
 
-        <TextView
-            android:id="@+id/sign_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/sign_out"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hi_there_user" />
+            </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nameProfile"
-            style="@style/textfieldStyle"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_out">
+            <TextView
+                android:id="@+id/edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawablePadding="10dp"
+                android:text="@string/edit_profile"
+                android:textColor="@color/orange"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/group_1894"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nameProfileTextInput"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:hint="@string/name"
-                android:maxLines="1"
+            <TextView
+                android:id="@+id/hi_there_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/hi_there_user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_profile" />
+
+            <TextView
+                android:id="@+id/sign_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/sign_out"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hi_there_user" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameProfile"
+                style="@style/textFieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_out">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameProfileTextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:hint="@string/name"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.nameProfileInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailProfile"
+                style="@style/textFieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameProfile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTextInputProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:hint="@string/email"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.emailProfileInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobileNumberProfile"
+                style="@style/textFieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:singleLine="true"
-                android:text="@={viewModel.nameProfileInput}"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailProfile"
+                app:prefixText="+91">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailProfile"
-            style="@style/textfieldStyle"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameProfile">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/mobileNumberTextInputProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:hint="@string/mobile_number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.mobileNumberProfileInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailTextInputProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:hint="@string/email"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="@={viewModel.emailProfileInput}"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressProfile"
+                style="@style/textFieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mobileNumberProfile">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/mobileNumberProfile"
-            style="@style/textfieldStyle"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:singleLine="true"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailProfile"
-            app:prefixText="+91">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addressTextInputProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:hint="@string/address"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.addressProfileInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/mobileNumberTextInputProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:hint="@string/mobile_number"
-                android:inputType="number"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="@={viewModel.mobileNumberProfileInput}"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordSignupProfile"
+                style="@style/textFieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:endIconMode="password_toggle"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressProfile">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addressProfile"
-            style="@style/textfieldStyle"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mobileNumberProfile">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordSignupTextInputProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.passwordProfileInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/addressTextInputProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:hint="@string/address"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="@={viewModel.addressProfileInput}"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordSignupProfile"
+                style="@style/textFieldStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:endIconMode="password_toggle"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordSignupProfile">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordSignupProfile"
-            style="@style/textfieldStyle"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:endIconMode="password_toggle"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addressProfile">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPasswordSignupTextInputProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="false"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.confirmPasswordProfileInput}"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordSignupTextInputProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="@={viewModel.passwordProfileInput}"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/saveButtonProfile"
+                style="@style/buttonStyle"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="@dimen/_100sdp"
+                android:text="@string/save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirmPasswordSignupProfile" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/confirmPasswordSignupProfile"
-            style="@style/textfieldStyle"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:endIconMode="password_toggle"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordSignupProfile">
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/confirmPasswordSignupTextInputProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:hint="@string/confirm_password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="@={viewModel.confirmPasswordProfileInput}"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/saveButtonProfile"
-            style="@style/buttonStyle"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="@dimen/_100sdp"
-            android:text="@string/save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confirmPasswordSignupProfile" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

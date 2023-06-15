@@ -4,9 +4,13 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
-import com.example.mymealmonkey.database.ProfileDatabase
+import com.example.mymealmonkey.database.db.ProfileDatabase
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
+import com.example.mymealmonkey.utils.isNotValidEmail
+import com.example.mymealmonkey.utils.isNotValidInput
+import com.example.mymealmonkey.utils.isNotValidMobileNumber
+import com.example.mymealmonkey.utils.isNotValidPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -14,7 +18,7 @@ import javax.inject.Inject
 class SignUpPageViewModel @Inject constructor(
     private val appPreferences: AppPreferences,
     val eventListener: EventListener,
-    private val profileDatabase: ProfileDatabase
+    val profileDatabase: ProfileDatabase
 ) : ViewModel() {
 
     //Observable Field to catch Data
@@ -37,29 +41,29 @@ class SignUpPageViewModel @Inject constructor(
 
     //Check if Name is Valid
     fun isName(): Boolean {
-        return ((nameInput.get()?.trim()?.isEmpty() ?: true))
+        return ((nameInput.get()?.isNotValidInput() ?: true))
     }
 
     //Check if Email is Valid
     fun isEmail(): Boolean {
-        return (!(android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.get() ?: "").matches()))
+        return (emailInput.get()?.isNotValidEmail() ?: true)
     }
 
     //Check if Address is Valid
     fun isAddress(): Boolean {
-        return (addressInput.get()?.trim()?.isEmpty() ?: true)
+        return (addressInput.get()?.isNotValidInput() ?: true)
     }
 
     //Check if Mobile number is Valid
     fun isMobileNumber(): Boolean {
-        return ((mobileNumberInput.get()?.trim()?.isEmpty()
-            ?: true) || ((mobileNumberInput.get()?.length ?: 0) > 10))
+        return (mobileNumberInput.get()?.isNotValidMobileNumber()
+            ?: true)
     }
 
     //Check if Password is valid
     fun isPassword(): Boolean {
-        return ((((passwordInput.get()?.length
-            ?: 0) < 7 || (passwordInput.get() != confirmPasswordInput.get()) || (confirmPasswordInput.get()?.length
-            ?: 0) < 7)))
+        return ((passwordInput.get()?.isNotValidPassword()
+            ?: true) || (passwordInput.get() != confirmPasswordInput.get()) || (confirmPasswordInput.get()
+            ?.isNotValidPassword() ?: true))
     }
 }

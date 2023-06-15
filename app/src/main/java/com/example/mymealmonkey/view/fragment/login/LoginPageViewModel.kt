@@ -4,47 +4,51 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
-import com.example.mymealmonkey.database.ProfileDatabase
+import com.example.mymealmonkey.database.db.ProfileDatabase
 import com.example.mymealmonkey.utils.AppPreferences
 import com.example.mymealmonkey.utils.EventListener
+import com.example.mymealmonkey.utils.isNotValidEmail
+import com.example.mymealmonkey.utils.isNotValidPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginPageViewModel @Inject constructor(
     private val appPreferences: AppPreferences,
     val eventListener: EventListener,
-    val profileDatabase: ProfileDatabase
+    private val profileDatabase: ProfileDatabase
 ) : ViewModel() {
 
     //Observable Fields in UI
     val emailInput = ObservableField("email@gmail.com")
     val passwordInput = ObservableField("password ")
 
-    // Data Class to store User information
-    private val user: User? = getUserDetails()
-
-    private suspend fun getProfileData(): ProfileData? {
+    // Get Profile from Room Database
+    suspend fun getProfileData(): ProfileData? {
         return profileDatabase.profileDao().findByEmail(emailInput.get().toString())
     }
 
+    // Save data in user shared preferences
+    fun setProfileData(profile: ProfileData?) {
+        val user = User(
+            profile?.name,
+            profile?.email,
+            profile?.mobileNo,
+            profile?.address,
+            profile?.password,
+        )
+        appPreferences.signUp(user)
+    }
+
     //Check If the Email entered is Valid or not
-    fun isEmail(): Boolean {
-        val profile: ProfileData? = runBlocking { getProfileData() }
-        return ((!(android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.get() ?: "")
-            .matches())) || (emailInput.get() != profile?.email.toString()))
+    fun isEmail(profile: ProfileData?): Boolean {
+        return ((emailInput.get() ?: "").isNotValidEmail() || (emailInput.get()
+            ?: "") != profile?.email)
     }
 
     //Check If the Password entered is Valid or not
-    fun isPassword(): Boolean {
-        val profile: ProfileData? = runBlocking { getProfileData() }
-        return ((passwordInput.get()?.length
-            ?: 0) < 7 || (passwordInput.get() != profile?.password.toString()))
-    }
-
-    //Retrieve Stored User Data
-    private fun getUserDetails(): User? {
-        return appPreferences.getUser()
+    fun isPassword(profile: ProfileData?): Boolean {
+        return ((passwordInput.get()?.isNotValidPassword()
+            ?: true) || (passwordInput.get() != profile?.password.toString()))
     }
 }

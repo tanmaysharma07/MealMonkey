@@ -1,21 +1,24 @@
 package com.example.mymealmonkey.view.fragment.paymentDetails
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.data.CardDetailsData
-import com.example.mymealmonkey.database.CardDetailsDatabase
+import com.example.mymealmonkey.database.db.CardDetailsDatabase
 import com.example.mymealmonkey.utils.AppPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PaymentDetailsFragmentViewModel @Inject constructor(
     val appPreferences: AppPreferences,
-    private val cardDetailsDatabase: CardDetailsDatabase
-    ) : ViewModel() {
+    val cardDetailsDatabase: CardDetailsDatabase
+) : ViewModel() {
 
     //UI Fields
     val cardNumber = ObservableField("")
@@ -34,15 +37,25 @@ class PaymentDetailsFragmentViewModel @Inject constructor(
 
     var paymentDetailsFragmentAdapter: PaymentDetailsFragmentAdapter? = null
 
+    // Add one card to list at start
     init {
-        if (userCardDetailsList.size <= 0) {
-            userCardDetailsList.add(
-                PaymentDetailsFragmentData(
-                    "**** **** **** 2187", R.drawable.baseline_credit_card_svg
-                )
-            )
+        viewModelScope.launch() {
+            var list = cardDetailsDatabase.cardDetailsDao().getCardNumber()
+            Log.d("HOHO", list.toString())
+            if (userCardDetailsList.size <= 0) {
+                for (i in 0 until (list?.size ?: 0)) {
+                    val displayCardNumber = list?.get(i)?.substring(12, 16)
+                    userCardDetailsList.add(
+                        PaymentDetailsFragmentData(
+                            "**** **** **** $displayCardNumber" ?: "Cash on Delivery",
+                            R.drawable.baseline_credit_card_svg
+                        )
+                    )
+                }
+            }
+            paymentDetailsFragmentAdapter?.notifyItemInserted(list?.size ?: 0)
+            saveData(userCardDetailsList)
         }
-        saveData(userCardDetailsList)
     }
 
     //Function to insert new card details in Database

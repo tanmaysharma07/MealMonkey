@@ -48,7 +48,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/menu_inputLayout"
-                style="@style/textfieldStyle"
+                style="@style/textFieldStyle"
                 android:layout_width="match_parent"
                 android:layout_margin="30dp"
                 android:layout_marginTop="20dp"

@@ -4,9 +4,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class DessertFragmentData(
-    @DrawableRes val imageId: Int,
-    @StringRes val dishId: Int,
-    @StringRes val typeId: Int,
-    @StringRes val madeId: Int
+    @DrawableRes val imageResourceId: Int,
+    @StringRes val nameResourceId: Int,
+    @StringRes val typeResourceId: Int,
+    @StringRes val madeResourceId: Int
 ) {
 }

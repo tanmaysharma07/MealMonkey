@@ -13,13 +13,12 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/payment_details_bottom_sheet_background"
-        android:backgroundTint="@android:color/transparent"
-        app:cardCornerRadius="@dimen/_25sdp">
+        android:background="@drawable/payment_details_bottom_sheet_background">
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +62,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardNumber"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -98,7 +97,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardMonth"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -120,7 +119,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardYear"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/grey3"
@@ -142,7 +141,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardSecurityCode"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -164,7 +163,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardFirstName"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -186,7 +185,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cardLastName"
-                    style="@style/textfieldStyle"
+                    style="@style/textFieldStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -236,7 +235,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.core.widget.NestedScrollView>
 
     </com.google.android.material.card.MaterialCardView>
 

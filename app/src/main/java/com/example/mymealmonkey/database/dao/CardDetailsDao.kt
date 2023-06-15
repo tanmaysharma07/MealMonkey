@@ -1,4 +1,4 @@
-package com.example.mymealmonkey.database
+package com.example.mymealmonkey.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -33,7 +33,10 @@ interface CardDetailsDao {
 //    @Query("Select * from card_details_table where cardNumber LIKE :cardNumber Limit 1 ")
 //    suspend fun findByCard(cardNumber: Int): CardDetailsData?
 
-    @Query("Select cardNumber from card_details_table ")
+    @Query("Select cardNumber from card_details_table; ")
     suspend fun getCardNumber(): List<String>?
+
+//    @Query("Select * from card_details_table ")
+//    suspend fun getAllCardDetails(): ArrayList<CardDetailsData>
 
 }

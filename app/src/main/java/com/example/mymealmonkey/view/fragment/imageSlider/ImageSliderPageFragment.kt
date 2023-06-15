@@ -15,7 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ImageSliderPageFragment : Fragment() {
 
+    //Binding Component
     private lateinit var binding: FragmentImageSliderBinding
+
+    //ViewModel Initialization
     private val viewModel: ImageSliderPageViewModel by viewModels()
 
     override fun onCreateView(
@@ -65,36 +68,35 @@ class ImageSliderPageFragment : Fragment() {
             )
         )
 
-                    // Allow to change Text as Page changes
-                    binding.viewpager.addOnPageChangeListener (object : OnPageChangeListener {
-                override fun onPageSelected(position: Int) {
-                    when (position) {
-                        0 -> {
-                            binding.headText.text = imageSliderArray[position].head
-                            binding.bodyText.text = imageSliderArray[position].body
-                        }
-
-                        1 -> {
-                            binding.headText.text = imageSliderArray[position].head
-                            binding.bodyText.text = imageSliderArray[position].body
-                        }
-
-                        2 -> {
-                            binding.headText.text = imageSliderArray[position].head
-                            binding.bodyText.text = imageSliderArray[position].body
-                        }
-
-                        else -> {}
+        // Allow to change Text as Page changes
+        binding.viewpager.addOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageSelected(position: Int) {
+                when (position) {
+                    0 -> {
+                        binding.headText.text = imageSliderArray[position].head
+                        binding.bodyText.text = imageSliderArray[position].body
                     }
+
+                    1 -> {
+                        binding.headText.text = imageSliderArray[position].head
+                        binding.bodyText.text = imageSliderArray[position].body
+                    }
+
+                    2 -> {
+                        binding.headText.text = imageSliderArray[position].head
+                        binding.bodyText.text = imageSliderArray[position].body
+                    }
+
+                    else -> {}
                 }
-                override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
-                override fun onPageScrollStateChanged(arg0: Int) {}
-            })
+            }
+
+            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
+            override fun onPageScrollStateChanged(arg0: Int) {}
+        })
     }
 
-    /**
-     * Set Click Listeners
-     */
+    //Set Click Listeners
     private fun clickListeners() {
         binding.imageSliderButton.setOnClickListener {
             it.findNavController()

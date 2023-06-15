@@ -1,11 +1,11 @@
 package com.example.mymealmonkey.view.fragment.menuFragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
@@ -46,25 +46,25 @@ class MenuFragment : Fragment() {
         binding.foodMenu.setOnClickListener {
             val bundle = Bundle()
             bundle.putString(getString(R.string.pagetitle), "Food")
-            //Navigate to Dessert Page in Menu
+            //Navigate to Dessert Page in Menu with Bundled Data
             findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
         binding.beveragesMenu.setOnClickListener {
             val bundle = Bundle()
             bundle.putString(getString(R.string.pagetitle), "Beverages")
-            //Navigate to Dessert Page in Menu
+            //Navigate to Dessert Page in Menu with Bundled Data
             findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
         binding.dessertsMenu.setOnClickListener {
             val bundle = Bundle()
             bundle.putString(getString(R.string.pagetitle), "Desserts")
-            //Navigate to Dessert Page in Menu
+            //Navigate to Dessert Page in Menu with Bundled Data
             findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
         binding.promotionsMenu.setOnClickListener {
             val bundle = Bundle()
             bundle.putString(getString(R.string.pagetitle), "Promotions")
-            //Navigate to Dessert Page in Menu
+            //Navigate to Dessert Page in Menu with Bundled Data
             findNavController().navigate(R.id.action_menuFragment_to_dessertFragment, bundle)
         }
     }

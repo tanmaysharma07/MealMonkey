@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.data.AddCardDetailsData
 import com.example.mymealmonkey.data.CardDetailsData
 import com.example.mymealmonkey.databinding.FragmentPaymentDetailsBinding
-import com.example.mymealmonkey.view.dialog.AddCardBottomSheetFragment
 import com.example.mymealmonkey.utils.AddCardBottomSheet
 import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.example.mymealmonkey.view.dialog.AddCardBottomSheetFragment
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PaymentDetailsFragment : Fragment(), AddCardBottomSheet {
@@ -43,39 +45,44 @@ class PaymentDetailsFragment : Fragment(), AddCardBottomSheet {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Bottom Sheet Dialog
-        val addCardBottomSheetFragment = AddCardBottomSheetFragment(this)
-        val userList = viewModel.paymentDetails.value ?: ArrayList()
-
         if (viewModel.paymentDetailsFragmentAdapter == null) {
             viewModel.paymentDetailsFragmentAdapter =
                 PaymentDetailsFragmentAdapter(
-                    paymentDetailUserList = viewModel.paymentDetails.value ?: userList,
+                    paymentDetailUserList = viewModel.userCardDetailsList,
                 )
         }
 
+        // Handling the RecyclerView
         binding.paymentdetailsRecyclerView.adapter =
             viewModel.paymentDetailsFragmentAdapter?.apply {
                 setOnItemClickListener(object : BaseItemClickListener {
                     override fun itemClick(position: Int) {
-                        userList.removeAt(position)
+                        viewModel.userCardDetailsList.removeAt(position)
                         notifyItemRemoved(position)
-                        notifyItemRangeRemoved(0, userList.size)
-                        viewModel.userCardDetailsList = userList
+                        notifyItemRangeRemoved(0, viewModel.userCardDetailsList.size)
+                        viewModel.paymentDetailsFragmentAdapter?.submitList(viewModel.userCardDetailsList)
 
-//                        runBlocking {
-//                            val list = viewModel.cardDetailsDatabase.cardDetailsDao().getCardNumber()
-//                            viewModel.cardDetailsDatabase.cardDetailsDao().deleteCard(list?.get(position) ?: "")
-//                        }
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            val list =
+                                viewModel.cardDetailsDatabase.cardDetailsDao().getCardNumber()
+                            viewModel.cardDetailsDatabase.cardDetailsDao()
+                                .deleteCard(list?.get(position) ?: "")
+                        }
                     }
                 })
             }
 
         binding.paymentdetailsRecyclerView.hasFixedSize()
 
+        // Bottom Sheet show on button click
         binding.addCardButtonPaymentDetails.setOnClickListener {
+            // Bottom Sheet Dialog
+            val addCardBottomSheetFragment = AddCardBottomSheetFragment(this)
             addCardBottomSheetFragment.isCancelable = false
-            addCardBottomSheetFragment.show(parentFragmentManager, getString(R.string.addcardbottomsheetfragment))
+            addCardBottomSheetFragment.show(
+                parentFragmentManager,
+                getString(R.string.addcardbottomsheetfragment)
+            )
         }
 
         // Set ClickListeners
@@ -123,9 +130,9 @@ class PaymentDetailsFragment : Fragment(), AddCardBottomSheet {
                 addedCardDetails.lastName.toString(),
             )
 
-            runBlocking {
+            lifecycleScope.launch(Dispatchers.IO) {
                 viewModel.setCardDetails(cardDetails)
-                viewModel.getCardNumber() ?: ArrayList()
+                //viewModel.getCardNumber()
             }
         }
     }

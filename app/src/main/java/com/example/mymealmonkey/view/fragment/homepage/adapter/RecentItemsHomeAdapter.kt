@@ -13,7 +13,7 @@ import com.example.mymealmonkey.view.fragment.homepage.data.RecentItemsHomeData
 
 class RecentItemsHomeAdapter(
     val dataset: ArrayList<RecentItemsHomeData>
-) : RecyclerView.Adapter<RecentItemsHomeAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
+) : RecyclerView.Adapter<RecentItemsHomeAdapter.ItemViewHolder>(), BaseSetOnItemClickListener {
 
     override lateinit var adapterClickListener: BaseItemClickListener
 

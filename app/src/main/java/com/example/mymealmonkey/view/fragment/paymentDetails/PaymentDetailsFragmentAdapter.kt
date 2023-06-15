@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.utils.AppPreferences
@@ -18,7 +19,8 @@ class PaymentDetailsFragmentAdapter @Inject constructor(
     val eventListener: EventListener? = null,
     val appPreferences: AppPreferences? = null,
     private var paymentDetailUserList: ArrayList<PaymentDetailsFragmentData>
-) : RecyclerView.Adapter<PaymentDetailsFragmentAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
+) : ListAdapter<PaymentDetailsFragmentData, PaymentDetailsFragmentAdapter.ItemViewHolder>(DiffUtil()),
+    BaseSetOnItemClickListener {
 
     override lateinit var adapterClickListener: BaseItemClickListener
 
@@ -31,6 +33,11 @@ class PaymentDetailsFragmentAdapter @Inject constructor(
         val title: TextView = view.findViewById(R.id.titlePaymentDetailsRV)
         val image: ImageView = view.findViewById(R.id.imagePaymentDetailsRV)
         private val deleteButton: Button = view.findViewById(R.id.paymentDetailsButtonRV)
+
+        fun bind(data: PaymentDetailsFragmentData) {
+            title.text = data.titleID
+            image.setImageResource(data.imageId)
+        }
 
         init {
             deleteButton.setOnClickListener {
@@ -59,4 +66,22 @@ class PaymentDetailsFragmentAdapter @Inject constructor(
     }
 
     override fun getItemCount() = paymentDetailUserList.size
+
+    class DiffUtil :
+        androidx.recyclerview.widget.DiffUtil.ItemCallback<PaymentDetailsFragmentData>() {
+        override fun areItemsTheSame(
+            oldItem: PaymentDetailsFragmentData,
+            newItem: PaymentDetailsFragmentData
+        ): Boolean {
+            return oldItem.titleID == newItem.titleID
+        }
+
+        override fun areContentsTheSame(
+            oldItem: PaymentDetailsFragmentData,
+            newItem: PaymentDetailsFragmentData
+        ): Boolean {
+            return oldItem == newItem
+        }
+
+    }
 }

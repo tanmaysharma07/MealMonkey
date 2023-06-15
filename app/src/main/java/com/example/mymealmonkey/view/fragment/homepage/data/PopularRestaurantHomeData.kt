@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class PopularRestaurantHomeData(
-    @DrawableRes val imageResourceId:Int,
-    @StringRes val nameResourceId:Int,
-    @StringRes val ratingResourceId:Int
+    @DrawableRes val imageResourceId: Int,
+    @StringRes val nameResourceId: Int,
+    @StringRes val ratingResourceId: Int
 )

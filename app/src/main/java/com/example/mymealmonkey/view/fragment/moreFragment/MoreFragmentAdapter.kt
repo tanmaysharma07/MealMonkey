@@ -12,9 +12,9 @@ import com.example.mymealmonkey.utils.BaseSetOnItemClickListener
 
 class MoreFragmentAdapter(
     private val dataset: ArrayList<MoreFragmentData>
-) : RecyclerView.Adapter<MoreFragmentAdapter.ItemViewHolder>(),BaseSetOnItemClickListener {
+) : RecyclerView.Adapter<MoreFragmentAdapter.ItemViewHolder>(), BaseSetOnItemClickListener {
 
-     override lateinit var adapterClickListener: BaseItemClickListener
+    override lateinit var adapterClickListener: BaseItemClickListener
 
     override fun setOnItemClickListener(clickListener: BaseItemClickListener) {
         adapterClickListener = clickListener

@@ -2,11 +2,11 @@ package com.example.mymealmonkey.view.activity
 
 
 import android.content.res.ColorStateList
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     // Navigation Controller
     private lateinit var navController: NavController
 
-    companion object{
+    companion object {
         const val TOKEN = "TOKEN"
     }
 
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // ClickListeners
-        clickListner()
+        clickListener()
 
         // Observe the Actions
         observers()
@@ -87,14 +87,10 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    fun initialize() {
-
-    }
-
     /**
      * Listens to Users Clicks
      */
-    private fun clickListner() {
+    private fun clickListener() {
         binding.fabButton.setOnClickListener {
 
             navController.navigate(R.id.homePageFragment)

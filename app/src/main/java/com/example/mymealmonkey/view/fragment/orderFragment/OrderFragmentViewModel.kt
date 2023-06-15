@@ -1,13 +1,9 @@
 package com.example.mymealmonkey.view.fragment.orderFragment
 
-import android.database.Observable
-import android.util.Log
-import androidx.databinding.Bindable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 
 class OrderFragmentViewModel() : ViewModel() {
 

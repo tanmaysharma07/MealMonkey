@@ -1,10 +1,11 @@
-package com.example.mymealmonkey.database
+package com.example.mymealmonkey.database.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.mymealmonkey.data.ProfileData
+import com.example.mymealmonkey.database.dao.ProfileDao
 
 @Database(entities = [ProfileData::class], version = 1)
 abstract class ProfileDatabase : RoomDatabase() {

@@ -1,11 +1,11 @@
 package com.example.mymealmonkey.view.fragment.profileFragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentProfileBinding
@@ -73,7 +73,8 @@ class ProfileFragment : Fragment() {
 
             //Check if Mobile Number is Valid
             if (viewModel.isMobileNumber()) {
-                binding.mobileNumberProfile.helperText = getString(R.string.enter_valid_mobile_number)
+                binding.mobileNumberProfile.helperText =
+                    getString(R.string.enter_valid_mobile_number)
                 return@setOnClickListener
             }
             binding.mobileNumberProfile.helperText = null
@@ -88,13 +89,15 @@ class ProfileFragment : Fragment() {
             //Check validity of Password
             if (viewModel.isPassword()) {
                 binding.passwordSignupProfile.helperText = getString(R.string.enter_valid_password)
-                binding.confirmPasswordSignupProfile.helperText = getString(R.string.enter_valid_password)
+                binding.confirmPasswordSignupProfile.helperText =
+                    getString(R.string.enter_valid_password)
                 return@setOnClickListener
             }
             binding.passwordSignupProfile.helperText = null
             binding.confirmPasswordSignupProfile.helperText = null
 
 
+            // Enabling them to false after changes are complete
             binding.nameProfileTextInput.isEnabled = false
             binding.emailTextInputProfile.isEnabled = false
             binding.addressTextInputProfile.isEnabled = false

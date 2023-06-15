@@ -1,10 +1,11 @@
 package com.example.mymealmonkey.view.fragment.notifications
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
 import com.example.mymealmonkey.databinding.FragmentNotificationsBinding
 
@@ -25,6 +26,7 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Array for Notification Details
         val notificationArray = ArrayList<NotificationsData>()
         notificationArray.addAll(
             arrayOf(
@@ -42,5 +44,13 @@ class NotificationsFragment : Fragment() {
         //Initialized RecyclerView
         binding.notificationsRecyclerView.adapter = NotificationsAdapter(notificationArray)
         binding.notificationsRecyclerView.hasFixedSize()
+
+        clickListeners()
+    }
+
+    private fun clickListeners() {
+        binding.notificationsBackArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }

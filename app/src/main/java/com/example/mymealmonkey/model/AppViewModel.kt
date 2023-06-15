@@ -10,7 +10,10 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AppViewModel @Inject constructor(private val appPreferences: AppPreferences,val eventListener: EventListener) : ViewModel() {
+class AppViewModel @Inject constructor(
+    private val appPreferences: AppPreferences,
+    val eventListener: EventListener
+) : ViewModel() {
 
     fun signupSession(user: User) {
 

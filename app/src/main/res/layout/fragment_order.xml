@@ -216,7 +216,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/portionCountTextField"
-                        style="@style/textfieldStyle"
+                        style="@style/textFieldStyle"
                         android:layout_width="50dp"
                         android:layout_height="32dp"
                         app:layout_constraintBottom_toBottomOf="@+id/number_of_portions"

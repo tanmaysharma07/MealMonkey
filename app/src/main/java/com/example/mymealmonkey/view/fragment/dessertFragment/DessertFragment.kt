@@ -1,25 +1,31 @@
 package com.example.mymealmonkey.view.fragment.dessertFragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
+import com.example.mymealmonkey.data.OrderDetailData
 import com.example.mymealmonkey.databinding.FragmentDessertBinding
 import com.example.mymealmonkey.utils.BaseItemClickListener
+import com.google.gson.Gson
 
 class DessertFragment : Fragment() {
 
+    //Binding Component
     lateinit var binding: FragmentDessertBinding
+
+    //ViewModel Initialization
     val viewModel: DessertFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //View Binding
         binding = FragmentDessertBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -27,6 +33,7 @@ class DessertFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Array to Store the Data for Dessert Fragment
         val dessertFragmentArray = ArrayList<DessertFragmentData>()
         dessertFragmentArray.addAll(
             arrayOf(
@@ -62,14 +69,24 @@ class DessertFragment : Fragment() {
         binding.recyclerViewDessertFragment.adapter = dessertFragmentAdapter.apply {
             setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
-                    findNavController().navigate(R.id.orderFragment)
+                    val bundle = Bundle()
+                    val orderDetailData = OrderDetailData(
+                        dessertFragmentArray[position].imageResourceId,
+                        dessertFragmentArray[position].nameResourceId
+                    )
+                    bundle.putString(
+                        getString(R.string.orderdetails),
+                        Gson().toJson(orderDetailData)
+                    )
+                    findNavController().navigate(R.id.orderFragment, bundle)
                 }
             })
         }
         binding.recyclerViewDessertFragment.hasFixedSize()
 
+        // Bundle Opened
         val jsonDessertFragment = arguments?.getString(getString(R.string.pagetitle))
-        if(jsonDessertFragment!=null){
+        if (jsonDessertFragment != null) {
             binding.desserts.text = jsonDessertFragment
         }
 

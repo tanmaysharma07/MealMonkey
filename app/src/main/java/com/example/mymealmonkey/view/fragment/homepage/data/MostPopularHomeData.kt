@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class MostPopularHomeData(
-    @DrawableRes val imageResourceId:Int,
-    @StringRes val nameResourceId:Int,
-    @StringRes val typeResourceId:Int
+    @DrawableRes val imageResourceId: Int,
+    @StringRes val nameResourceId: Int,
+    @StringRes val typeResourceId: Int
 )

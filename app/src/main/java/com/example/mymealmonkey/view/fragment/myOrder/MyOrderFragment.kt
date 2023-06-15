@@ -1,10 +1,10 @@
 package com.example.mymealmonkey.view.fragment.myOrder
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
@@ -30,6 +30,7 @@ class MyOrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Array for My order RecyclerView
         val myOrderArray = ArrayList<MyOrderFragmentData>()
         myOrderArray.addAll(
             arrayOf(

@@ -112,6 +112,11 @@
         android:label="fragment_new_password"
         tools:layout="@layout/fragment_new_password">
 
+        <action
+            android:id="@+id/action_newPasswordFragment_to_loginPage"
+            app:destination="@id/loginPage"
+            app:popUpTo="@id/loginPage"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -220,13 +225,6 @@
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
         <action
-            android:id="@+id/action_moreFragment_to_inboxFragment"
-            app:destination="@id/inboxFragment"
-            app:enterAnim="@anim/enter"
-            app:exitAnim="@anim/exit"
-            app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit" />
-        <action
             android:id="@+id/action_moreFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment"
             app:enterAnim="@anim/enter"
@@ -240,6 +238,9 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_moreFragment_to_inboxFragment"
+            app:destination="@id/inboxFragment" />
 
     </fragment>
 
@@ -287,13 +288,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/inboxFragment"
-        android:name="com.example.mymealmonkey.view.fragment.inbox.InboxFragment"
-        android:label="InboxFragment">
-
-    </fragment>
-
-    <fragment
         android:id="@+id/myOrderFragment"
         android:name="com.example.mymealmonkey.view.fragment.myOrder.MyOrderFragment"
         android:label="fragment_my_order"
@@ -308,5 +302,10 @@
         android:name="com.example.mymealmonkey.view.fragment.checkoutFragment.CheckoutFragment"
         android:label="fragment_checkout"
         tools:layout="@layout/fragment_checkout" />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.example.mymealmonkey.view.fragment.inbox.InboxFragment"
+        android:label="fragment_inbox"
+        tools:layout="@layout/fragment_inbox" />
 
 </navigation>

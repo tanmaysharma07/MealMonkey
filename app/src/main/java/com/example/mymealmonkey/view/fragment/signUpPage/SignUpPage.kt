@@ -1,11 +1,11 @@
 package com.example.mymealmonkey.view.fragment.signUpPage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -14,6 +14,7 @@ import com.example.mymealmonkey.data.ProfileData
 import com.example.mymealmonkey.data.User
 import com.example.mymealmonkey.databinding.FragmentSignUpPageBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -113,13 +114,18 @@ class SignUpPage : Fragment() {
                 viewModel.passwordInput.get()
             )
 
-            lifecycleScope.launch {
+            lifecycleScope.launch(Dispatchers.IO) {
+                // Set the profile data
                 viewModel.setProfileData(profileData)
-            }
 
-            // Navigate to Login Page
-            findNavController().navigate(R.id.action_signUpPage_to_loginPage)
+                val userData =
+                    viewModel.profileDatabase.profileDao().findByEmail(profileData.email ?: "")
+
+                if (userData?.email != null) {
+                    // Navigate to Login Page
+                    findNavController().navigate(R.id.action_signUpPage_to_loginPage)
+                }
+            }
         }
     }
-
 }

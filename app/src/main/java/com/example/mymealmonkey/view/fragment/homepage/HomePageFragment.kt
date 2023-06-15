@@ -1,10 +1,10 @@
 package com.example.mymealmonkey.view.fragment.homepage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mymealmonkey.R
@@ -43,6 +43,7 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Array to store Data for Country Food RecyclerView
         val countryFoodHomeArray = ArrayList<CountryFoodHomeData>()
         countryFoodHomeArray.addAll(
             arrayOf(
@@ -56,6 +57,7 @@ class HomePageFragment : Fragment() {
             )
         )
 
+        // Array to store Data for Most Popular RecyclerView
         val mostPopularHomeArray = ArrayList<MostPopularHomeData>()
         mostPopularHomeArray.addAll(
             arrayOf(
@@ -82,6 +84,7 @@ class HomePageFragment : Fragment() {
             )
         )
 
+        // Array to store Data for Popular Restaurants RecyclerView
         val popularHomeArray = ArrayList<PopularRestaurantHomeData>()
         popularHomeArray.addAll(
             arrayOf(
@@ -103,6 +106,7 @@ class HomePageFragment : Fragment() {
             )
         )
 
+        // Array to store Data for Recent Items RecyclerView
         val recentItemsHomeArray = ArrayList<RecentItemsHomeData>()
         recentItemsHomeArray.addAll(
             arrayOf(
@@ -124,52 +128,80 @@ class HomePageFragment : Fragment() {
             )
         )
 
+        // RecyclerView Initialized for Country Food Adapter
         val recyclerViewCountryFood = binding.recyclerViewCountryFood
         recyclerViewCountryFood.adapter = CountryFoodHomeAdapter(countryFoodHomeArray).apply {
             setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
                     val bundle = Bundle()
-                    val orderDetailData = OrderDetailData( countryFoodHomeArray[position].imageResourcesId,countryFoodHomeArray[position].nameResourceId )
-                    bundle.putString(getString(R.string.orderdetails), Gson().toJson(orderDetailData))
+                    val orderDetailData = OrderDetailData(
+                        countryFoodHomeArray[position].imageResourcesId,
+                        countryFoodHomeArray[position].nameResourceId
+                    )
+                    bundle.putString(
+                        getString(R.string.orderdetails),
+                        Gson().toJson(orderDetailData)
+                    )
                     findNavController().navigate(R.id.orderFragment, bundle)
                 }
             })
         }
         recyclerViewCountryFood.setHasFixedSize(true)
 
+        // RecyclerView Initialized for Popular Restaurant Adapter
         val popularRestaurantHomeAdapter = PopularRestaurantHomeAdapter(popularHomeArray)
         binding.recyclerViewPopular.adapter = popularRestaurantHomeAdapter.apply {
             setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
                     val bundle = Bundle()
-                    val orderDetailData = OrderDetailData( popularHomeArray[position].imageResourceId,popularHomeArray[position].nameResourceId )
-                    bundle.putString(getString(R.string.orderdetails), Gson().toJson(orderDetailData))
+                    val orderDetailData = OrderDetailData(
+                        popularHomeArray[position].imageResourceId,
+                        popularHomeArray[position].nameResourceId
+                    )
+                    bundle.putString(
+                        getString(R.string.orderdetails),
+                        Gson().toJson(orderDetailData)
+                    )
                     findNavController().navigate(R.id.orderFragment, bundle)
                 }
             })
         }
         binding.recyclerViewPopular.setHasFixedSize(true)
 
-        val mostPopularHomeAdapter = MostPopularHomeAdapter( mostPopularHomeArray)
+        // RecyclerView Initialized for Most Popular Adapter
+        val mostPopularHomeAdapter = MostPopularHomeAdapter(mostPopularHomeArray)
         binding.recyclerViewMostPopular.adapter = mostPopularHomeAdapter.apply {
             setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
                     val bundle = Bundle()
-                    val orderDetailData = OrderDetailData( mostPopularHomeArray[position].imageResourceId,mostPopularHomeArray[position].nameResourceId )
-                    bundle.putString(getString(R.string.orderdetails), Gson().toJson(orderDetailData))
+                    val orderDetailData = OrderDetailData(
+                        mostPopularHomeArray[position].imageResourceId,
+                        mostPopularHomeArray[position].nameResourceId
+                    )
+                    bundle.putString(
+                        getString(R.string.orderdetails),
+                        Gson().toJson(orderDetailData)
+                    )
                     findNavController().navigate(R.id.orderFragment, bundle)
                 }
             })
         }
         binding.recyclerViewMostPopular.setHasFixedSize(true)
 
-        val recentItemsHomeAdapter = RecentItemsHomeAdapter( recentItemsHomeArray)
+        // RecyclerView Initialized for Recent Items Adapter
+        val recentItemsHomeAdapter = RecentItemsHomeAdapter(recentItemsHomeArray)
         binding.recyclerViewRecent.adapter = recentItemsHomeAdapter.apply {
             setOnItemClickListener(object : BaseItemClickListener {
                 override fun itemClick(position: Int) {
                     val bundle = Bundle()
-                    val orderDetailData = OrderDetailData( recentItemsHomeArray[position].imageResourceId,recentItemsHomeArray[position].nameResourceId )
-                    bundle.putString(getString(R.string.orderdetails), Gson().toJson(orderDetailData))
+                    val orderDetailData = OrderDetailData(
+                        recentItemsHomeArray[position].imageResourceId,
+                        recentItemsHomeArray[position].nameResourceId
+                    )
+                    bundle.putString(
+                        getString(R.string.orderdetails),
+                        Gson().toJson(orderDetailData)
+                    )
                     findNavController().navigate(R.id.orderFragment, bundle)
                 }
             })

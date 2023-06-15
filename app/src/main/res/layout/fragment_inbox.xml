@@ -11,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/inboxBackArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            app:layout_constraintBottom_toBottomOf="@id/inbox"
+            app:layout_constraintTop_toTopOf="@id/inbox"
+            app:layout_constraintEnd_toStartOf="@id/inbox"/>
+
     <TextView
         android:id="@+id/inbox"
         android:layout_width="wrap_content"

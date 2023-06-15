@@ -27,16 +27,12 @@
         app:layout_constraintStart_toEndOf="@id/imageCheckoutRV"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <CheckBox
         android:id="@+id/checkoutRadioButtonRV"
-        android:layout_width="30dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="30dp"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:src="@drawable/tab_selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:buttonTint="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

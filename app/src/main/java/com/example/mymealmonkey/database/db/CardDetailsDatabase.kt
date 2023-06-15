@@ -1,13 +1,11 @@
-package com.example.mymealmonkey.database
+package com.example.mymealmonkey.database.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.mymealmonkey.R
 import com.example.mymealmonkey.data.CardDetailsData
+import com.example.mymealmonkey.database.dao.CardDetailsDao
 
 
 @Database(entities = [CardDetailsData::class], version = 1)
@@ -26,20 +24,5 @@ abstract class CardDetailsDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: CardDetailsDatabase? = null
 
-        fun getCardDetailsDatabase(context: Context): CardDetailsDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-            synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    CardDetailsDatabase::class.java,
-                    context.getString(R.string.card_details_database)
-                ).build()
-                INSTANCE = instance
-                return instance
-            }
-        }
     }
 }

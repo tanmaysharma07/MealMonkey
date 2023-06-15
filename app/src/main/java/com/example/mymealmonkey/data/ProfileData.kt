@@ -7,15 +7,15 @@ import androidx.room.PrimaryKey
 @Entity("profile_table")
 data class ProfileData(
     @PrimaryKey(true)
-    val id:Int?,
+    val id: Int? = null,
     @ColumnInfo("name")
-    val name:String?,
+    val name: String? = null,
     @ColumnInfo("email")
-    val email:String?,
+    val email: String? = null,
     @ColumnInfo("mobileNumber")
-    val mobileNo:String?,
+    val mobileNo: String? = null,
     @ColumnInfo("address")
-    val address:String?,
+    val address: String? = null,
     @ColumnInfo("password")
-    val password:String?
+    val password: String? = null
 )

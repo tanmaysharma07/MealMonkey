@@ -17,7 +17,7 @@ import com.google.firebase.messaging.RemoteMessage
 
 open class MyFirebaseMessagingService : FirebaseMessagingService() {
 
-    companion object{
+    companion object {
         const val TOKEN = "TOKEN"
     }
 
